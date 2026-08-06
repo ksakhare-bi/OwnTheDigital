@@ -1,0 +1,16 @@
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
+
+type SiteShellProps = {
+  children: React.ReactNode;
+};
+
+export function SiteShell({ children }: SiteShellProps) {
+  return (
+    <div className="flex min-h-screen flex-col bg-background text-navy">
+      <SiteHeader />
+      <main className="flex-1">{children}</main>
+      <SiteFooter />
+    </div>
+  );
+}
