@@ -1,12 +1,13 @@
-import { PagePlaceholder } from "@/components/shared/page-placeholder";
-import { figmaFile } from "@/content/figma";
+import type { Metadata } from "next";
+
+import { BlogContent } from "@/components/blog/blog-content";
+
+export const metadata: Metadata = {
+  title: "Blogs",
+  description:
+    "Insights on SEO, digital marketing, and growth strategy from Own the Digital.",
+};
 
 export default function BlogPage() {
-  return (
-    <PagePlaceholder
-      title="Blog"
-      description="Published posts from MongoDB (read-only). Listing UI comes next."
-      figmaNodeId={figmaFile.frames.blog}
-    />
-  );
+  return <BlogContent />;
 }
