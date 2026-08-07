@@ -242,6 +242,28 @@ export const projects = [
       "6X increase in ad-driven revenue",
     ],
   },
+  {
+    slug: "cloudscale",
+    name: "CloudScale",
+    category: "B2B SaaS for Supply Chain Management",
+    timeline: "6–10 months",
+    description:
+      "AI-powered LinkedIn and X (Twitter) advertising strategy for a B2B SaaS company to generate high-quality leads, shorten the sales cycle, and accelerate pipeline growth.",
+    artImage: "/images/home/portfolio-cloudscale-art.png",
+    summaryImage: "/images/home/portfolio-cloudscale-summary.png",
+    services: [
+      "LinkedIn ABM campaigns",
+      "X (Twitter) demand generation",
+      "AI-powered lead scoring",
+      "Personalized nurture automation",
+    ],
+    outcomes: [
+      "77% lower LinkedIn cost per lead",
+      "31% lead-to-SQL conversion rate",
+      "18.4K X (Twitter) followers",
+      "$8.7M quarterly paid pipeline",
+    ],
+  },
 ];
 
 export const testimonials = [

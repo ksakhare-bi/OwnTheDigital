@@ -55,7 +55,7 @@ export function SiteHeader() {
                 <SiteLogo className="w-40" />
               </SheetTitle>
             </SheetHeader>
-            <nav className="flex flex-col gap-2 p-6">
+            <nav className="flex flex-col gap-4 p-6">
               {mainNav.map((item) => (
                 <SheetClose
                   key={item.href}
@@ -63,12 +63,11 @@ export function SiteHeader() {
                   render={
                     <Link
                       href={item.href}
-                      className="group flex items-center justify-between gap-4 rounded-xl px-4 py-3 font-mono text-lg text-navy hover:bg-surface-tint"
+                      className="group border-b border-border pb-2 pt-1 font-mono text-lg text-navy transition-colors hover:border-primary hover:text-primary"
                     />
                   }
                 >
-                  <span>{item.label}</span>
-                  <span className="h-px flex-1 bg-border transition-colors group-hover:bg-primary/40" />
+                  {item.label}
                 </SheetClose>
               ))}
             </nav>

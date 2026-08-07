@@ -85,7 +85,7 @@ export function ServicesSection({
   return (
     <section
       id="services"
-      className="mx-auto max-w-[1392px] scroll-mt-24 px-6 pb-14 sm:px-6 sm:pb-24 md:px-0 lg:pb-32"
+      className="mx-auto max-w-[1392px] scroll-mt-24 px-6 pb-8 sm:pb-0 sm:px-6 md:px-0"
     >
       {!hideTitle ? <SectionTitle lead="Our" accent="Services" /> : null}
       <div
@@ -99,56 +99,58 @@ export function ServicesSection({
 
           return (
             <div key={service.title}>
-              <Card className="overflow-hidden rounded-[14px] border-border bg-background py-0 shadow-none">
-                <CardContent className="p-4 sm:p-10 md:px-9 md:py-10 xl:px-14 xl:py-[60px]">
-                  {!hideEyebrows ? (
-                    <Badge className="h-auto max-w-full rounded-full border border-border bg-surface-tint px-3 py-1.5 text-left text-[10px] leading-4 font-bold whitespace-normal text-success uppercase hover:bg-surface-tint sm:text-xs xl:px-4 xl:py-3 xl:text-base xl:leading-5">
-                      {service.eyebrow}
-                    </Badge>
-                  ) : (
-                    <Badge className="hidden h-auto max-w-full rounded-full border border-border bg-surface-tint px-3 py-1.5 text-left text-xs leading-4 font-bold whitespace-normal text-success uppercase hover:bg-surface-tint sm:inline-flex xl:px-4 xl:py-3 xl:text-base xl:leading-5">
-                      {service.eyebrow}
-                    </Badge>
-                  )}
-
-                  <div
-                    className={cn(
-                      "grid gap-4 sm:mt-4 sm:gap-8 md:grid-cols-[1.45fr_1fr] md:gap-4 xl:mt-6 xl:grid-cols-[723px_546px] xl:gap-6",
-                      hideEyebrows ? "mt-0" : "mt-3",
+              <Link href={service.href} className="block transition duration-200 hover:opacity-[0.98]">
+                <Card className="overflow-hidden rounded-[14px] border-border bg-background py-0 shadow-none hover:border-primary">
+                  <CardContent className="p-4 sm:p-10 md:px-9 md:py-10 xl:px-14 xl:py-[60px]">
+                    {!hideEyebrows ? (
+                      <Badge className="h-auto max-w-full rounded-full border border-border bg-surface-tint px-3 py-1.5 text-left text-[10px] leading-4 font-bold whitespace-normal text-success uppercase hover:bg-surface-tint sm:text-xs xl:px-4 xl:py-3 xl:text-base xl:leading-5">
+                        {service.eyebrow}
+                      </Badge>
+                    ) : (
+                      <Badge className="hidden h-auto max-w-full rounded-full border border-border bg-surface-tint px-3 py-1.5 text-left text-xs leading-4 font-bold whitespace-normal text-success uppercase hover:bg-surface-tint sm:inline-flex xl:px-4 xl:py-3 xl:text-base xl:leading-5">
+                        {service.eyebrow}
+                      </Badge>
                     )}
-                  >
-                    <div className="relative aspect-[16/10] min-h-0 overflow-hidden rounded-xl sm:min-h-80 md:aspect-[723/339] md:h-auto md:min-h-0 xl:h-[339px] xl:aspect-auto">
-                      <Image
-                        src={service.image}
-                        alt={`${service.title} dashboard and campaign preview`}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 720px"
-                        className="object-cover"
-                      />
+
+                    <div
+                      className={cn(
+                        "grid gap-4 sm:mt-4 sm:gap-8 md:grid-cols-[1.45fr_1fr] md:gap-4 xl:mt-6 xl:grid-cols-[723px_546px] xl:gap-6",
+                        hideEyebrows ? "mt-0" : "mt-3",
+                      )}
+                    >
+                      <div className="relative aspect-[16/10] min-h-0 overflow-hidden rounded-xl sm:min-h-80 md:aspect-[723/339] md:h-auto md:min-h-0 xl:h-[339px] xl:aspect-auto">
+                        <Image
+                          src={service.image}
+                          alt={`${service.title} dashboard and campaign preview`}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 720px"
+                          className="object-cover"
+                        />
+                      </div>
+
+                      <div className="w-full">
+                        <h3 className="text-xl leading-[1.35] font-bold text-navy uppercase sm:text-2xl sm:leading-[1.5] xl:text-3xl">
+                          {service.title}
+                        </h3>
+                        <ul className="mt-4 max-w-[507px] space-y-2 sm:mt-6 sm:space-y-3 xl:space-y-6">
+                          {service.items.map((item) => (
+                            <li
+                              key={item}
+                              className="ml-5 list-disc border-b border-border pb-2 pl-0 text-sm leading-[1.5] text-navy uppercase marker:text-navy sm:ml-6 sm:pb-3 sm:text-base xl:ml-9 xl:text-2xl"
+                            >
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
 
-                    <div className="w-full">
-                      <h3 className="text-xl leading-[1.35] font-bold text-navy uppercase sm:text-2xl sm:leading-[1.5] xl:text-3xl">
-                        {service.title}
-                      </h3>
-                      <ul className="mt-4 max-w-[507px] space-y-2 sm:mt-6 sm:space-y-3 xl:space-y-6">
-                        {service.items.map((item) => (
-                          <li
-                            key={item}
-                            className="ml-5 list-disc border-b border-border pb-2 pl-0 text-sm leading-[1.5] text-navy uppercase marker:text-navy sm:ml-6 sm:pb-3 sm:text-base xl:ml-9 xl:text-2xl"
-                          >
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <p className="mt-3 text-sm leading-6 text-body sm:mt-4 sm:text-lg sm:leading-7 xl:mt-6">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
+                    <p className="mt-3 text-sm leading-6 text-body sm:mt-4 sm:text-lg sm:leading-7 xl:mt-6">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
 
               {showExploreLinks && next ? (
                 <div className="mt-5 text-center sm:hidden">

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { PagePlaceholder } from "@/components/shared/page-placeholder";
+import { ServiceDetailContent } from "@/components/services/service-detail-content";
 import { getServiceBySlug, services } from "@/content/services";
 
 type ServiceDetailPageProps = {
@@ -20,11 +20,5 @@ export default async function ServiceDetailPage({
     notFound();
   }
 
-  return (
-    <PagePlaceholder
-      title={service.title}
-      description={`${service.description} Shared template: hero + stats, offerings, why us, how we work, tools, FAQ, CTA.`}
-      figmaNodeId={service.figmaNodeId}
-    />
-  );
+  return <ServiceDetailContent slug={slug} />;
 }

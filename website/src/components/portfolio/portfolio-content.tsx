@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils";
 
 function ProjectMeta({ label, value }: { label: string; value: string }) {
   return (
-    <Badge className="h-auto rounded-full border-0 bg-surface-tint px-4 py-2.5 text-base leading-[1.5] font-normal whitespace-normal text-navy hover:bg-surface-tint xl:text-lg">
-      {label}
-      <span className="mx-2 size-1 shrink-0 rounded-full bg-primary" />
-      <strong className="font-medium text-md text-primary">{value}</strong>
+    <Badge className="h-auto max-w-full rounded-full border-0 bg-surface-tint px-3 py-1.5 text-xs font-normal text-navy hover:bg-surface-tint sm:px-4 sm:py-2.5 sm:text-base xl:text-lg">
+      <span className="shrink-0">{label}</span>
+      <span className="mx-1.5 size-1 shrink-0 rounded-full bg-primary sm:mx-2" />
+      <strong className="font-semibold text-primary">{value}</strong>
     </Badge>
   );
 }
@@ -29,23 +29,23 @@ function DetailCard({
   return (
     <div
       className={cn(
-        "shrink-0 rounded-[14px] border border-border bg-background",
+        "max-w-full overflow-hidden rounded-[14px] border border-border bg-background xl:shrink-0",
         compact
           ? title === "What We Did"
-            ? "p-5 xl:h-[301px]"
-            : "p-5 xl:h-[277px]"
-          : "p-5 xl:h-[317px] xl:p-10",
+            ? "p-4 sm:p-5 xl:h-[301px]"
+            : "p-4 sm:p-5 xl:h-[277px]"
+          : "p-4 sm:p-5 xl:h-[317px] xl:p-10",
       )}
     >
-      <h4 className="text-lg leading-[1.5] font-bold text-navy uppercase">
+      <h4 className="text-base font-bold text-navy uppercase sm:text-lg">
         {title}
       </h4>
-      <div className="mt-5 flex flex-wrap gap-2.5">
+      <div className="mt-3 flex flex-wrap gap-2 sm:mt-5 sm:gap-2.5">
         {items.map((item) => (
           <Badge
             key={item}
             variant="secondary"
-            className="h-auto rounded-full bg-surface-tint px-4 py-2 font-mono text-sm leading-6 font-bold whitespace-normal text-navy xl:text-base xl:whitespace-nowrap"
+            className="h-auto rounded-full bg-surface-tint px-3 py-1.5 font-mono text-xs font-bold text-navy sm:px-4 sm:py-2 sm:text-sm xl:text-base max-w-full break-words"
           >
             {item}
           </Badge>
@@ -65,43 +65,43 @@ function SummaryCard({
   return (
     <div
       className={cn(
-        "flex min-h-[540px] flex-col gap-10 rounded-[14px] bg-background p-6",
+        "flex flex-col gap-4 rounded-[14px] bg-background p-4 sm:min-h-[540px] sm:gap-10 sm:p-6",
         compact
-          ? "xl:h-[660px] xl:p-6"
+          ? "border border-border sm:border-0 xl:h-[660px] xl:p-6"
           : "border border-border xl:h-[740px] xl:p-6",
       )}
     >
       {!compact && (
-        <div className="flex items-center justify-between gap-3">
-          <h4 className="text-2xl leading-[1.5] font-bold text-primary uppercase">
+        <div className="hidden sm:flex items-center justify-between gap-3">
+          <h4 className="text-xl font-bold text-primary uppercase sm:text-2xl">
             {project.name}
           </h4>
           <Link
             href={`/case-studies/${project.slug}`}
             className={cn(
               buttonVariants(),
-              "h-10 rounded-full px-5 text-base",
+              "h-8 rounded-full px-3.5 font-mono text-xs sm:h-10 sm:px-5 sm:text-base",
             )}
           >
             View Project
           </Link>
         </div>
       )}
-      <div className="flex flex-wrap gap-3">
-        <ProjectMeta 
-          label="Category" 
-          value={project.category} 
+      <div className="flex flex-wrap gap-2 sm:gap-3">
+        <ProjectMeta
+          label="Category"
+          value={project.category}
         />
         <ProjectMeta
           label={compact ? "Timeline" : "Time Taken"}
           value={project.timeline}
         />
       </div>
-      <p className="text-lg leading-[1.5] text-body">{project.description}</p>
+      <p className="text-sm leading-relaxed text-body sm:text-lg">{project.description}</p>
       <div
         className={cn(
-          "relative mt-auto overflow-hidden",
-          compact ? "h-[232px]" : "h-[165px]",
+          "relative mt-auto overflow-hidden rounded-xl sm:rounded-none",
+          compact ? "h-[140px] sm:h-[232px]" : "h-[120px] sm:h-[165px]",
         )}
       >
         {project.summaryBaseImage && (
@@ -138,7 +138,7 @@ function DetailColumn({
   return (
     <div
       className={cn(
-        "flex flex-col gap-5",
+        "flex flex-col gap-4 sm:gap-5 mb-12 sm:mb-0",
         compact ? "xl:h-[684px]" : "xl:h-[740px]",
       )}
     >
@@ -148,8 +148,7 @@ function DetailColumn({
         href="/contact"
         className={cn(
           buttonVariants(),
-          "h-16 rounded-full px-8 font-mono text-lg font-semibold",
-          "mt-auto w-full font-bold xl:text-xl",
+          "h-11 w-fit rounded-full px-6 font-mono text-sm font-bold sm:h-16 sm:w-full sm:px-8 sm:text-lg xl:text-xl text-center mx-auto sm:mt-auto",
         )}
       >
         Get a free Audit
@@ -160,13 +159,13 @@ function DetailColumn({
 
 function ProjectHeader({ project }: { project: PortfolioProject }) {
   return (
-    <div className="flex min-h-[78px] items-center justify-between gap-5">
-      <h3 className="text-3xl leading-[1.5] font-bold text-primary uppercase sm:text-5xl xl:text-[52px]">
+    <div className="hidden sm:flex items-center justify-between gap-3 sm:min-h-[78px] sm:gap-5">
+      <h3 className="text-xl leading-none font-bold text-primary uppercase sm:text-5xl xl:text-[52px]">
         {project.name}
       </h3>
       <Link
         href={`/case-studies/${project.slug}`}
-        className={cn(buttonVariants(), "h-16 rounded-full px-8 font-mono text-lg font-semibold")}
+        className={cn(buttonVariants(), "h-8 shrink-0 rounded-full px-3.5 font-mono text-xs sm:h-16 sm:px-8 sm:text-lg")}
       >
         View Project
       </Link>
@@ -174,19 +173,33 @@ function ProjectHeader({ project }: { project: PortfolioProject }) {
   );
 }
 
-function PortfolioProjectCard({ project }: { project: PortfolioProject }) {
+export function PortfolioProjectCard({ project }: { project: PortfolioProject }) {
   const compact = project.layout === "art-first";
   const artHeight = project.slug === "fittpulse" ? "xl:h-[740px]" : "xl:h-[660px]";
 
   return (
-    <article className="space-y-5">
+    <article className="space-y-2 sm:space-y-5">
       <ProjectHeader project={project} />
       {compact ? (
-        <Card className="overflow-hidden rounded-[20px] border-2 border-border bg-background py-0 shadow-none">
-          <CardContent className="grid gap-5 p-5 md:grid-cols-2 xl:grid-cols-[500.735px_383.5px_383.5px] xl:p-10">
+        <Card className="overflow-hidden border-0 ring-0 bg-transparent py-0 shadow-none sm:border sm:border-border sm:bg-background sm:ring-1 sm:ring-foreground/10 sm:rounded-[20px]">
+          <CardContent className="grid gap-4 p-0 sm:gap-5 sm:p-5 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_1fr] xl:p-10 sm:pt-0">
+            <div className="flex items-center justify-between gap-2 sm:hidden px-1 pt-2 pb-1">
+              <h4 className="text-xl font-bold text-primary uppercase min-w-0 truncate">
+                {project.name}
+              </h4>
+              <Link
+                href={`/case-studies/${project.slug}`}
+                className={cn(
+                  buttonVariants(),
+                  "h-8 shrink-0 whitespace-nowrap rounded-full px-3 font-mono text-[13px]",
+                )}
+              >
+                View Project
+              </Link>
+            </div>
             <div
               className={cn(
-                "relative min-h-[540px] overflow-hidden rounded-[44px]",
+                "relative aspect-[4/3] min-h-0 overflow-hidden rounded-[20px] sm:aspect-auto sm:min-h-[540px] sm:rounded-[44px]",
                 artHeight,
               )}
             >
@@ -194,7 +207,7 @@ function PortfolioProjectCard({ project }: { project: PortfolioProject }) {
                 src={project.artImage}
                 alt={`${project.name} campaign artwork`}
                 fill
-                sizes="501px"
+                sizes="(max-width: 1280px) 100vw, 501px"
                 className="object-cover object-top"
                 priority={project.slug === "fittpulse"}
               />
@@ -206,20 +219,34 @@ function PortfolioProjectCard({ project }: { project: PortfolioProject }) {
           </CardContent>
         </Card>
       ) : (
-        <Card className="overflow-hidden rounded-[20px] border-0 bg-transparent py-0 shadow-none">
-          <CardContent className="grid gap-5 p-5 md:grid-cols-2 xl:grid-cols-[404px_403px_500.735px]">
-            <SummaryCard project={project} compact={false} />
-            <DetailColumn project={project} compact={false} />
-            <div className="relative min-h-[540px] overflow-hidden rounded-[44px] md:col-span-2 xl:col-span-1 xl:h-[740px]">
+        <Card className="overflow-hidden border-0 ring-0 bg-transparent py-0 shadow-none sm:border sm:border-border sm:bg-background sm:ring-1 sm:ring-foreground/10 sm:rounded-[20px]">
+          <CardContent className="grid gap-4 p-0 sm:gap-5 sm:p-5 md:grid-cols-2 xl:grid-cols-[404px_403px_500.735px]">
+            <div className="flex items-center justify-between gap-2 sm:hidden px-1 pt-4 pb-1">
+              <h4 className="text-xl font-bold text-primary uppercase min-w-0 truncate">
+                {project.name}
+              </h4>
+              <Link
+                href={`/case-studies/${project.slug}`}
+                className={cn(
+                  buttonVariants(),
+                  "h-8 shrink-0 whitespace-nowrap rounded-full px-3 font-mono text-[13px]",
+                )}
+              >
+                View Project
+              </Link>
+            </div>
+            <div className="relative aspect-[4/3] min-h-0 overflow-hidden rounded-[20px] sm:aspect-auto sm:min-h-[540px] sm:rounded-[44px] md:col-span-2 xl:col-span-1 xl:h-[740px] sm:order-last">
               <Image
                 src={project.artImage}
                 alt={`${project.name} full project artwork`}
                 fill
-                sizes="501px"
+                sizes="(max-width: 1280px) 100vw, 501px"
                 className="object-cover object-top"
                 priority={project.slug === "glowskinn"}
               />
             </div>
+            <SummaryCard project={project} compact={false} />
+            <DetailColumn project={project} compact={false} />
           </CardContent>
         </Card>
       )}
@@ -229,23 +256,23 @@ function PortfolioProjectCard({ project }: { project: PortfolioProject }) {
 
 export function PortfolioContent() {
   return (
-    <main className="mx-auto flex w-full max-w-[1416px] flex-col gap-[98px] px-4 pt-[98px] pb-24 sm:px-6 xl:px-0">
-      <h1 className="text-center text-5xl leading-none font-bold tracking-tight text-primary uppercase lg:text-[78px] sm:-mb-6">
+    <main className="mx-auto flex w-full max-w-[1416px] flex-col gap-8 px-4 pt-6 pb-0 sm:gap-[98px] sm:px-6 sm:pt-[98px] sm:pb-24 xl:px-0">
+      <h1 className="text-center text-3xl leading-none font-extrabold tracking-tight text-primary uppercase sm:text-5xl lg:text-[78px] sm:-mb-6">
         Portfolio
       </h1>
 
-      <section className="rounded-[20px] border border-border bg-background p-6 text-center sm:p-10 xl:p-[50px]">
-        <div className="mx-auto flex max-w-[1316px] flex-col items-center gap-10">
-          <h2 className="text-4xl leading-none font-bold tracking-[0.03em] text-primary uppercase sm:text-5xl lg:text-[72px]">
+      <section className="rounded-[20px] border border-border bg-background p-5 text-center sm:p-10 xl:p-[50px]">
+        <div className="mx-auto flex max-w-[1316px] flex-col items-center gap-4 sm:gap-10">
+          <h2 className="text-2xl leading-[1.1] font-bold tracking-[0.03em] text-primary uppercase sm:text-5xl lg:text-[72px]">
             Results That Speak Louder Than Promises.
           </h2>
-          <p className="text-lg tracking-[0.03em] text-black sm:text-xl">
+          <p className="text-xs leading-relaxed tracking-[0.03em] text-black sm:text-xl">
             Every project is built around one goal—helping businesses grow
             through strategy, creativity, and performance-driven marketing.
           </p>
           <Link
             href="/contact"
-            className={cn(buttonVariants(), "h-16 rounded-full px-8 font-mono text-lg font-semibold")}
+            className={cn(buttonVariants(), "h-10 rounded-full px-6 font-mono text-xs font-semibold sm:h-16 sm:px-8 sm:text-lg")}
           >
             Let&apos;s Build Yours
           </Link>
@@ -253,19 +280,19 @@ export function PortfolioContent() {
       </section>
 
       {portfolioSections.map((section) => (
-        <section key={section.title} className="space-y-20">
-          <div className="flex min-h-[78px] items-center justify-between gap-5">
-            <h2 className="text-3xl leading-[1.5] font-bold text-primary uppercase sm:text-5xl xl:text-[52px]">
+        <section key={section.title} className="space-y-3 sm:space-y-20">
+          <div className="flex items-center justify-center sm:justify-between gap-3 sm:min-h-[78px] sm:gap-5">
+            <h2 className="text-2xl leading-tight font-bold text-primary uppercase text-center sm:text-left sm:text-5xl xl:text-[52px]">
               {section.title}
             </h2>
             <Link
               href={section.serviceHref}
-              className={cn(buttonVariants(), "h-16 rounded-full px-8 font-mono text-lg font-semibold")}
+              className={cn(buttonVariants(), "hidden sm:inline-flex h-16 rounded-full px-8 font-mono text-lg font-semibold")}
             >
               View Service
             </Link>
           </div>
-          <div className="space-y-[98px]">
+          <div className="space-y-4 sm:space-y-[98px]">
             {section.projects.map((project) => (
               <PortfolioProjectCard key={project.slug} project={project} />
             ))}
