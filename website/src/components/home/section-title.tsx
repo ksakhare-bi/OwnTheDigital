@@ -10,7 +10,7 @@ export function SectionTitle({ lead, accent, className }: SectionTitleProps) {
   return (
     <h2
       className={cn(
-        "text-center text-4xl leading-none font-bold tracking-[0.03em] text-navy uppercase sm:text-5xl lg:text-[78px]",
+        "text-center text-[28px] leading-none font-bold tracking-[0.03em] text-navy uppercase sm:text-5xl lg:text-[78px]",
         className,
       )}
     >

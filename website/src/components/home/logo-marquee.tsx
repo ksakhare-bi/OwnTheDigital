@@ -34,12 +34,15 @@ export function LogoMarquee({ logos }: LogoMarqueeProps) {
 
   return (
     <div className="overflow-hidden" ref={emblaRef}>
-      <div className="-ml-[76px] flex items-center">
+      <div className="-ml-8 flex items-center sm:-ml-[76px]">
         {slides.map((logo, index) => (
-          <div key={`${logo.src}-${index}`} className="shrink-0 pl-[76px]">
+          <div
+            key={`${logo.src}-${index}`}
+            className="shrink-0 pl-8 sm:pl-[76px]"
+          >
             <div
               className={cn(
-                "relative",
+                "relative scale-75 sm:scale-100",
                 logo.hasShadow && "drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]",
               )}
               style={{ width: logo.width, height: logo.height }}

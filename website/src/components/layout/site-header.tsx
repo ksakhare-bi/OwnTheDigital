@@ -19,9 +19,9 @@ import { cn } from "@/lib/utils";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur">
-      <div className="mx-auto flex h-24 max-w-[1392px] items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-[1392px] items-center justify-between px-4 sm:h-24 sm:px-6">
         <Link href="/" className="shrink-0">
-          <SiteLogo priority className="w-40 sm:w-48" />
+          <SiteLogo priority className="w-36 sm:w-48" />
         </Link>
         <nav className="hidden items-center gap-8 lg:flex xl:gap-14">
           {mainNav.map((item) => (
@@ -45,7 +45,7 @@ export function SiteHeader() {
         </Link>
 
         <Sheet>
-          <SheetTrigger className="flex size-11 items-center justify-center rounded-full border border-border text-navy lg:hidden">
+          <SheetTrigger className="flex size-10 items-center justify-center rounded-full border border-border text-navy sm:size-11 lg:hidden">
             <Menu className="size-5" />
             <span className="sr-only">Open navigation</span>
           </SheetTrigger>
