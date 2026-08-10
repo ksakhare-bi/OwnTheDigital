@@ -37,7 +37,7 @@ function CompanySection() {
   return (
     <section>
       <AboutSectionTitle lead="About the" accent="Company" />
-      <div className="mt-10 sm:mt-20 grid items-center gap-10 lg:grid-cols-[0.9fr_1fr] xl:grid-cols-[639px_710px]">
+      <div className="mt-10 sm:mt-20 grid items-center gap-10 lg:grid-cols-[0.9fr_1fr] xl:grid-cols-[0.9fr_1fr]">
         <div className="hidden sm:block relative min-h-[420px] overflow-hidden rounded-3xl lg:h-[585px]">
           <Image
             src="/images/home/about-company.png"
@@ -181,7 +181,7 @@ function ExpertiseSection() {
   return (
     <section>
       <AboutSectionTitle lead="Our" accent="Expertise" />
-      <div className="mt-8 grid items-stretch gap-6 sm:mt-16 sm:gap-[30px] lg:grid-cols-[1.45fr_1fr] xl:grid-cols-[802px_552px]">
+      <div className="mt-8 grid items-stretch gap-6 sm:mt-16 sm:gap-[30px] lg:grid-cols-[1.45fr_1fr] xl:grid-cols-[1.45fr_1fr]">
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
           {expertiseItems.map((item) => (
             <Card
@@ -219,7 +219,7 @@ function ExpertiseSection() {
 export function AboutContent() {
   return (
     <main className="bg-surface">
-      <div className="mx-auto flex w-full max-w-[1392px] flex-col gap-[120px] px-6 pt-20 pb-10 sm:pb-24 sm:px-6 xl:px-0">
+      <div className="mx-auto flex w-full max-w-[1392px] flex-col gap-12 sm:gap-24 lg:gap-32 px-4 pt-20 pb-10 sm:px-6 sm:pb-24">
         <CompanySection />
         <ProblemsSection />
         <TeamSection />

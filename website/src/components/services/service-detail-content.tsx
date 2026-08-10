@@ -38,7 +38,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
   const relatedProjects = projects.filter((p) => detail.projectSlugs?.includes(p.slug));
 
   return (
-    <main className="mx-auto w-full max-w-[1392px] px-4 pt-10 pb-4 sm:px-6 sm:pt-12 xl:px-0">
+    <main className="mx-auto w-full max-w-[1392px] px-4 pt-10 pb-4 sm:px-6 sm:pt-12">
       {/* 1. HERO SECTION */}
       <section className="rounded-[20px] border border-border bg-background p-6 sm:p-14 xl:p-[74px] text-center flex flex-col items-center">
         <h1 className="font-mono text-[18px] font-semibold tracking-wider text-navy uppercase sm:text-3xl lg:text-5xl">
@@ -73,7 +73,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
       </section>
 
       {/* WHAT IS AI MARKETING? SECTION */}
-      <section className="mt-10 sm:mt-16 grid gap-8 lg:grid-cols-2 items-center bg-background border border-border rounded-[20px] p-6 sm:p-12">
+      <section className="mt-12 sm:mt-24 lg:mt-32 grid gap-8 lg:grid-cols-2 items-center bg-background border border-border rounded-[20px] p-6 sm:p-12">
         <div className="flex flex-col gap-4">
           <h2 className="text-2xl font-extrabold text-primary uppercase sm:text-4xl lg:text-[50px] leading-tight">
             {detail.whatIsTitle}
@@ -93,7 +93,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <section className="mt-14 sm:mt-24">
+      <section className="mt-12 sm:mt-24 lg:mt-32">
         <h2 className="text-center text-3xl leading-none font-bold tracking-tight text-navy uppercase sm:text-5xl lg:text-[60px]">
           WHO <span className="text-primary">IS IT FOR?</span>
         </h2>
@@ -103,7 +103,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
               <h3 className="text-base sm:text-center font-bold text-navy uppercase sm:text-xl mb-6">
                 PERFECT FOR:
               </h3>
-              <div className="flex flex-wrap pl-4 sm:pl-0 sm:justify-center sm:max-w-[1000px] mx-auto gap-3 sm:gap-5">
+              <div className="flex flex-wrap pl-2 sm:pl-0 sm:justify-center sm:max-w-[1000px] mx-auto gap-3 sm:gap-5">
                 {detail.whoIsItFor.map((item) => (
                   <Badge
                     key={item}
@@ -153,7 +153,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
       </section>
 
       {/* 3. HOW WE WORK SECTION */}
-      <section className="mt-14 sm:mt-24">
+      <section className="mt-12 sm:mt-24 lg:mt-32">
         <h2 className="text-center text-3xl leading-none font-bold tracking-tight text-navy uppercase sm:text-5xl lg:text-[78px]">
           HOW <span className="text-primary">WE WORK</span>
         </h2>
@@ -180,7 +180,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
       </section>
 
       {/* 4. WHAT'S INCLUDED SECTION */}
-      <section className="mt-20 sm:mt-24">
+      <section className="mt-12 sm:mt-24 lg:mt-32">
         <h2 className="text-center text-3xl leading-none font-bold tracking-tight text-navy uppercase sm:text-5xl lg:text-[78px]">
           WHAT&apos;S <span className="text-primary">INCLUDED</span>
         </h2>
@@ -214,7 +214,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <section className="mt-14 sm:mt-24">
+      <section className="mt-12 sm:mt-24 lg:mt-32">
         <h2 className="text-center text-3xl leading-none font-bold tracking-tight text-navy uppercase sm:text-5xl lg:text-[78px]">
           TOOLS AND <span className="text-primary">PLATFORMS</span>
         </h2>
@@ -240,7 +240,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
 
       {/* 6. OUR WORK SECTION */}
       {relatedProjects.length > 0 && (
-        <section className="mt-16 sm:mt-24 space-y-8">
+        <section className="mt-12 sm:mt-24 lg:mt-32 space-y-8">
           <h2 className="text-center text-3xl leading-none font-bold tracking-tight text-navy uppercase sm:text-5xl lg:text-[60px]">
             OUR <span className="text-primary">WORK</span>
           </h2>
@@ -260,7 +260,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
       )}
 
       {/* 7. FREQUENTLY ASKED QUESTIONS SECTION */}
-      <section className="mt-14 sm:mt-24">
+      <section className="mt-12 sm:mt-24 lg:mt-32">
         <h2 className="text-center text-3xl leading-none font-bold tracking-tight text-navy uppercase sm:text-5xl lg:text-[60px]">
           FREQUENTLY ASKED <span className="text-primary">QUESTIONS</span>
         </h2>
@@ -328,7 +328,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
       </section>
 
       {/* 8. FINAL CTA */}
-      <section className="mt-14 sm:mt-24">
+      <section className="mt-12 sm:mt-24 lg:mt-32">
         <div className="relative flex min-h-[220px] flex-col items-center justify-center overflow-hidden rounded-[20px] bg-primary p-6 text-center sm:min-h-[380px] sm:p-12">
           <h2 className="font-mono text-lg leading-tight font-bold tracking-wide text-white uppercase sm:text-4xl lg:text-[52px] md:max-w-5xl">
             {detail.finalCtaQuestion}

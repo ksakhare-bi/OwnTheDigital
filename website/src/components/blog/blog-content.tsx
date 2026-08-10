@@ -128,7 +128,7 @@ function BlogPagination({
 
 export function BlogContent() {
   return (
-    <main className="mx-auto w-full max-w-[1392px] px-4 pt-10 pb-6 sm:px-6 sm:pt-14 sm:pb-24 xl:px-0">
+    <main className="mx-auto w-full max-w-[1392px] px-4 pt-10 pb-6 sm:px-6 sm:pt-14 sm:pb-14">
       <section className="rounded-[20px] border border-border bg-background p-4 sm:p-8 xl:p-12">
         <div className="flex flex-col gap-6 sm:gap-0">
           {blogPosts.map((post) => (

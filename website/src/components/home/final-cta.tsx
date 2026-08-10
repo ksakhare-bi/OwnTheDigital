@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 
 export function FinalCtaSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 pt-10 sm:px-6 sm:pt-24 lg:pt-24">
-      <div className="relative flex min-h-[280px] overflow-hidden rounded-[16px] bg-primary px-5 py-12 sm:min-h-[549px] sm:rounded-[20px] sm:px-6 sm:py-16">
+    <section className="mx-auto max-w-[1392px] px-4 pt-8 sm:px-6 sm:pt-6 lg:pt-8">
+      <div className="relative flex flex-col items-center justify-center min-h-[280px] overflow-hidden rounded-[16px] bg-primary px-5 py-12 sm:min-h-[549px] sm:rounded-[20px] sm:px-6 sm:py-16">
         <Image
           src="/images/home/cta-decoration.svg"
           alt=""
@@ -15,7 +15,7 @@ export function FinalCtaSection() {
           height={40}
           className="absolute top-10 left-1/2 w-[92%] -translate-x-1/2 opacity-90 sm:top-24"
         />
-        <div className="relative z-10 m-auto flex flex-col items-center text-center pt-4">
+        <div className="relative z-10 flex flex-col items-center text-center">
           <h2 className="font-mono text-[22px] leading-tight font-bold tracking-[0.03em] text-white uppercase sm:text-5xl lg:text-[60px]">
             Start Showing Up Where
             <br />

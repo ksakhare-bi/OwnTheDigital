@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { PagePlaceholder } from "@/components/shared/page-placeholder";
+import { CaseStudyContent } from "@/components/case-studies/case-study-content";
 import { caseStudies, getCaseStudyBySlug } from "@/content/case-studies";
 
 type CaseStudyPageProps = {
@@ -18,11 +18,5 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     notFound();
   }
 
-  return (
-    <PagePlaceholder
-      title={study.title}
-      description={`${study.summary} Typical sections: challenge, approach, results, pricing/plans where designed.`}
-      figmaNodeId={study.figmaNodeId}
-    />
-  );
+  return <CaseStudyContent slug={slug} />;
 }

@@ -19,15 +19,15 @@ import { faqs, testimonials } from "@/content/home";
 
 export function TestimonialsSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 py-12 sm:px-6 sm:py-24 lg:py-32">
+    <section className="mx-auto max-w-[1392px] px-4 pt-8 pb-12 sm:px-6 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-32">
       <SectionTitle lead="Hear From" accent="Our Clients" />
       <div className="mt-8 grid gap-4 sm:mt-16 sm:gap-5 lg:grid-cols-3">
         {testimonials.map((testimonial) => (
           <Card
             key={testimonial.name}
-            className="overflow-hidden rounded-2xl border-border bg-background py-0 shadow-none"
+            className="h-full overflow-hidden rounded-2xl border-border bg-background py-0 shadow-none"
           >
-            <CardContent className="flex min-h-0 flex-col gap-4 p-5 sm:min-h-[280px] sm:gap-6 sm:p-10">
+            <CardContent className="flex flex-1 min-h-0 flex-col gap-4 p-5 lg:min-h-[280px] sm:gap-6 sm:p-10">
               <h3 className="text-lg leading-7 font-bold text-navy uppercase sm:text-2xl sm:leading-9">
                 {testimonial.title}
               </h3>
@@ -123,7 +123,7 @@ function QuestionForm() {
 
 export function FaqSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 py-12 sm:px-6 sm:py-24 lg:py-32">
+    <section className="mx-auto max-w-[1392px] px-4 pt-8 pb-12 sm:px-6 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-32">
       <SectionTitle
         lead="Frequently Asked"
         accent="Questions"

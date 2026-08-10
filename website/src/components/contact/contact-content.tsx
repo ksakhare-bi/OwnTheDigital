@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export function ContactContent() {
   return (
-    <main className="mx-auto w-full max-w-[1392px] px-4 pt-10 sm:px-6 sm:pt-10 sm:pb-16 xl:px-0">
+    <main className="mx-auto w-full max-w-[1392px] px-4 pt-10 sm:px-6 sm:pt-10 sm:pb-16">
       <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
         <h1 className="text-3xl leading-[1.1] font-bold tracking-tight text-primary uppercase sm:text-5xl lg:text-[72px]">
           Get in <span className="text-blue-600">Touch</span>

@@ -95,7 +95,7 @@ function PostCtaCard({ post }: { post: BlogPostDetail }) {
 
 export function BlogPostContent({ post }: { post: BlogPostDetail }) {
   return (
-    <main className="mx-auto w-full max-w-[980px] px-4 pt-10 pb-2 sm:px-6 sm:pt-14 sm:pb-24 xl:px-0">
+    <main className="mx-auto w-full max-w-[980px] px-4 pt-10 pb-2 sm:px-6 sm:pt-14 sm:pb-14">
       <article className="space-y-6 sm:space-y-8">
         <h1 className="text-center text-3xl leading-[1.15] font-bold tracking-tight text-primary uppercase sm:text-5xl lg:text-[64px]">
           {post.title}

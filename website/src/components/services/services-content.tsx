@@ -7,7 +7,7 @@ import { WorkSection } from "@/components/home/work-section";
 
 function PracticeAreaSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 pt-12 sm:px-12 sm:pt-24 xl:px-0">
+    <section className="mx-auto max-w-[1392px] px-4 pt-12 sm:px-6 sm:pt-24">
       <h1 className="text-center text-3xl leading-none font-extrabold tracking-tight text-primary uppercase sm:text-5xl lg:text-[78px]">
         Services
       </h1>
@@ -47,7 +47,7 @@ export function ServicesContent() {
   return (
     <main>
       <PracticeAreaSection />
-      <div className="pt-6 sm:pt-16">
+      <div className="pt-12 sm:pt-24 lg:pt-32">
         <ServicesSection hideTitle={true} />
       </div>
       <WorkSection />

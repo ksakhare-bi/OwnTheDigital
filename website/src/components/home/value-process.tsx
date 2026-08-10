@@ -11,7 +11,7 @@ export function WhyHireUsSection() {
         {advantages.map((advantage) => (
           <Card
             key={advantage.number}
-            className="min-h-0 rounded-[16px] border-border bg-background py-0 shadow-none sm:min-h-[478px] sm:rounded-[20px]"
+            className="min-h-0 rounded-[16px] border-border bg-background py-0 shadow-none lg:min-h-[478px] sm:rounded-[20px]"
           >
             <CardContent className="flex h-full flex-col p-5 sm:p-10 lg:px-[31px] lg:py-[45px]">
               <p className="font-mono text-xl tracking-[0.03em] text-body sm:text-3xl">
@@ -53,7 +53,7 @@ export function ProcessSection() {
             <div className="relative z-10 flex size-14 items-center justify-center rounded-full border border-border bg-surface-pale font-mono text-lg tracking-wide text-primary sm:size-[100px] sm:text-[40px]">
               {step.number}
             </div>
-            <h3 className="mt-3 text-base font-extrabold tracking-wide text-navy sm:mt-5 sm:text-3xl lg:text-[40px]">
+            <h3 className="mt-3 text-base font-extrabold tracking-wide text-navy sm:mt-5 sm:text-2xl lg:text-3xl xl:text-[40px]">
               {step.title}
             </h3>
             <p className="mt-2 max-w-[292px] text-xs leading-[1.4] tracking-wide text-body sm:mt-5 sm:text-base">

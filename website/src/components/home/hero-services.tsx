@@ -85,7 +85,7 @@ export function ServicesSection({
   return (
     <section
       id="services"
-      className="mx-auto max-w-[1392px] scroll-mt-24 px-6 pb-8 sm:pb-0 sm:px-6 md:px-0"
+      className="mx-auto max-w-[1392px] scroll-mt-24 px-4 pb-8 sm:px-6 sm:pb-0"
     >
       {!hideTitle ? <SectionTitle lead="Our" accent="Services" /> : null}
       <div
@@ -114,18 +114,23 @@ export function ServicesSection({
 
                     <div
                       className={cn(
-                        "grid gap-4 sm:mt-4 sm:gap-8 md:grid-cols-[1.45fr_1fr] md:gap-4 xl:mt-6 xl:grid-cols-[723px_546px] xl:gap-6",
+                        "grid gap-4 sm:mt-4 sm:gap-8 md:grid-cols-[1.45fr_1fr] md:gap-4 xl:mt-6 xl:grid-cols-[1.32fr_1fr] xl:gap-6",
                         hideEyebrows ? "mt-0" : "mt-3",
                       )}
                     >
-                      <div className="relative aspect-[16/10] min-h-0 overflow-hidden rounded-xl sm:min-h-80 md:aspect-[723/339] md:h-auto md:min-h-0 xl:h-[339px] xl:aspect-auto">
-                        <Image
-                          src={service.image}
-                          alt={`${service.title} dashboard and campaign preview`}
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 720px"
-                          className="object-cover"
-                        />
+                      <div className="flex flex-col">
+                        <div className="relative w-full aspect-[16/10] overflow-hidden rounded-xl sm:h-80 sm:aspect-auto md:h-[220px] lg:h-[280px] xl:h-[339px]">
+                          <Image
+                            src={service.image}
+                            alt={`${service.title} dashboard and campaign preview`}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 720px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <p className="hidden md:block mt-3 text-sm leading-6 text-body sm:mt-4 sm:text-lg sm:leading-7 xl:mt-6">
+                          {service.description}
+                        </p>
                       </div>
 
                       <div className="w-full">
@@ -145,7 +150,7 @@ export function ServicesSection({
                       </div>
                     </div>
 
-                    <p className="mt-3 text-sm leading-6 text-body sm:mt-4 sm:text-lg sm:leading-7 xl:mt-6">
+                    <p className="block md:hidden mt-3 text-sm leading-6 text-body sm:mt-4 sm:text-lg sm:leading-7 xl:mt-6">
                       {service.description}
                     </p>
                   </CardContent>
