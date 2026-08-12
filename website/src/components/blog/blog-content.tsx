@@ -97,7 +97,7 @@ function BlogPagination({
           href={`/blog?page=${page}`}
           aria-current={page === currentPage ? "page" : undefined}
           className={cn(
-            "flex size-9 sm:size-10 items-center justify-center text-sm sm:text-lg font-medium text-navy transition",
+            "flex size-9 sm:size-10 items-center justify-center text-sm sm:text-lg font-mono font-medium text-navy transition",
             page === currentPage
               ? "rounded-[6px] border border-primary text-primary"
               : "hover:text-primary",

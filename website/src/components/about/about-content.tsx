@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaInstagram, FaFacebookF } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -151,22 +153,45 @@ function TeamSection() {
                   />
                 </div>
                 <div className="relative z-10 mt-4 flex justify-center gap-4 sm:mt-6 sm:gap-6">
-                  {teamSocials.map((social) => (
-                    <Link
-                      key={social.label}
-                      href="#"
-                      aria-label={`${member.name} on ${social.label}`}
-                      className="flex size-11 items-center justify-center rounded-[10px] border border-border bg-surface-tint"
-                    >
-                      <Image
-                        src={social.icon}
-                        alt=""
-                        width={21}
-                        height={21}
-                        className="size-10 object-contain sm:size-20"
-                      />
-                    </Link>
-                  ))}
+                  {teamSocials.map((social) => {
+                    let IconComponent = null;
+                    let iconColorClass = "";
+
+                    if (social.label === "LinkedIn") {
+                      IconComponent = FaLinkedin;
+                      iconColorClass = "text-primary";
+                    } else if (social.label === "Facebook") {
+                      IconComponent = FaFacebookF;
+                      iconColorClass = "text-primary";
+                    } else if (social.label === "Instagram") {
+                      IconComponent = FaInstagram;
+                      iconColorClass = "text-primary";
+                    }
+
+                    return (
+                      <Link
+                        key={social.label}
+                        href="#"
+                        aria-label={`${member.name} on ${social.label}`}
+                        className={cn(
+                          "flex size-11 items-center justify-center rounded-[10px] border border-border bg-surface-tint",
+                          iconColorClass,
+                        )}
+                      >
+                        {IconComponent ? (
+                          <IconComponent className="size-5 sm:size-6" />
+                        ) : (
+                          <Image
+                            src={social.icon}
+                            alt=""
+                            width={21}
+                            height={21}
+                            className="size-10 object-contain sm:size-20"
+                          />
+                        )}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </CardContent>

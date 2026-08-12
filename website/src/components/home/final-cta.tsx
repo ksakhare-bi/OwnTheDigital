@@ -6,17 +6,17 @@ import { cn } from "@/lib/utils";
 
 export function FinalCtaSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 pt-8 sm:px-6 sm:pt-6 lg:pt-8">
-      <div className="relative flex flex-col items-center justify-center min-h-[280px] overflow-hidden rounded-[16px] bg-primary px-5 py-12 sm:min-h-[549px] sm:rounded-[20px] sm:px-6 sm:py-16">
+    <section className="mx-auto max-w-[1392px] px-4 sm:px-6">
+      <div className="relative flex flex-col items-center justify-center min-h-[280px] overflow-hidden rounded-[16px] bg-primary px-5 py-12 sm:min-h-[350px] md:min-h-[400px] lg:min-h-[440px] xl:min-h-[549px] sm:rounded-[20px] sm:px-6 sm:py-16">
         <Image
           src="/images/home/cta-decoration.svg"
           alt=""
           width={1284}
           height={40}
-          className="absolute top-10 left-1/2 w-[92%] -translate-x-1/2 opacity-90 sm:top-24"
+          className="absolute top-8 left-1/2 w-[92%] -translate-x-1/2 opacity-90 sm:top-12 md:top-14 lg:top-16 xl:top-24"
         />
         <div className="relative z-10 flex flex-col items-center text-center">
-          <h2 className="font-mono text-[22px] leading-tight font-bold tracking-[0.03em] text-white uppercase sm:text-5xl lg:text-[60px]">
+          <h2 className="text-[22px] leading-tighter font-bold tracking-[0.03em] text-white uppercase sm:text-3xl md:text-4xl lg:text-4xl xl:text-[60px]">
             Start Showing Up Where
             <br />
             Your Customers Are Looking
@@ -34,7 +34,7 @@ export function FinalCtaSection() {
             href="/contact"
             className={cn(
               buttonVariants(),
-              "mt-10 hidden h-16 rounded-full bg-white px-8 font-mono text-lg font-bold text-primary hover:bg-surface-pale sm:inline-flex",
+              "mt-10 hidden h-16 rounded-full bg-white px-8 font-mono text-lg font-bold text-primary hover:bg-surface-pale sm:inline-flex lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
             )}
           >
             Get a free Audit

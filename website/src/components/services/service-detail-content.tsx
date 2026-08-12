@@ -27,7 +27,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
       <div className="mx-auto max-w-[1392px] px-4 py-20 text-center">
         <h1 className="text-3xl font-bold">Service Not Found</h1>
         <p className="mt-4 text-muted">The requested service details could not be found.</p>
-        <Link href="/services" className={cn(buttonVariants(), "mt-6")}>
+        <Link href="/services" className={cn(buttonVariants(), "mt-6 font-mono")}>
           Back to Services
         </Link>
       </div>

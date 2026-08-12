@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaInstagram, FaFacebookF } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
+import { MdLocalPhone } from "react-icons/md";
 
 import { cn } from "@/lib/utils";
 import { footerNav } from "@/content/navigation";
@@ -9,50 +12,69 @@ const socialLinks = [
     label: "Phone",
     href: "#",
     icon: "/images/home/social-phone.svg",
-    iconClassName: "size-14 sm:size-20",
   },
   {
     label: "Instagram",
     href: "#",
     icon: "/images/home/social-instagram.svg",
-    iconClassName: "size-14 sm:size-20",
   },
   {
     label: "Facebook",
     href: "#",
     icon: "/images/home/social-facebook.svg",
-    iconClassName: "size-14 sm:size-20",
   },
   {
     label: "LinkedIn",
     href: "#",
     icon: "/images/home/social-linkedin.svg",
-    iconClassName: "size-14 sm:size-20",
   },
 ] as const;
 
 function SocialRow({ className }: { className?: string }) {
   return (
     <div className={cn("flex justify-center sm:justify-start gap-4 sm:gap-3", className)}>
-      {socialLinks.map((social) => (
-        <Link
-          key={social.label}
-          href={social.href}
-          aria-label={social.label}
-          className="flex size-12 items-center justify-center rounded-[10px] border border-border bg-surface-tint transition hover:border-primary sm:size-16 sm:bg-background"
-        >
-          <Image
-            src={social.icon}
-            alt=""
-            width={28}
-            height={28}
+      {socialLinks.map((social) => {
+        let IconComponent = null;
+        let iconColorClass = "";
+
+        if (social.label === "LinkedIn") {
+          IconComponent = FaLinkedin;
+          iconColorClass = "text-primary";
+        } else if (social.label === "Instagram") {
+          IconComponent = FaInstagram;
+          iconColorClass = "text-primary";
+        } else if (social.label === "Facebook") {
+          IconComponent = FaFacebookF;
+          iconColorClass = "text-primary";
+        } else if (social.label === "Phone") {
+          IconComponent = MdLocalPhone;
+          iconColorClass = "text-primary";
+        }
+
+        return (
+          <Link
+            key={social.label}
+            href={social.href}
+            aria-label={social.label}
             className={cn(
-              "size-6 object-contain sm:size-8",
-              "iconClassName" in social && social.iconClassName,
+              "flex size-12 items-center justify-center rounded-[10px] border border-border bg-surface-tint transition hover:border-primary lg:size-16 sm:bg-background",
+              iconColorClass,
             )}
-          />
-        </Link>
-      ))}
+          >
+            {IconComponent ? (
+              <IconComponent className="size-6 lg:size-8" />
+            ) : (
+              <Image
+                src={social.icon}
+                alt=""
+                width={28}
+                height={28}
+                className="size-6 object-contain lg:size-8"
+              />
+            )}
+          </Link>
+        );
+      })}
     </div>
   );
 }
@@ -61,7 +83,7 @@ function LegalBlock({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border bg-background px-4 py-4 font-mono text-xs text-navy flex flex-col items-center justify-center text-center gap-2 sm:px-6 sm:py-5 xl:flex-row xl:justify-evenly xl:text-left xl:gap-4 xl:text-base",
+        "rounded-2xl border border-border bg-background px-4 py-4 font-mono text-xs text-navy flex flex-col items-center justify-center text-center gap-2 sm:px-4 sm:py-5 xl:flex-row xl:justify-evenly xl:text-left xl:gap-4 sm:text-sm lg:text-base w-full",
         className,
       )}
     >
@@ -119,9 +141,9 @@ export function SiteFooter() {
           ))}
         </nav>
 
-        <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-12 lg:gap-16 lg:gap-28">
+        <div className="mt-10 flex flex-col md:flex-row sm:items-center sm:justify-between gap-6 md:gap-12 lg:gap-14">
           <SocialRow />
-          <LegalBlock className="flex-1 border-border" />
+          <LegalBlock className="flex-1 border-border lg:mt-2" />
         </div>
       </div>
     </footer>

@@ -14,7 +14,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
       <div className="mx-auto max-w-[1392px] px-4 py-20 text-center">
         <h1 className="text-3xl font-bold">Case Study Not Found</h1>
         <p className="mt-4 text-muted">The requested case study could not be found.</p>
-        <Link href="/portfolio" className={cn(buttonVariants(), "mt-6")}>
+        <Link href="/portfolio" className={cn(buttonVariants(), "mt-6 font-mono")}>
           Back to Portfolio
         </Link>
       </div>

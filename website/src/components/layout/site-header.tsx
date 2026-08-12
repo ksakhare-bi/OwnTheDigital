@@ -33,15 +33,15 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1392px] items-center justify-between px-4 sm:h-24 sm:px-6">
         <Link href="/" className="shrink-0">
-          <SiteLogo priority className="w-36 sm:w-48" />
+          <SiteLogo priority className="w-36 lg:w-40 xl:w-48" />
         </Link>
-        <nav className="hidden items-center gap-8 lg:flex xl:gap-14">
+        <nav className="hidden items-center lg:flex lg:gap-5 xl:gap-14">
           {mainNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "font-mono text-lg transition hover:text-primary xl:text-xl",
+                "font-mono text-base transition hover:text-primary xl:text-xl",
                 isActive(item.href) ? "text-primary" : "text-navy",
               )}
             >
@@ -53,7 +53,7 @@ export function SiteHeader() {
           href="/contact"
           className={cn(
             buttonVariants(),
-            "hidden h-16 rounded-full px-8 font-mono text-lg font-semibold lg:inline-flex",
+            "hidden rounded-full font-mono font-semibold lg:inline-flex lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
           )}
         >
           Get a free Audit
