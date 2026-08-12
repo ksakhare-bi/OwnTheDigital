@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
+import { usePathname } from "next/navigation";
+
 import { SiteLogo } from "@/components/layout/site-logo";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -17,6 +19,16 @@ import { mainNav } from "@/content/navigation";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (!pathname) return false;
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname === href || pathname.startsWith(href + "/");
+  };
+
   return (
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1392px] items-center justify-between px-4 sm:h-24 sm:px-6">
@@ -28,7 +40,10 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="font-mono text-lg text-navy transition hover:text-primary xl:text-xl"
+              className={cn(
+                "font-mono text-lg transition hover:text-primary xl:text-xl",
+                isActive(item.href) ? "text-primary" : "text-navy",
+              )}
             >
               {item.label}
             </Link>
@@ -63,7 +78,12 @@ export function SiteHeader() {
                   render={
                     <Link
                       href={item.href}
-                      className="group border-b border-border pb-2 pt-1 font-mono text-lg text-navy transition-colors hover:border-primary hover:text-primary"
+                      className={cn(
+                        "group border-b pb-2 pt-1 font-mono text-lg transition-colors hover:border-primary hover:text-primary",
+                        isActive(item.href)
+                          ? "border-primary text-primary"
+                          : "border-border text-navy",
+                      )}
                     />
                   }
                 >

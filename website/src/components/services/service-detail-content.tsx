@@ -103,12 +103,12 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
               <h3 className="text-base sm:text-center font-bold text-navy uppercase sm:text-xl mb-6">
                 PERFECT FOR:
               </h3>
-              <div className="flex flex-wrap pl-2 sm:pl-0 sm:justify-center sm:max-w-[1000px] mx-auto gap-3 sm:gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-start gap-3 sm:gap-5 max-w-4xl mx-auto w-full">
                 {detail.whoIsItFor.map((item) => (
                   <Badge
                     key={item}
                     variant="secondary"
-                    className="h-auto rounded-full bg-surface-tint border border-border px-6 py-4 font-mono text-xs font-semibold text-navy uppercase sm:text-sm"
+                    className="h-auto rounded-full bg-surface-tint border border-border px-4 py-3 sm:px-6 sm:py-4 font-mono text-xs font-semibold text-navy uppercase sm:text-sm justify-center text-center whitespace-normal sm:w-full"
                   >
                     • {item}
                   </Badge>
@@ -124,8 +124,8 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
                   </h3>
                   <ul className="space-y-4 text-left">
                     {detail.commonChallenges.map((challenge) => (
-                      <li key={challenge} className="flex items-center gap-3 text-xs font-medium text-navy uppercase sm:text-sm">
-                        <span className="size-1 shrink-0 rounded-full bg-navy" />
+                      <li key={challenge} className="flex items-start gap-3 text-xs font-medium text-navy uppercase sm:text-sm">
+                        <span className="size-1.5 mt-1.5 shrink-0 rounded-full bg-navy" />
                         <span>{challenge}</span>
                       </li>
                     ))}
@@ -139,8 +139,8 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
                   </h3>
                   <ul className="space-y-4 text-left">
                     {detail.benefits.map((benefit) => (
-                      <li key={benefit} className="flex items-center gap-3 text-xs font-medium text-navy uppercase sm:text-sm">
-                        <span className="size-1 shrink-0 rounded-full bg-navy" />
+                      <li key={benefit} className="flex items-start gap-3 text-xs font-medium text-navy uppercase sm:text-sm">
+                        <span className="size-1.5 mt-1.5 shrink-0 rounded-full bg-navy" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -201,9 +201,9 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
                   {group.bullets.map((bullet) => (
                     <li
                       key={bullet}
-                      className="flex items-center gap-3 text-xs font-semibold text-navy uppercase sm:text-sm"
+                      className="flex items-start gap-3 text-xs font-semibold text-navy uppercase sm:text-sm"
                     >
-                      <span className="size-1 shrink-0 rounded-full bg-navy" />
+                      <span className="size-1.5 mt-1.5 shrink-0 rounded-full bg-navy" />
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -219,16 +219,13 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
           TOOLS AND <span className="text-primary">PLATFORMS</span>
         </h2>
         <Card className="mt-6 sm:mt-10 overflow-hidden rounded-[20px] border-border bg-background p-6 sm:p-12 xl:p-[60px] shadow-none">
-          <CardContent className="p-0 flex flex-col gap-4 sm:gap-0">
-            <h3 className="text-base sm:text-center font-bold text-navy uppercase sm:text-xl mb-2 sm:mb-6">
-              PERFECT FOR:
-            </h3>
-            <div className="flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:max-w-[1000px] mx-auto sm:gap-5">
+          <CardContent className="p-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-start gap-3 sm:gap-5 w-full">
               {detail.tools.map((tool) => (
                 <Badge
                   key={tool}
                   variant="secondary"
-                  className="h-auto rounded-full bg-surface-tint border border-border px-6 py-4 font-mono text-xs font-semibold text-navy uppercase sm:text-sm"
+                  className="h-auto rounded-full bg-surface-tint border border-border px-4 py-3 sm:px-6 sm:py-4 font-mono text-xs font-semibold text-navy uppercase sm:text-sm justify-center text-center whitespace-normal"
                 >
                   • {tool}
                 </Badge>
