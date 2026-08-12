@@ -1,10 +1,9 @@
 import { BlogTable } from "@/components/blogs/blog-table";
 import { AdminShell } from "@/components/layout/admin-shell";
-import type { Blog } from "@/types/blog";
+import { listBlogs } from "@/services/blogs.service";
 
-export default function BlogsPage() {
-  // Swap to `listBlogs()` from `@/services/blogs.service` once MongoDB is connected.
-  const blogs: Blog[] = [];
+export default async function BlogsPage() {
+  const blogs = await listBlogs();
 
   return (
     <AdminShell

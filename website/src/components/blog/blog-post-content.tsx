@@ -3,8 +3,19 @@ import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import type { BlogPostDetail } from "@/content/blog";
 import { cn } from "@/lib/utils";
+
+type BlogPostDetailView = {
+  slug: string;
+  title: string;
+  image: string;
+  excerpt: string;
+  publishedAt: string;
+  tags: string[];
+  content?: string;
+  intro?: string;
+  sections?: { heading: string; description: string; bullets?: string[] }[];
+};
 
 function ArticleSection({
   heading,
@@ -38,7 +49,7 @@ function ArticleSection({
   );
 }
 
-function PostCtaCard({ post }: { post: BlogPostDetail }) {
+function PostCtaCard({ post }: { post: BlogPostDetailView }) {
   return (
     <section className="mt-12 rounded-[20px] border border-border bg-background p-5 text-center sm:text-left sm:mt-16 sm:p-8 xl:p-10">
       <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.9fr] xl:gap-12">
@@ -48,7 +59,7 @@ function PostCtaCard({ post }: { post: BlogPostDetail }) {
           </h2>
 
           <div className="mt-4 flex flex-wrap justify-center gap-2 sm:mt-5 sm:justify-start sm:gap-3">
-            {post.ctaTags.map((tag) => (
+            {post.tags.map((tag) => (
               <Badge
                 key={tag}
                 className="h-auto rounded-full border-0 bg-surface-tint px-3 py-1.5 text-xs font-normal text-navy hover:bg-surface-tint sm:px-4 sm:py-2 sm:text-sm xl:text-base"
@@ -63,7 +74,7 @@ function PostCtaCard({ post }: { post: BlogPostDetail }) {
           </p>
 
           <Link
-            href="/contact"
+            href={`/blog/${post.slug}`}
             className={cn(
               buttonVariants(),
               "mt-6 inline-flex h-10 rounded-full px-6 font-mono text-xs font-semibold sm:h-14 sm:px-8 sm:text-lg",
@@ -93,22 +104,28 @@ function PostCtaCard({ post }: { post: BlogPostDetail }) {
   );
 }
 
-export function BlogPostContent({ post }: { post: BlogPostDetail }) {
+export function BlogPostContent({
+  post,
+  suggestedPost,
+}: {
+  post: BlogPostDetailView;
+  suggestedPost: BlogPostDetailView;
+}) {
   return (
     <main className="mx-auto w-full max-w-[980px] px-4 pt-10 pb-2 sm:px-6 sm:pt-14 sm:pb-14">
       <article className="space-y-6 sm:space-y-8">
-        <h1 className="text-center text-3xl leading-[1.15] font-bold tracking-tight text-primary uppercase sm:text-5xl lg:text-[64px]">
+        <h1 className="text-center text-3xl leading-[1.15] font-bold tracking-tight text-primary uppercase sm:text-5xl lg:text-[50px]">
           {post.title}
         </h1>
 
-        <div className="relative aspect-[16/10] overflow-hidden rounded-[20px] sm:aspect-[16/9]">
+        <div className="overflow-hidden rounded-[20px] border border-border bg-slate-50">
           <Image
             src={post.image}
             alt={`${post.title} cover`}
-            fill
+            width={980}
+            height={420}
             priority
-            sizes="(max-width: 980px) 100vw, 980px"
-            className="object-cover"
+            className="w-full h-auto"
           />
         </div>
 
@@ -123,23 +140,33 @@ export function BlogPostContent({ post }: { post: BlogPostDetail }) {
           ))}
         </div>
 
-        <p className="text-sm leading-[1.7] text-body sm:text-base xl:text-lg">
-          {post.intro}
-        </p>
+        {post.content ? (
+          <div className="text-sm leading-[1.7] text-body sm:text-base xl:text-lg whitespace-pre-wrap space-y-5">
+            {post.content.split("\n\n").map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
+        ) : (
+          <>
+            <p className="text-sm leading-[1.7] text-body sm:text-base xl:text-lg">
+              {post.intro}
+            </p>
 
-        <div className="space-y-8 sm:space-y-10 pt-4">
-          {post.sections.map((section) => (
-            <ArticleSection
-              key={section.heading}
-              heading={section.heading}
-              description={section.description}
-              bullets={section.bullets}
-            />
-          ))}
-        </div>
+            <div className="space-y-8 sm:space-y-10 pt-4">
+              {post.sections?.map((section) => (
+                <ArticleSection
+                  key={section.heading}
+                  heading={section.heading}
+                  description={section.description}
+                  bullets={section.bullets}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </article>
 
-      <PostCtaCard post={post} />
+      <PostCtaCard post={suggestedPost} />
     </main>
   );
 }

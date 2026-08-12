@@ -46,10 +46,10 @@ function DetailGroup({
 
 function ProjectMeta({ label, value }: { label: string; value: string }) {
   return (
-    <span className="inline-flex h-auto max-w-full items-center rounded-full bg-surface-tint px-3 py-1.5 text-xs font-normal text-navy sm:px-4 sm:py-2.5 sm:text-base xl:text-lg flex-wrap text-left">
-      <span className="shrink-0">{label}</span>
-      <span className="mx-2 size-1 shrink-0 rounded-full bg-primary" />
-      <strong className="font-semibold text-primary break-words text-left">{value}</strong>
+    <span className="inline-block h-auto max-w-full rounded-full bg-surface-tint px-3 py-1.5 text-xs font-normal text-navy sm:px-6 sm:py-2.5 sm:text-base xl:text-lg text-left align-middle">
+      <span>{label}</span>
+      <span className="mx-2 inline-block size-1 align-middle rounded-full bg-primary" />{" "}
+      <strong className="font-semibold text-primary text-left">{value}</strong>
     </span>
   );
 }

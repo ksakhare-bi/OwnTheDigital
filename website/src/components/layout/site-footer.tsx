@@ -61,12 +61,12 @@ function LegalBlock({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border bg-background px-4 py-4 font-mono text-xs text-navy text-center sm:text-left sm:flex sm:items-center sm:justify-between sm:gap-4 sm:px-10 sm:py-5 sm:text-sm",
+        "rounded-2xl border border-border bg-background px-4 py-4 font-mono text-xs text-navy flex flex-col items-center justify-center text-center gap-2 sm:px-6 sm:py-5 xl:flex-row xl:justify-evenly xl:text-left xl:gap-4 xl:text-base",
         className,
       )}
     >
       <p>© {new Date().getFullYear()} Own The Digital. All rights reserved.</p>
-      <p className="mt-2 sm:mt-0">
+      <p className="mt-0">
         <Link href="#" className="hover:text-primary">
           Terms &amp; Conditions
         </Link>
@@ -107,21 +107,21 @@ export function SiteFooter() {
 
       {/* Desktop / tablet: single card layout */}
       <div className="hidden rounded-2xl border border-border bg-background p-10 sm:block">
-        <nav className="grid gap-6 sm:grid-cols-3 lg:grid-cols-5 lg:gap-10">
+        <nav className="flex items-center justify-between gap-4">
           {footerNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="font-mono text-[22px] font-bold text-primary transition hover:text-navy"
+              className="font-mono text-base font-bold text-primary transition hover:text-navy"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.5fr]">
+        <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-12 lg:gap-16 lg:gap-28">
           <SocialRow />
-          <LegalBlock className="border-border" />
+          <LegalBlock className="flex-1 border-border" />
         </div>
       </div>
     </footer>

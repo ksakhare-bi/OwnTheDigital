@@ -2,27 +2,37 @@ import { connectToDatabase } from "@/lib/db";
 import { BlogModel } from "@/models/blog.model";
 import type { Blog } from "@/types/blog";
 
-function mapBlog(doc: {
+type DbBlogDoc = {
   _id: { toString(): string };
   title: string;
   slug: string;
+  category: string;
+  readTime: string;
   excerpt: string;
-  content: string;
-  featuredImage?: string;
-  author: string;
+  image: string;
+  tags?: string[];
+  intro: string;
+  sections?: { heading: string; description: string; bullets?: string[] }[];
+  ctaTags?: string[];
   published: boolean;
   publishedAt?: Date | null;
   createdAt: Date;
   updatedAt: Date;
-}): Blog {
+};
+
+function mapBlog(doc: DbBlogDoc): Blog {
   return {
     id: doc._id.toString(),
     title: doc.title,
     slug: doc.slug,
+    category: doc.category,
+    readTime: doc.readTime,
     excerpt: doc.excerpt,
-    content: doc.content,
-    featuredImage: doc.featuredImage || undefined,
-    author: doc.author,
+    image: doc.image,
+    tags: doc.tags || [],
+    intro: doc.intro,
+    sections: doc.sections || [],
+    ctaTags: doc.ctaTags || [],
     published: doc.published,
     publishedAt: doc.publishedAt ?? null,
     createdAt: doc.createdAt,
@@ -36,7 +46,7 @@ export async function listPublishedBlogs(): Promise<Blog[]> {
   const blogs = await BlogModel.find({ published: true })
     .sort({ publishedAt: -1 })
     .lean();
-  return blogs.map(mapBlog);
+  return (blogs as unknown as DbBlogDoc[]).map(mapBlog);
 }
 
 export async function getPublishedBlogBySlug(
@@ -44,5 +54,5 @@ export async function getPublishedBlogBySlug(
 ): Promise<Blog | null> {
   await connectToDatabase();
   const blog = await BlogModel.findOne({ slug, published: true }).lean();
-  return blog ? mapBlog(blog) : null;
+  return blog ? mapBlog(blog as unknown as DbBlogDoc) : null;
 }

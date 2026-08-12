@@ -1,5 +1,27 @@
 import { Schema, models, model, type InferSchemaType } from "mongoose";
 
+const sectionSchema = new Schema(
+  {
+    heading: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    bullets: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
+  },
+  { _id: false },
+);
+
 const blogSchema = new Schema(
   {
     title: {
@@ -15,24 +37,44 @@ const blogSchema = new Schema(
       trim: true,
       index: true,
     },
+    category: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    readTime: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     excerpt: {
       type: String,
       required: true,
       trim: true,
     },
-    content: {
-      type: String,
-      required: true,
-    },
-    featuredImage: {
-      type: String,
-      default: "",
-    },
-    author: {
+    image: {
       type: String,
       required: true,
       trim: true,
     },
+    tags: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
+    intro: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    sections: [sectionSchema],
+    ctaTags: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
     published: {
       type: Boolean,
       default: false,

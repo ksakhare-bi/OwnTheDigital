@@ -140,7 +140,7 @@ function TeamSection() {
               </div>
               <div className="relative px-4 pb-6 sm:px-6 sm:pb-8">
                 <div className="absolute inset-x-0 top-[70px] bottom-0 bg-primary sm:top-[82px]" />
-                <div className="relative z-10 aspect-[4/3] overflow-hidden rounded-[24px] sm:h-[219px] sm:rounded-[32px]">
+                <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[24px] sm:rounded-[32px]">
                   <Image
                     src={member.image}
                     alt={member.name}

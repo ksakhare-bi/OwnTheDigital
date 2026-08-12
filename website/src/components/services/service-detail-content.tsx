@@ -220,12 +220,12 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
         </h2>
         <Card className="mt-6 sm:mt-10 overflow-hidden rounded-[20px] border-border bg-background p-6 sm:p-12 xl:p-[60px] shadow-none">
           <CardContent className="p-0">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-start gap-3 sm:gap-5 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-start gap-3 sm:gap-8 w-full sm:max-w-4xl mx-auto">
               {detail.tools.map((tool) => (
                 <Badge
                   key={tool}
                   variant="secondary"
-                  className="h-auto rounded-full bg-surface-tint border border-border px-4 py-3 sm:px-6 sm:py-4 font-mono text-xs font-semibold text-navy uppercase sm:text-sm justify-center text-center whitespace-normal"
+                  className="h-auto rounded-full bg-surface-tint border border-border px-4 py-3 sm:px-6 sm:py-4 font-mono text-xs font-semibold text-navy uppercase sm:text-sm justify-center text-center whitespace-normal sm:w-full"
                 >
                   • {tool}
                 </Badge>

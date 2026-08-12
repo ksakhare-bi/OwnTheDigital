@@ -1,15 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import {
-  blogPagination,
-  blogPosts,
-  type BlogPostCard,
-} from "@/content/blog";
+import { blogPosts, type BlogPostCard } from "@/content/blog";
 import { cn } from "@/lib/utils";
+import type { Blog } from "@/types/blog";
 
 function MetaBadge({ label, value }: { label: string; value: string }) {
   return (
@@ -23,7 +19,7 @@ function MetaBadge({ label, value }: { label: string; value: string }) {
 
 function BlogPostRow({ post }: { post: BlogPostCard }) {
   return (
-    <article className="grid gap-8 border-b border-border py-8 last:border-b-0 last:pb-0 first:pt-0 sm:py-14 lg:grid-cols-[1.35fr_1fr] lg:gap-10 xl:gap-14">
+    <article className="grid gap-8 border-b border-border py-8 last:border-b-0 last:pb-0 first:pt-0 sm:py-16 lg:grid-cols-[1.35fr_1fr] lg:gap-10 xl:gap-14">
       <div className="flex min-h-0 flex-col items-center text-center sm:items-start sm:text-left">
         <h2 className="text-xl leading-[1.2] font-bold tracking-tight text-primary uppercase sm:text-4xl xl:text-[40px]">
           {post.title}
@@ -76,6 +72,8 @@ function BlogPagination({
 }) {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
+  if (totalPages <= 1) return null;
+
   return (
     <nav
       aria-label="Blog pagination"
@@ -126,20 +124,71 @@ function BlogPagination({
   );
 }
 
-export function BlogContent() {
+type BlogContentProps = {
+  blogs?: Blog[];
+  currentPage?: number;
+};
+
+export function BlogContent({ blogs = [], currentPage = 1 }: BlogContentProps) {
+  const hasDbBlogs = blogs.length > 0;
+  
+  const displayPosts: BlogPostCard[] = hasDbBlogs
+    ? blogs.map((blog) => {
+        let wordCount = blog.intro ? blog.intro.split(/\s+/).length : 0;
+        if (blog.sections) {
+          blog.sections.forEach((sec) => {
+            wordCount += sec.heading ? sec.heading.split(/\s+/).length : 0;
+            wordCount += sec.description ? sec.description.split(/\s+/).length : 0;
+            if (sec.bullets) {
+              sec.bullets.forEach((b) => {
+                wordCount += b ? b.split(/\s+/).length : 0;
+              });
+            }
+          });
+        }
+        const readTimeMin = Math.max(1, Math.ceil(wordCount / 200));
+        const formattedDate = blog.publishedAt
+          ? new Date(blog.publishedAt).toLocaleDateString("en-US", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })
+          : "";
+
+        return {
+          slug: blog.slug,
+          title: blog.title,
+          category: blog.category || "Digital Marketing",
+          readTime: blog.readTime || `${readTimeMin} Mins`,
+          excerpt: blog.excerpt,
+          image: blog.image || "/images/home/about-company.png",
+          publishedAt: formattedDate.toUpperCase(),
+        };
+      })
+    : blogPosts;
+
+  const itemsPerPage = 6;
+  const totalPages = Math.ceil(displayPosts.length / itemsPerPage);
+  const validPage = Math.min(Math.max(1, currentPage), totalPages || 1);
+  
+  const paginatedPosts = displayPosts.slice(
+    (validPage - 1) * itemsPerPage,
+    validPage * itemsPerPage,
+  );
+
   return (
     <main className="mx-auto w-full max-w-[1392px] px-4 pt-10 pb-6 sm:px-6 sm:pt-14 sm:pb-14">
       <section className="rounded-[20px] border border-border bg-background p-4 sm:p-8 xl:p-12">
         <div className="flex flex-col gap-6 sm:gap-0">
-          {blogPosts.map((post) => (
+          {paginatedPosts.map((post) => (
             <BlogPostRow key={post.slug} post={post} />
           ))}
         </div>
       </section>
 
       <BlogPagination
-        currentPage={blogPagination.currentPage}
-        totalPages={blogPagination.totalPages}
+        currentPage={validPage}
+        totalPages={totalPages}
       />
     </main>
   );

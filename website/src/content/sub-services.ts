@@ -523,6 +523,7 @@ export const serviceDetailsList: ServiceDetail[] = [
       "E-COMMERCE BRANDS",
       "SMALL & MEDIUM BUSINESSES",
       "HEALTHCARE & EDUCATION",
+      "HOSPITALITY & RETAIL",
       "SAAS COMPANIES"
     ],
     commonChallenges: [

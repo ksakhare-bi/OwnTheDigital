@@ -1,4 +1,7 @@
+import { notFound } from "next/navigation";
 import { AdminShell } from "@/components/layout/admin-shell";
+import { BlogForm } from "@/components/blogs/blog-form";
+import { getBlogById } from "@/services/blogs.service";
 
 type EditBlogPageProps = {
   params: Promise<{ id: string }>;
@@ -6,15 +9,15 @@ type EditBlogPageProps = {
 
 export default async function EditBlogPage({ params }: EditBlogPageProps) {
   const { id } = await params;
+  const blog = await getBlogById(id);
+
+  if (!blog) {
+    notFound();
+  }
 
   return (
     <AdminShell title="Edit blog">
-      <div className="rounded-lg border border-zinc-200 bg-white p-6">
-        <p className="text-sm text-zinc-500">
-          Edit form for blog <span className="font-medium text-zinc-800">{id}</span>{" "}
-          will be wired to MongoDB next.
-        </p>
-      </div>
+      <BlogForm blog={blog} />
     </AdminShell>
   );
 }
