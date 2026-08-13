@@ -27,7 +27,7 @@ function DetailGroup({
           : "p-3 sm:p-4 lg:min-h-[247px] lg:p-4 xl:min-h-[317px] xl:p-6",
       )}
     >
-      <h4 className="text-base leading-[1.5] font-bold text-navy uppercase sm:text-lg lg:text-base xl:text-lg">
+      <h4 className="text-base leading-[1.5] font-bold text-navy uppercase sm:text-md lg:text-base xl:text-lg">
         {title}
       </h4>
       <div className="mt-4 flex flex-wrap gap-2 sm:mt-5 sm:gap-2.5">
@@ -61,15 +61,15 @@ export function WorkSection() {
       <div className="mt-10 space-y-14 sm:mt-10 lg:mt-16 sm:space-y-20">
         {projects.map((project) => (
           <article key={project.slug}>
-            <div className="mb-4 flex min-h-0 items-center justify-between gap-3 sm:mb-5 sm:gap-5">
-              <h3 className="min-w-0 flex-1 truncate text-2xl leading-tight font-bold text-primary uppercase sm:text-4xl sm:leading-[1.3] lg:text-[40px] xl:text-[52px]">
+            <div className="mb-4 flex min-h-0 items-center justify-between gap-3 sm:mb-5 sm:gap-4 md:gap-3">
+              <h3 className="min-w-0 flex-1 truncate text-2xl leading-tight font-bold text-primary uppercase sm:text-4xl sm:leading-[1.3] md:text-3xl lg:text-[40px] xl:text-[52px]">
                 {project.name}
               </h3>
               <Link
                 href={`/case-studies/${project.slug}`}
                 className={cn(
                   buttonVariants(),
-                  "h-8 shrink-0 rounded-full px-3 font-mono text-xs sm:h-14 sm:px-7 sm:text-base lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
+                  "h-8 shrink-0 rounded-full px-3 font-mono text-xs sm:h-14 sm:px-7 sm:text-base md:h-10 md:px-4 md:text-xs lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
                 )}
               >
                 View Project
@@ -79,7 +79,7 @@ export function WorkSection() {
             {project.slug === "glowskinn" ? (
               <Card className="overflow-hidden border-0 ring-0 bg-transparent py-0 shadow-none sm:border sm:border-border sm:bg-background sm:ring-1 sm:ring-foreground/10 sm:rounded-[20px]">
                 <CardContent className="grid gap-3 p-0 sm:gap-4 sm:p-4 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.24fr]">
-                  <div className="relative order-1 aspect-[4/5] min-h-0 overflow-hidden rounded-[20px] sm:min-h-[540px] sm:rounded-[44px] md:col-span-2 lg:order-3 lg:col-span-1 lg:aspect-auto lg:min-h-[600px] xl:min-h-[740px]">
+                  <div className="relative order-1 aspect-[4/3] min-h-0 overflow-hidden rounded-[20px] sm:min-h-[200px] sm:rounded-[18px] md:rounded-[14px] lg:aspect-[3/4] md:min-h-0 md:col-span-2 lg:order-1 lg:col-span-1 lg:aspect-auto lg:min-h-[600px] xl:min-h-[740px]">
                     <Image
                       src={project.artImage}
                       alt={`${project.name} full website`}
@@ -111,10 +111,10 @@ export function WorkSection() {
                         value={project.timeline}
                       />
                     </div>
-                    <p className="text-sm leading-[1.5] text-body sm:text-lg lg:text-base xl:text-lg">
+                    <p className="text-sm leading-[1.5] text-body md:leading-5 lg:text-sm xl:text-base">
                       {project.description}
                     </p>
-                    <div className="relative mt-auto h-[120px] overflow-hidden sm:h-[165px] md:h-[220px] xl:h-[260px]">
+                    <div className="relative mt-auto h-[120px] overflow-hidden sm:h-[290px] lg:h-[310px] xl:h-[260px]">
                       <Image
                         src={project.summaryImage}
                         alt={`${project.name} website detail`}
@@ -132,7 +132,7 @@ export function WorkSection() {
                       href="/contact"
                       className={cn(
                         buttonVariants(),
-                        "h-12 w-fit sm:w-full rounded-full px-6 font-mono text-base font-bold sm:h-16 sm:px-8 sm:text-lg lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto",
+                        "h-10 w-fit sm:w-full rounded-full px-5 font-mono text-sm font-bold sm:h-14 sm:px-7 sm:text-base md:h-10 md:px-4 md:text-xs lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto",
                       )}
                     >
                       Get a free Audit
@@ -143,7 +143,7 @@ export function WorkSection() {
             ) : (
               <Card className="overflow-hidden border-0 ring-0 bg-transparent py-0 shadow-none sm:border sm:border-border sm:bg-background sm:ring-1 sm:ring-foreground/10 sm:rounded-[20px]">
                 <CardContent className="grid gap-3 p-0 sm:gap-4 sm:p-4 md:grid-cols-2 lg:grid-cols-[1fr_0.9fr_1fr] lg:p-4 xl:p-5">
-                  <div className="relative order-1 aspect-[4/5] min-w-0 min-h-0 overflow-hidden rounded-[20px] sm:min-h-[540px] sm:rounded-[44px] lg:aspect-auto lg:min-h-[530px] xl:min-h-[660px]">
+                  <div className="relative order-1 aspect-[4/5] min-w-0 min-h-0 overflow-hidden rounded-[20px] sm:min-h-[400px] sm:rounded-[44px] md:min-h-[280px] lg:aspect-auto lg:min-h-[530px] xl:min-h-[660px]">
                     <Image
                       src={project.artImage}
                       alt={`${project.name} campaign artwork`}
@@ -158,7 +158,7 @@ export function WorkSection() {
                       <ProjectMeta label="Category" value={project.category} />
                       <ProjectMeta label="Timeline" value={project.timeline} />
                     </div>
-                    <p className="text-sm leading-[1.5] text-body sm:text-lg lg:text-base xl:text-lg">
+                    <p className="text-sm leading-[1.5] text-body md:leading-5 lg:text-sm xl:text-base">
                       {project.description}
                     </p>
                     <div className="relative mt-auto h-[160px] overflow-hidden sm:h-[252px] lg:h-[270px] xl:h-[232px]">
@@ -187,7 +187,7 @@ export function WorkSection() {
                       href="/contact"
                       className={cn(
                         buttonVariants(),
-                        "h-12 w-fit sm:w-full rounded-full px-6 font-mono text-base font-bold sm:h-16 sm:px-8 sm:text-lg lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto",
+                        "h-10 w-fit sm:w-full rounded-full px-5 font-mono text-sm font-bold sm:h-14 sm:px-7 sm:text-base md:h-10 md:px-4 md:text-xs lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto",
                       )}
                     >
                       Get a free Audit

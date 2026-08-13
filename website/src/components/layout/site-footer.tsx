@@ -83,7 +83,7 @@ function LegalBlock({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border bg-background px-4 py-4 font-mono text-xs text-navy flex flex-col items-center justify-center text-center gap-2 sm:px-4 sm:py-5 xl:flex-row xl:justify-evenly xl:text-left xl:gap-4 sm:text-sm lg:text-base w-full",
+        "rounded-2xl border border-border bg-background px-4 py-4 font-mono text-xs text-navy flex flex-col items-center justify-center text-center gap-2 sm:px-4 sm:py-5 xl:flex-row xl:justify-evenly xl:text-left xl:gap-4 sm:text-xs lg:text-base w-full",
         className,
       )}
     >

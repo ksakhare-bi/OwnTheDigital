@@ -35,13 +35,13 @@ export function SiteHeader() {
         <Link href="/" className="shrink-0">
           <SiteLogo priority className="w-36 lg:w-40 xl:w-48" />
         </Link>
-        <nav className="hidden items-center lg:flex lg:gap-5 xl:gap-14">
+        <nav className="hidden items-center md:flex md:gap-4 lg:gap-5 xl:gap-14">
           {mainNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "font-mono text-base transition hover:text-primary xl:text-xl",
+                "font-mono text-sm transition hover:text-primary lg:text-base xl:text-xl",
                 isActive(item.href) ? "text-primary" : "text-navy",
               )}
             >
@@ -53,14 +53,14 @@ export function SiteHeader() {
           href="/contact"
           className={cn(
             buttonVariants(),
-            "hidden rounded-full font-mono font-semibold lg:inline-flex lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
+            "hidden rounded-full font-mono font-semibold md:inline-flex md:h-10 md:px-4 md:text-xs lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
           )}
         >
           Get a free Audit
         </Link>
 
         <Sheet>
-          <SheetTrigger className="flex size-10 items-center justify-center rounded-full border border-border text-navy sm:size-11 lg:hidden">
+          <SheetTrigger className="flex size-10 items-center justify-center rounded-full border border-border text-navy sm:size-11 md:hidden">
             <Menu className="size-5" />
             <span className="sr-only">Open navigation</span>
           </SheetTrigger>
