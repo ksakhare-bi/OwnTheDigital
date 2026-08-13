@@ -65,8 +65,8 @@ function SummaryCard({
       className={cn(
         "flex min-w-0 flex-col gap-4 rounded-[14px] bg-background p-4 sm:min-h-[540px] sm:gap-10 sm:p-6",
         compact
-          ? "border border-border sm:border-0 xl:min-h-[660px] xl:p-6"
-          : "border border-border xl:min-h-[740px] xl:p-6",
+          ? "border border-border sm:border-0 lg:min-h-[530px] xl:min-h-[660px] xl:p-6"
+          : "border border-border lg:min-h-[600px] xl:min-h-[740px] xl:p-6",
       )}
     >
       {!compact && (
@@ -146,7 +146,7 @@ function DetailColumn({
         href="/contact"
         className={cn(
           buttonVariants(),
-          "h-11 w-fit rounded-full px-6 font-mono text-sm font-bold sm:h-16 sm:w-full sm:px-8 sm:text-lg xl:text-xl text-center mx-auto sm:mt-auto",
+          "h-11 w-fit rounded-full px-6 font-mono text-sm font-bold sm:h-12 sm:w-full sm:px-6 sm:text-sm lg:h-12 lg:px-6 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto sm:mt-auto",
         )}
       >
         Get a free Audit
@@ -158,14 +158,14 @@ function DetailColumn({
 function ProjectHeader({ project }: { project: PortfolioProject }) {
   return (
     <div className="flex items-center justify-between gap-3 sm:min-h-[78px] sm:gap-5">
-      <h3 className="text-xl leading-[1.3] font-bold text-primary uppercase sm:text-5xl xl:text-[52px]">
+      <h3 className="text-xl leading-[1.3] font-bold text-primary uppercase sm:text-3xl lg:text-[40px] xl:text-[52px]">
         {project.name}
       </h3>
       <Link
         href={`/case-studies/${project.slug}`}
         className={cn(
           buttonVariants(),
-          "h-8 shrink-0 rounded-full px-3 font-mono text-xs sm:h-16 sm:px-8 sm:text-lg",
+          "h-8 shrink-0 rounded-full px-3 font-mono text-xs sm:h-12 sm:px-6 sm:text-sm lg:h-12 lg:px-6 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
         )}
       >
         View Project
@@ -179,14 +179,14 @@ export function PortfolioProjectCard({ project }: { project: PortfolioProject })
   const artHeight = project.slug === "fittpulse" ? "xl:min-h-[740px]" : "xl:min-h-[660px]";
 
   return (
-    <article className="space-y-4 sm:space-y-5">
+    <article className="space-y-3 sm:space-y-2">
       <ProjectHeader project={project} />
       {compact ? (
         <Card className="overflow-hidden border-0 ring-0 bg-transparent py-0 shadow-none sm:border sm:border-border sm:bg-background sm:ring-1 sm:ring-foreground/10 sm:rounded-[20px]">
           <CardContent className="grid gap-4 p-0 sm:gap-5 sm:p-5 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_1fr] xl:p-10 sm:pt-0">
             <div
               className={cn(
-                "relative aspect-[4/5] min-h-0 overflow-hidden rounded-[20px] sm:aspect-auto sm:min-h-[540px] sm:rounded-[44px]",
+                "relative order-1 xl:order-3 aspect-[4/5] min-h-0 overflow-hidden rounded-[20px] sm:aspect-auto sm:min-h-[540px] sm:rounded-[44px]",
                 artHeight,
               )}
             >
@@ -199,8 +199,10 @@ export function PortfolioProjectCard({ project }: { project: PortfolioProject })
                 priority={project.slug === "fittpulse"}
               />
             </div>
-            <SummaryCard project={project} compact />
-            <div className="md:col-span-2 xl:col-span-1">
+            <div className="order-2 xl:order-1">
+              <SummaryCard project={project} compact />
+            </div>
+            <div className="order-3 xl:order-2 md:col-span-2 xl:col-span-1">
               <DetailColumn project={project} compact />
             </div>
           </CardContent>

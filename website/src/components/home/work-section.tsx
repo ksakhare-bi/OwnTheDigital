@@ -22,9 +22,9 @@ function DetailGroup({
         "max-w-full min-w-0 overflow-hidden rounded-[14px] border border-border bg-background lg:shrink-0",
         compact
           ? title === "What We Did"
-            ? "p-3 sm:p-4 lg:min-h-[235px] xl:min-h-[301px]"
-            : "p-3 sm:p-4 lg:min-h-[211px] xl:min-h-[277px]"
-          : "p-3 sm:p-4 lg:min-h-[247px] lg:p-4 xl:min-h-[317px] xl:p-6",
+            ? "p-3 md:p-3 lg:min-h-[235px] xl:min-h-[301px]"
+            : "p-3 md:p-3 lg:min-h-[211px] xl:min-h-[277px]"
+          : "p-3 md:p-3 lg:min-h-[247px] lg:p-4 xl:min-h-[317px] xl:p-6",
       )}
     >
       <h4 className="text-base leading-[1.5] font-bold text-navy uppercase sm:text-md lg:text-base xl:text-lg">
@@ -62,14 +62,14 @@ export function WorkSection() {
         {projects.map((project) => (
           <article key={project.slug}>
             <div className="mb-4 flex min-h-0 items-center justify-between gap-3 sm:mb-5 sm:gap-4 md:gap-3">
-              <h3 className="min-w-0 flex-1 truncate text-2xl leading-tight font-bold text-primary uppercase sm:text-4xl sm:leading-[1.3] md:text-3xl lg:text-[40px] xl:text-[52px]">
+              <h3 className="min-w-0 flex-1 truncate text-2xl leading-tight font-bold text-primary uppercase sm:text-3xl sm:leading-[1.3] md:text-3xl lg:text-[40px] xl:text-[52px]">
                 {project.name}
               </h3>
               <Link
                 href={`/case-studies/${project.slug}`}
                 className={cn(
                   buttonVariants(),
-                  "h-8 shrink-0 rounded-full px-3 font-mono text-xs sm:h-14 sm:px-7 sm:text-base md:h-10 md:px-4 md:text-xs lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
+                  "h-8 shrink-0 rounded-full px-3 font-mono text-xs sm:h-12 sm:px-6 sm:text-sm lg:h-12 lg:px-6 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
                 )}
               >
                 View Project
@@ -79,7 +79,7 @@ export function WorkSection() {
             {project.slug === "glowskinn" ? (
               <Card className="overflow-hidden border-0 ring-0 bg-transparent py-0 shadow-none sm:border sm:border-border sm:bg-background sm:ring-1 sm:ring-foreground/10 sm:rounded-[20px]">
                 <CardContent className="grid gap-3 p-0 sm:gap-4 sm:p-4 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.24fr]">
-                  <div className="relative order-1 aspect-[4/3] min-h-0 overflow-hidden rounded-[20px] sm:min-h-[200px] sm:rounded-[18px] md:rounded-[14px] lg:aspect-[3/4] md:min-h-0 md:col-span-2 lg:order-1 lg:col-span-1 lg:aspect-auto lg:min-h-[600px] xl:min-h-[740px]">
+                  <div className="relative order-1 aspect-[4/3] min-h-0 overflow-hidden rounded-[20px] sm:min-h-[200px] sm:rounded-[18px] md:rounded-[14px] lg:aspect-[3/4] md:min-h-0 md:col-span-2 lg:order-3 lg:col-span-1 lg:aspect-auto lg:min-h-[600px] xl:min-h-[740px]">
                     <Image
                       src={project.artImage}
                       alt={`${project.name} full website`}
@@ -132,7 +132,7 @@ export function WorkSection() {
                       href="/contact"
                       className={cn(
                         buttonVariants(),
-                        "h-10 w-fit sm:w-full rounded-full px-5 font-mono text-sm font-bold sm:h-14 sm:px-7 sm:text-base md:h-10 md:px-4 md:text-xs lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto",
+                        "h-11 w-fit rounded-full px-6 font-mono text-sm font-bold sm:h-12 sm:w-full sm:px-6 sm:text-sm lg:h-12 lg:px-6 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto",
                       )}
                     >
                       Get a free Audit
@@ -143,7 +143,7 @@ export function WorkSection() {
             ) : (
               <Card className="overflow-hidden border-0 ring-0 bg-transparent py-0 shadow-none sm:border sm:border-border sm:bg-background sm:ring-1 sm:ring-foreground/10 sm:rounded-[20px]">
                 <CardContent className="grid gap-3 p-0 sm:gap-4 sm:p-4 md:grid-cols-2 lg:grid-cols-[1fr_0.9fr_1fr] lg:p-4 xl:p-5">
-                  <div className="relative order-1 aspect-[4/5] min-w-0 min-h-0 overflow-hidden rounded-[20px] sm:min-h-[400px] sm:rounded-[44px] md:min-h-[280px] lg:aspect-auto lg:min-h-[530px] xl:min-h-[660px]">
+                  <div className="relative order-1 aspect-[4/5] min-w-0 min-h-0 overflow-hidden rounded-[20px] sm:min-h-[400px] sm:rounded-[44px] md:min-h-[280px] lg:aspect-auto lg:min-h-[530px] xl:min-h-[660px] lg:order-3">
                     <Image
                       src={project.artImage}
                       alt={`${project.name} campaign artwork`}
@@ -153,7 +153,21 @@ export function WorkSection() {
                     />
                   </div>
 
-                  <div className="order-2 flex min-w-0 min-h-0 flex-col gap-4 rounded-[14px] bg-background p-0 sm:gap-6 sm:p-2 lg:min-h-[530px] xl:min-h-[660px] xl:p-5">
+                  <div className="order-2 flex min-w-0 min-h-0 flex-col gap-4 rounded-[14px] border border-border bg-background p-2 sm:gap-6 sm:p-3 lg:min-h-[530px] xl:min-h-[660px] xl:p-4 lg:order-1">
+                    <div className="hidden flex-wrap items-center justify-between gap-2 lg:flex xl:flex-nowrap xl:gap-3">
+                      <h4 className="min-w-0 flex-1 truncate text-xl leading-[1.5] font-bold text-primary uppercase xl:text-2xl">
+                        {project.name}
+                      </h4>
+                      <Link
+                        href={`/case-studies/${project.slug}`}
+                        className={cn(
+                          buttonVariants(),
+                          "h-8 shrink-0 rounded-full px-2 font-mono text-xs xl:h-10 xl:px-5 xl:text-base",
+                        )}
+                      >
+                        View Project
+                      </Link>
+                    </div>
                     <div className="flex flex-wrap gap-2 sm:gap-4">
                       <ProjectMeta label="Category" value={project.category} />
                       <ProjectMeta label="Timeline" value={project.timeline} />
@@ -172,7 +186,7 @@ export function WorkSection() {
                     </div>
                   </div>
 
-                  <div className="order-3 flex min-w-0 flex-col gap-4 sm:gap-5 md:col-span-2 lg:col-span-1 lg:min-h-[550px] xl:min-h-[684px]">
+                  <div className="order-3 flex min-w-0 flex-col gap-4 sm:gap-5 md:col-span-2 lg:col-span-1 lg:min-h-[550px] xl:min-h-[684px] lg:order-2">
                     <DetailGroup
                       title="What We Did"
                       items={project.services}
@@ -187,7 +201,7 @@ export function WorkSection() {
                       href="/contact"
                       className={cn(
                         buttonVariants(),
-                        "h-10 w-fit sm:w-full rounded-full px-5 font-mono text-sm font-bold sm:h-14 sm:px-7 sm:text-base md:h-10 md:px-4 md:text-xs lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto",
+                        "h-11 w-fit rounded-full px-6 font-mono text-sm font-bold sm:h-12 sm:w-full sm:px-6 sm:text-sm lg:h-12 lg:px-6 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto",
                       )}
                     >
                       Get a free Audit

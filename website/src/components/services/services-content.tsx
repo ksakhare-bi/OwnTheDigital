@@ -14,7 +14,7 @@ function PracticeAreaSection() {
 
       <div className="mt-8 grid items-center gap-6 rounded-[20px] sm:border border-border bg-background p-5 sm:mt-14 sm:gap-8 sm:p-8 lg:grid-cols-[1.25fr_1fr] xl:grid-cols-[1fr_546px] xl:gap-12 xl:p-10">
         <div>
-          <h2 className="text-2xl leading-[0.95] font-extrabold tracking-tight text-primary uppercase sm:text-6xl xl:text-[72px]">
+          <h2 className="text-2xl leading-[0.95] font-extrabold tracking-tight text-primary uppercase sm:text-4xl lg:text-5xl xl:text-[70px]">
             <span className="block sm:hidden">5 Practice Area</span>
             <span className="hidden sm:block">5</span>
             <span className="hidden sm:block">Practice Area</span>
