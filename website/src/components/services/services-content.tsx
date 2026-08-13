@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 import { FinalCtaSection } from "@/components/home/final-cta";
-import { ServicesSection } from "@/components/home/hero-services";
-import { FaqSection } from "@/components/home/testimonials-faq";
-import { WorkSection } from "@/components/home/work-section";
+import { ServicesSection } from "@/components/home/our-services";
+import { FaqSection } from "@/components/home/faq";
+import { WorkSection } from "@/components/home/our-work";
 
 function PracticeAreaSection() {
   return (

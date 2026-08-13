@@ -1,18 +1,11 @@
 import { FinalCtaSection } from "@/components/home/final-cta";
-import {
-  HeroSection,
-  ServicesSection,
-  TrustedBySection,
-} from "@/components/home/hero-services";
-import {
-  FaqSection,
-  TestimonialsSection,
-} from "@/components/home/testimonials-faq";
-import {
-  ProcessSection,
-  WhyHireUsSection,
-} from "@/components/home/value-process";
-import { WorkSection } from "@/components/home/work-section";
+import { HeroSection, TrustedBySection } from "@/components/home/hero-trusted";
+import { ServicesSection } from "@/components/home/our-services";
+import { FaqSection } from "@/components/home/faq";
+import { TestimonialsSection } from "@/components/home/testimonials-faq";
+import { WhyHireUsSection } from "@/components/home/why-hire-us";
+import { WorkSection } from "@/components/home/our-work";
+import { ProcessSection } from "@/components/home/how-we-work";
 
 export default function HomePage() {
   return (

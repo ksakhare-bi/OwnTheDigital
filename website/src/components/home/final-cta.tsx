@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function FinalCtaSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 sm:px-6">
+    <section className="mx-auto max-w-[1392px] px-4 sm:px-6 md:mt-10">
       <div className="relative flex flex-col items-center justify-center min-h-[240px] overflow-hidden rounded-[16px] bg-primary px-5 py-10 sm:min-h-[320px] md:min-h-[280px] lg:min-h-[440px] xl:min-h-[549px] sm:rounded-[20px] sm:px-6 sm:py-14 md:py-10">
         <Image
           src="/images/home/cta-decoration.svg"

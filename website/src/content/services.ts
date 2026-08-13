@@ -3,13 +3,9 @@ export type ServiceDefinition = {
   title: string;
   shortTitle: string;
   description: string;
-  /** Figma desktop frame node id for design-to-code */
   figmaNodeId: string;
 };
 
-/**
- * Maps to desktop service frames on Figma page "Final" (158:763).
- */
 export const services: ServiceDefinition[] = [
   {
     slug: "ai-marketing",

@@ -4,7 +4,6 @@ type PagePlaceholderProps = {
   figmaNodeId?: string;
 };
 
-/** Temporary shell until the page is built from Figma. */
 export function PagePlaceholder({
   title,
   description,
