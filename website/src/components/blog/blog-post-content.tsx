@@ -28,7 +28,7 @@ function ArticleSection({
 }) {
   return (
     <section className="space-y-3 sm:space-y-4">
-      <h2 className="text-xl leading-snug font-bold tracking-tight text-primary uppercase sm:text-3xl xl:text-[32px]">
+      <h2 className="text-xl leading-snug font-bold tracking-tight text-primary uppercase sm:text-2xl xl:text-[32px]">
         {heading}
       </h2>
       <p className="text-sm leading-[1.6] text-body sm:text-base xl:text-lg">{description}</p>
@@ -52,7 +52,7 @@ function ArticleSection({
 function PostCtaCard({ post }: { post: BlogPostDetailView }) {
   return (
     <section className="mt-12 rounded-[20px] border border-border bg-background p-5 text-center sm:text-left sm:mt-16 sm:p-8 xl:p-10">
-      <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.9fr] xl:gap-12">
+      <div className="grid items-center lg:grid-cols-[1.2fr_0.9fr] xl:gap-12">
         <div className="flex flex-col items-center sm:items-start">
           <h2 className="text-2xl leading-[1.2] font-bold tracking-tight text-primary uppercase sm:text-4xl xl:text-[40px]">
             {post.title}
@@ -84,14 +84,14 @@ function PostCtaCard({ post }: { post: BlogPostDetailView }) {
           </Link>
         </div>
 
-        <div className="hidden sm:block">
+        <div className="hidden md:block">
           <div className="relative aspect-[16/10] overflow-hidden rounded-[20px]">
             <Image
               src={post.image}
               alt=""
               fill
               sizes="(max-width: 1024px) 100vw, 480px"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
           <p className="mt-4 text-sm tracking-[0.02em] text-muted uppercase xl:text-base">
@@ -114,7 +114,7 @@ export function BlogPostContent({
   return (
     <main className="mx-auto w-full max-w-[980px] px-4 pt-10 pb-2 sm:px-6 sm:pt-14 sm:pb-14">
       <article className="space-y-6 sm:space-y-8">
-        <h1 className="text-center text-3xl leading-[1.15] font-bold tracking-tight text-primary uppercase sm:text-5xl lg:text-[50px]">
+        <h1 className="text-center text-3xl leading-[1.15] font-bold tracking-tight text-primary uppercase sm:text-4xl md:text-5xl lg:text-[50px]">
           {post.title}
         </h1>
 

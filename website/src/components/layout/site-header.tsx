@@ -53,7 +53,7 @@ export function SiteHeader() {
           href="/contact"
           className={cn(
             buttonVariants(),
-            "hidden rounded-full font-mono font-semibold md:inline-flex md:h-10 md:px-4 md:text-xs lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
+            "hidden rounded-full font-mono font-semibold md:inline-flex md:h-10 md:px-4 md:text-xs lg:h-12 lg:px-5 lg:text-sm xl:h-14 xl:px-8 xl:text-lg",
           )}
         >
           Get a free Audit
