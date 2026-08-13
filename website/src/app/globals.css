@@ -216,4 +216,7 @@ html {
   html {
     @apply font-sans;
   }
+  a, button, [role="button"], select, label, input[type="submit"], input[type="button"] {
+    cursor: pointer;
+  }
 }

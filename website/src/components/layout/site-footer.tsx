@@ -87,7 +87,7 @@ function LegalBlock({ className }: { className?: string }) {
         className,
       )}
     >
-      <p>© {new Date().getFullYear()} Own The Digital. All rights reserved.</p>
+      <p>©{new Date().getFullYear()} Own The Digital. All rights reserved.</p>
       <p className="mt-0">
         <Link href="#" className="hover:text-primary">
           Terms &amp; Conditions
