@@ -5,9 +5,9 @@ import { advantages, processSteps } from "@/content/home";
 
 export function WhyHireUsSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 py-8 sm:px-6 sm:pt-16 md:pt-12 lg:pt-24 xl:pt-40">
+    <section className="mx-auto max-w-[1392px] px-4 pt-16 sm:px-6 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40">
       <SectionTitle lead="Why" accent="Hire Us" />
-      <div className="mt-6 grid gap-3 sm:mt-10 sm:gap-5 md:mt-8 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-6 xl:gap-9">
+      <div className="mt-6 grid gap-3 sm:mt-8 sm:gap-5 md:mt-10 md:grid-cols-3 md:gap-4 lg:mt-12 lg:grid-cols-3 lg:gap-6 xl:mt-16 xl:gap-9">
         {advantages.map((advantage) => (
           <Card
             key={advantage.number}

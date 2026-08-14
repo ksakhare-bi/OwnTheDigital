@@ -3,9 +3,9 @@ import { processSteps } from "@/content/home";
 
 export function ProcessSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 py-10 sm:px-6 sm:py-16 md:py-12 lg:py-24 xl:py-32">
+    <section className="mx-auto max-w-[1392px] px-4 pt-24 sm:px-6 sm:pt-24 md:pt-28 lg:pt-32 xl:pt-36">
       <SectionTitle lead="How" accent="We Work" />
-      <div className="relative mt-6 grid grid-cols-2 gap-x-3 gap-y-6 sm:mt-8 md:mt-12 sm:gap-8 md:grid-cols-4 md:gap-0 lg:grid-cols-4 lg:gap-0">
+      <div className="relative mt-8 grid grid-cols-2 gap-x-3 gap-y-6 sm:mt-8 sm:gap-8 md:mt-10 md:grid-cols-4 md:gap-0 lg:mt-12 lg:grid-cols-4 lg:gap-0 xl:mt-16">
         <div
           aria-hidden="true"
           className="absolute right-[12.5%] left-[12.5%] hidden h-px bg-primary md:block md:top-[30px] lg:top-[40px] xl:top-[50px]"

@@ -56,9 +56,9 @@ function ProjectMeta({ label, value }: { label: string; value: string }) {
 
 export function WorkSection() {
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-4 pt-8 sm:px-6 sm:pt-10 xl:px-10">
+    <section className="mx-auto max-w-[1392px] px-4 pt-24 sm:px-6 sm:pt-28 md:pt-32 lg:pt-32 xl:pt-36">
       <SectionTitle lead="Our" accent="Work" />
-      <div className="mt-10 space-y-14 sm:mt-10 lg:mt-16 sm:space-y-20">
+      <div className="mt-6 space-y-10 sm:mt-8 sm:space-y-14 md:mt-8 md:space-y-16 lg:mt-12 lg:space-y-20 xl:mt-16 xl:space-y-24">
         {projects.map((project) => (
           <article key={project.slug}>
             <div className="mb-4 flex min-h-0 items-center justify-between gap-3 sm:mb-5 sm:gap-4 md:gap-3">

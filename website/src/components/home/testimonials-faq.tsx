@@ -7,9 +7,9 @@ import { testimonials } from "@/content/home";
 
 export function TestimonialsSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 py-8 sm:px-6 sm:pt-16 md:pt-12 lg:pt-24 xl:pt-40">
+    <section className="mx-auto max-w-[1392px] px-4 pt-24 sm:px-6 sm:pt-24 md:pt-28 lg:pt-32 xl:pt-36">
       <SectionTitle lead="Hear From" accent="Our Clients" />
-      <div className="mt-6 grid gap-4 sm:mt-10 sm:gap-4 md:mt-8 md:grid-cols-3 md:gap-3 lg:grid-cols-3 lg:mt-10 xl:mt-14">
+      <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-4 md:mt-10 md:grid-cols-3 md:gap-4 lg:mt-12 lg:grid-cols-3 lg:gap-6 xl:mt-16 xl:gap-8">
         {testimonials.map((testimonial) => (
           <Card
             key={testimonial.name}

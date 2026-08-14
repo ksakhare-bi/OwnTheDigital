@@ -27,7 +27,7 @@ export function ServicesSection({
       <div
         className={cn(
           "space-y-4 sm:space-y-4 md:space-y-3 lg:space-y-8",
-          hideTitle ? "mt-0" : "mt-6 sm:mt-12 md:mt-8 lg:mt-12 xl:mt-16",
+          hideTitle ? "mt-0" : "mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-16",
         )}
       >
         {homeServices.map((service, index) => {

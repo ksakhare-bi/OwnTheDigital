@@ -47,7 +47,7 @@ export function ServicesContent() {
   return (
     <main>
       <PracticeAreaSection />
-      <div className="pt-12 sm:pt-24 lg:pt-32">
+      <div className="mb-6 sm:mb-14 md:mb-16 lg:mb-[74px] xl:mb-[94px] pt-8 sm:pt-16 lg:pt-24">
         <ServicesSection hideTitle={true} />
       </div>
       <WorkSection />

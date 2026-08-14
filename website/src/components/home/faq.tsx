@@ -67,13 +67,13 @@ function QuestionForm() {
 
 export function FaqSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 py-8 sm:px-6 sm:pt-16 md:pt-12 lg:pt-24 xl:pt-40">
+    <section className="mx-auto max-w-[1392px] px-4 pt-24 sm:px-6 sm:pt-28 md:pt-32 lg:pt-32 xl:pt-36">
       <SectionTitle
         lead="Frequently Asked"
         accent="Questions"
         className="sm:tracking-tight"
       />
-      <div className="mt-6 grid gap-4 sm:mt-10 sm:gap-5 md:mt-8 lg:mt-10 xl:mt-14 lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-5 md:mt-10 lg:mt-12 lg:grid-cols-[0.95fr_1.05fr] xl:mt-16">
         <Accordion defaultValue={["faq-0"]} className="gap-2.5">
           {faqs.map((faq, index) => (
             <AccordionItem
