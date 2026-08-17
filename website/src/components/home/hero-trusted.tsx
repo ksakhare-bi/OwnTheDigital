@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function HeroSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 pt-4 sm:px-6 sm:pt-10 md:pt-8 lg:pt-10 xl:pt-14">
+    <section className="mx-auto max-w-[1392px] px-4 pt-4 sm:px-6 sm:pt-10 md:pt-8 lg:pt-12 xl:pt-14">
       <div className="flex min-h-0 flex-col items-center justify-center overflow-hidden rounded-[16px] border border-border bg-background px-4 py-8 text-center sm:min-h-[530px] sm:rounded-[20px] sm:px-8 sm:py-12 md:min-h-[420px] md:px-8 md:py-10 lg:min-h-[460px] lg:px-8 lg:py-12 xl:min-h-[530px] xl:px-10 xl:py-16">
         <h1 className="w-full max-w-[1390px] text-[clamp(1.6rem,6.2vw,70px)] leading-[1.2] font-normal text-black uppercase sm:text-[clamp(1.75rem,calc(5.6vw-8px),70px)] lg:text-[56px] lg:leading-[1.3] xl:text-[70px] xl:leading-[1.5]">
           <span className="block font-light tracking-tight">
@@ -51,7 +51,7 @@ export function TrustedBySection() {
   return (
     <section
       aria-labelledby="trusted-by-title"
-      className="mx-auto max-w-[1392px] overflow-hidden px-4 py-12 sm:px-6 sm:py-20 lg:pt-20 xl:pt-28"
+      className="mx-auto max-w-[1392px] overflow-hidden px-4 py-12 sm:px-6 sm:py-20 lg:pt-24 xl:pt-28"
     >
       <SectionTitle
         accent="Trusted"

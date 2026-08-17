@@ -6,44 +6,25 @@ import { Card, CardContent } from "@/components/ui/card";
 import { portfolioSections, type PortfolioProject } from "@/content/portfolio";
 import { cn } from "@/lib/utils";
 
-function ProjectMeta({ label, value }: { label: string; value: string }) {
-  return (
-    <span className="inline-block h-auto max-w-full rounded-full bg-surface-tint px-3 py-1.5 text-xs font-normal text-navy sm:px-6 sm:py-2.5 sm:text-base xl:text-lg text-left align-middle">
-      <span>{label}</span>
-      <span className="mx-1.5 inline-block size-1 align-middle rounded-full bg-primary sm:mx-2" />{" "}
-      <strong className="font-semibold text-primary text-left">{value}</strong>
-    </span>
-  );
-}
-
-function DetailCard({
+function DetailGroup({
   title,
   items,
-  compact,
+  className,
 }: {
   title: string;
   items: string[];
-  compact: boolean;
+  className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "max-w-full min-w-0 overflow-hidden rounded-[14px] border border-border bg-background xl:shrink-0",
-        compact
-          ? title === "What We Did"
-            ? "p-4 sm:p-5 xl:min-h-[301px]"
-            : "p-4 sm:p-5 xl:min-h-[277px]"
-          : "p-4 sm:p-5 xl:min-h-[317px] xl:p-10",
-      )}
-    >
-      <h4 className="text-base font-bold text-navy uppercase sm:text-lg">
+    <div className={cn("flex flex-col rounded-[14px] border border-border bg-background p-4 sm:p-5", className)}>
+      <h4 className="text-sm font-bold text-navy uppercase opacity-80 mb-3">
         {title}
       </h4>
-      <div className="mt-3 flex flex-wrap gap-2 sm:mt-5 sm:gap-2.5">
+      <div className="flex flex-wrap gap-2">
         {items.map((item) => (
           <span
             key={item}
-            className="inline-flex h-auto items-center justify-center rounded-full bg-surface-tint px-3 py-1.5 font-mono text-xs font-bold text-navy sm:px-4 sm:py-2 sm:text-sm xl:text-base max-w-full whitespace-normal break-words text-left"
+            className="inline-flex items-center justify-center rounded-full bg-surface-tint/50 border border-border/50 px-3 py-1.5 font-mono text-xs font-bold text-navy sm:text-sm whitespace-normal text-left"
           >
             {item}
           </span>
@@ -53,178 +34,109 @@ function DetailCard({
   );
 }
 
-function SummaryCard({
-  project,
-  compact,
-}: {
-  project: PortfolioProject;
-  compact: boolean;
-}) {
-  return (
-    <div
-      className={cn(
-        "flex min-w-0 flex-col gap-4 rounded-[14px] bg-background p-4 sm:min-h-[540px] sm:gap-10 sm:p-6",
-        compact
-          ? "border border-border sm:border-0 lg:min-h-[530px] xl:min-h-[660px] xl:p-6"
-          : "border border-border lg:min-h-[600px] xl:min-h-[740px] xl:p-6",
-      )}
-    >
-      {!compact && (
-        <div className="hidden sm:flex items-center justify-between gap-3">
-          <h4 className="text-xl font-bold text-primary uppercase sm:text-2xl">
-            {project.name}
-          </h4>
-          <Link
-            href={`/case-studies/${project.slug}`}
-            className={cn(
-              buttonVariants(),
-              "h-8 rounded-full px-3.5 font-mono text-xs sm:h-10 sm:px-5 sm:text-base",
-            )}
-          >
-            View Project
-          </Link>
-        </div>
-      )}
-      <div className="flex flex-wrap gap-2 sm:gap-3">
-        <ProjectMeta
-          label="Category"
-          value={project.category}
-        />
-        <ProjectMeta
-          label={compact ? "Timeline" : "Time Taken"}
-          value={project.timeline}
-        />
-      </div>
-      <p className="text-sm leading-relaxed text-body sm:text-lg">{project.description}</p>
-      <div
-        className={cn(
-          "relative mt-auto overflow-hidden rounded-xl sm:rounded-none",
-          compact ? "h-[140px] sm:h-[232px]" : "h-[120px] sm:h-[165px]",
-        )}
-      >
-        {project.summaryBaseImage && (
-          <Image
-            src={project.summaryBaseImage}
-            alt=""
-            fill
-            sizes="324px"
-            className="object-cover"
-          />
-        )}
-        <Image
-          src={project.summaryImage}
-          alt={`${project.name} project detail`}
-          fill
-          sizes={compact ? "304px" : "324px"}
-          className={cn(
-            "object-cover",
-            !compact && "object-[center_70%]",
-          )}
-        />
-      </div>
-    </div>
-  );
-}
-
-function DetailColumn({
-  project,
-  compact,
-}: {
-  project: PortfolioProject;
-  compact: boolean;
-}) {
-  return (
-    <div
-      className={cn(
-        "flex min-w-0 flex-col gap-4 sm:gap-5 mb-12 sm:mb-0",
-        compact ? "xl:min-h-[684px]" : "xl:min-h-[740px]",
-      )}
-    >
-      <DetailCard title="What We Did" items={project.services} compact={compact} />
-      <DetailCard title="Outcome" items={project.outcomes} compact={compact} />
-      <Link
-        href="/contact"
-        className={cn(
-          buttonVariants(),
-          "h-11 w-fit rounded-full px-6 font-mono text-sm font-bold sm:h-12 sm:w-full sm:px-6 sm:text-sm lg:h-12 lg:px-6 lg:text-sm xl:h-16 xl:px-8 xl:text-xl text-center mx-auto sm:mt-auto",
-        )}
-      >
-        Get a free Audit
-      </Link>
-    </div>
-  );
-}
-
-function ProjectHeader({ project }: { project: PortfolioProject }) {
-  return (
-    <div className="flex items-center justify-between gap-3 sm:min-h-[78px] sm:gap-5">
-      <h3 className="text-xl leading-[1.3] font-bold text-primary uppercase sm:text-3xl lg:text-[40px] xl:text-[52px]">
-        {project.name}
-      </h3>
-      <Link
-        href={`/case-studies/${project.slug}`}
-        className={cn(
-          buttonVariants(),
-          "h-8 shrink-0 rounded-full px-3 font-mono text-xs sm:h-12 sm:px-6 sm:text-sm lg:h-12 lg:px-6 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
-        )}
-      >
-        View Project
-      </Link>
-    </div>
-  );
-}
-
 export function PortfolioProjectCard({ project }: { project: PortfolioProject }) {
-  const compact = project.layout === "art-first";
-  const artHeight = project.slug === "fittpulse" ? "xl:min-h-[740px]" : "xl:min-h-[660px]";
-
   return (
-    <article className="space-y-3 sm:space-y-2">
-      <ProjectHeader project={project} />
-      {compact ? (
-        <Card className="overflow-hidden border-0 ring-0 bg-transparent py-0 shadow-none sm:border sm:border-border sm:bg-background sm:ring-1 sm:ring-foreground/10 sm:rounded-[20px]">
-          <CardContent className="grid gap-4 p-0 sm:gap-5 sm:p-5 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_1fr] xl:p-10 sm:pt-0">
-            <div
-              className={cn(
-                "relative order-1 xl:order-3 aspect-[4/5] min-h-0 overflow-hidden rounded-[20px] sm:aspect-auto sm:min-h-[540px] sm:rounded-[44px]",
-                artHeight,
-              )}
-            >
+    <article className="group">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-4 sm:mb-6">
+        <h3 className="min-w-0 flex-1 truncate text-2xl leading-tight font-extrabold text-primary uppercase sm:text-3xl lg:text-[40px]">
+          {project.name}
+        </h3>
+        <Link
+          href={`/case-studies/${project.slug}`}
+          className={cn(
+            buttonVariants(),
+            "h-10 rounded-full px-6 font-mono text-sm uppercase tracking-wide",
+          )}
+        >
+          View Project
+        </Link>
+      </div>
+
+      <Card className="overflow-hidden border-none bg-background rounded-[20px] shadow-sm transition-all duration-300">
+        <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 p-5 sm:p-6 lg:p-6 lg:py-2">
+          
+          {/* Column 1: Image + Description */}
+          <div className="flex flex-col gap-5">
+            <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden rounded-[44px] bg-surface-tint border border-border/50">
               <Image
                 src={project.artImage}
-                alt={`${project.name} campaign artwork`}
+                alt={`${project.name} preview`}
                 fill
-                sizes="(max-width: 1280px) 100vw, 501px"
+                sizes="(max-width: 1024px) 100vw, 400px"
                 className="object-cover object-top"
-                priority={project.slug === "fittpulse"}
               />
             </div>
-            <div className="order-2 xl:order-1">
-              <SummaryCard project={project} compact />
+            <p className="text-base leading-relaxed text-body sm:text-[17px]">
+              {project.description}
+            </p>
+          </div>
+
+          {/* Grouped Columns 2 & 3 for perfect row height matching */}
+          <div className="md:col-span-1 lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 lg:gap-8">
+            
+            {/* Row 1, Left: What We Did */}
+            <DetailGroup title="What We Did" items={project.services} className="h-full" />
+
+            {/* Row 1, Right: Image */}
+            <div className="flex flex-col gap-2 sm:gap-3 h-full">
+              <div className="flex-1 relative min-h-[160px] sm:min-h-[220px] w-full overflow-hidden rounded-[14px] border border-border/50">
+                {project.summaryBaseImage && (
+                  <Image
+                    src={project.summaryBaseImage}
+                    alt=""
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 300px"
+                    className="object-cover"
+                  />
+                )}
+                <Image
+                  src={project.summaryImage}
+                  alt={`${project.name} detail`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 300px"
+                  className="object-cover object-bottom"
+                />
+              </div>
             </div>
-            <div className="order-3 xl:order-2 md:col-span-2 xl:col-span-1">
-              <DetailColumn project={project} compact />
+
+            {/* Row 2, Left: Outcome */}
+            <DetailGroup title="Outcome" items={project.outcomes} className="h-full" />
+            
+            {/* Row 2, Right: Category + Timeline + Button */}
+            <div className="flex flex-col gap-2 sm:gap-3 h-full">
+              <div className="flex-1 rounded-[14px] border border-border bg-surface-tint/30 p-5 sm:p-4">
+                <h4 className="text-xs sm:text-sm font-bold text-navy uppercase mb-1.5 opacity-80">
+                  Category
+                </h4>
+                <p className="text-base sm:text-lg font-bold text-primary leading-tight">
+                  {project.category}
+                </p>
+              </div>
+              <div className="flex-1 rounded-[14px] border border-border bg-surface-tint/30 p-5 sm:p-4">
+                <h4 className="text-xs sm:text-sm font-bold text-navy uppercase mb-1.5 opacity-80">
+                  Timeline
+                </h4>
+                <p className="text-base sm:text-lg font-bold text-primary leading-tight">
+                  {project.timeline}
+                </p>
+              </div>
+              
+              <div className="shrink-0 pt-2 sm:pt-0">
+                <Link
+                  href="/contact"
+                  className={cn(
+                    buttonVariants(),
+                    "w-full h-10 sm:h-11 rounded-[18px] text-sm sm:text-lg font-bold uppercase tracking-wide"
+                  )}
+                >
+                  Get a free Audit
+                </Link>
+              </div>
             </div>
-          </CardContent>
-        </Card>
-      ) : (
-        <Card className="overflow-hidden border-0 ring-0 bg-transparent py-0 shadow-none sm:border sm:border-border sm:bg-background sm:ring-1 sm:ring-foreground/10 sm:rounded-[20px]">
-          <CardContent className="grid gap-4 p-0 sm:gap-5 sm:p-5 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1.24fr]">
-            <div className="relative aspect-[4/5] min-w-0 min-h-0 overflow-hidden rounded-[20px] sm:aspect-auto sm:min-h-[540px] sm:rounded-[44px] md:col-span-2 xl:col-span-1 xl:min-h-[740px] sm:order-last">
-              <Image
-                src={project.artImage}
-                alt={`${project.name} full project artwork`}
-                fill
-                sizes="(max-width: 1280px) 100vw, 501px"
-                className="object-cover object-top"
-                priority={project.slug === "glowskinn"}
-              />
-            </div>
-            <SummaryCard project={project} compact={false} />
-            <DetailColumn project={project} compact={false} />
-          </CardContent>
-        </Card>
-      )}
+          </div>
+
+        </CardContent>
+      </Card>
     </article>
   );
 }
@@ -262,7 +174,7 @@ export function PortfolioContent() {
               View Service
             </Link>
           </div>
-          <div className="space-y-4 sm:space-y-[98px]">
+          <div className="space-y-8 sm:space-y-[98px]">
             {section.projects.map((project) => (
               <PortfolioProjectCard key={project.slug} project={project} />
             ))}

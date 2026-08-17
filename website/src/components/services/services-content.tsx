@@ -4,22 +4,29 @@ import { FinalCtaSection } from "@/components/home/final-cta";
 import { ServicesSection } from "@/components/home/our-services";
 import { FaqSection } from "@/components/home/faq";
 import { WorkSection } from "@/components/home/our-work";
+import { homeServices } from "@/content/home";
 
 function PracticeAreaSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 pt-12 sm:px-6 sm:pt-24">
-      <h1 className="text-center text-3xl leading-none font-extrabold tracking-tight text-primary uppercase sm:text-5xl lg:text-[78px]">
-        Services
-      </h1>
-
-      <div className="mt-8 grid items-center gap-6 rounded-[20px] sm:border border-border bg-background p-5 sm:mt-14 sm:gap-8 sm:p-8 lg:grid-cols-[1.25fr_1fr] xl:grid-cols-[1fr_546px] xl:gap-12 xl:p-10">
+    <section className="mx-auto max-w-[1392px] px-4 pt-12 sm:px-6 sm:pt-4">
+     <div className="mt-8 grid items-center gap-6 rounded-[20px] sm:border border-border bg-background p-5 sm:mt-14 sm:gap-8 sm:p-8 lg:grid-cols-[1.25fr_1fr] xl:grid-cols-[1fr_546px] xl:gap-10 xl:p-8 lg:py-12 xl:py-12">
         <div>
-          <h2 className="text-2xl leading-[0.95] font-extrabold tracking-tight text-primary uppercase sm:text-4xl lg:text-5xl xl:text-[70px]">
-            <span className="block sm:hidden">5 Practice Area</span>
-            <span className="hidden sm:block">5</span>
-            <span className="hidden sm:block">Practice Area</span>
-          </h2>
-          <p className="mt-4 sm:mt-4 max-w-[690px] text-base leading-[1.6] text-body sm:mt-6 sm:text-lg xl:text-xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3 mb-6 sm:mb-10">
+            {homeServices.map((service, idx) => (
+              <div 
+                key={service.title} 
+                className="group flex items-center gap-3 sm:gap-3 p-3 sm:p-4 rounded-2xl bg-background border border-border shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-primary/40 transition-all duration-300 cursor-pointer"
+              >
+                <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary font-mono text-sm sm:text-base font-bold group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                  0{idx + 1}
+                </div>
+                <span className="text-sm sm:text-lg font-semibold uppercase tracking-tight text-foreground/90 group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                  {service.title}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 sm:mt-4 max-w-[690px] text-base leading-[1.6] text-body sm:mt-6 sm:text-lg">
             We offer a comprehensive range of digital marketing, web
             development, and AI-powered solutions designed to help businesses
             increase visibility, generate qualified leads, and achieve
@@ -28,7 +35,7 @@ function PracticeAreaSection() {
           </p>
         </div>
 
-        <div className="hidden aspect-[16/10] overflow-hidden rounded-[14px] sm:relative sm:block sm:aspect-[546/310]">
+        <div className="hidden aspect-[16/10] overflow-hidden rounded-[14px] sm:relative sm:block sm:aspect-[370/310]">
           <Image
             src="/images/home/about-company.png"
             alt="A marketing team collaborating around a table"
@@ -47,7 +54,7 @@ export function ServicesContent() {
   return (
     <main>
       <PracticeAreaSection />
-      <div className="mb-6 sm:mb-14 md:mb-16 lg:mb-[74px] xl:mb-[94px] pt-8 sm:pt-16 lg:pt-24">
+      <div className="mb-6 sm:mb-0 pt-4 sm:pt-8 md:mt-10 lg:mt-14 xl:mt-20">
         <ServicesSection hideTitle={true} />
       </div>
       <WorkSection />
