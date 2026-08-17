@@ -43,8 +43,8 @@ export function WorkSection() {
       <div className="mt-8 space-y-12 sm:mt-12 sm:space-y-16 lg:mt-16 lg:space-y-20">
         {projects.map((project) => (
           <article key={project.slug} className="group">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-4 sm:mb-6">
-              <h3 className="min-w-0 flex-1 truncate text-2xl leading-tight font-extrabold text-primary uppercase sm:text-3xl lg:text-[40px]">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-4 sm:mb-4">
+              <h3 className="min-w-0 flex-1 truncate text-2xl leading-tight font-extrabold text-primary uppercase sm:text-3xl lg:text-[34px]">
                 {project.name}
               </h3>
               <Link

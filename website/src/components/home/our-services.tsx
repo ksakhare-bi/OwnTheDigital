@@ -42,12 +42,12 @@ const ServiceCardItem = ({ service, hideEyebrows }: any) => {
 
               <div
                 className={cn(
-                  "grid gap-4 sm:mt-4 sm:gap-6 md:mt-3 md:grid-cols-[1.15fr_1fr] md:gap-4 lg:mt-5 lg:grid-cols-[1.38fr_1fr] lg:gap-5 xl:mt-6 xl:grid-cols-[1.32fr_1fr] xl:gap-6",
+                  "grid gap-4 sm:mt-4 sm:gap-6 md:mt-3 md:grid-cols-[1.15fr_1fr] md:gap-4 lg:mt-5 lg:grid-cols-[1.38fr_1fr] lg:gap-8 xl:mt-6 xl:grid-cols-[1.32fr_1fr] xl:gap-6",
                   hideEyebrows ? "mt-0" : "mt-3",
                 )}
               >
                 <div className="flex flex-col">
-                  <Link href={service.href} className="relative block w-full aspect-[16/10] overflow-hidden rounded-xl sm:h-64 sm:aspect-auto md:h-[260px] lg:h-[280px] xl:h-[360px]">
+                  <Link href={service.href} className="relative block w-full aspect-[16/10] overflow-hidden rounded-xl sm:h-64 sm:aspect-auto md:h-[260px] lg:h-[330px] xl:h-[360px]">
                     <Image
                       src={service.image}
                       alt={`${service.title} dashboard and campaign preview`}
