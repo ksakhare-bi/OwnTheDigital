@@ -59,7 +59,7 @@ export function WorkSection() {
             </div>
 
             <Card className="overflow-hidden border-none bg-background rounded-[20px] shadow-sm transition-all duration-300">
-              <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 p-5 sm:p-6 lg:p-6 lg:py-2">
+              <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-6 p-5 sm:p-6 lg:p-6 lg:py-2">
                 
                 {/* Column 1: Image + Description */}
                 <div className="flex flex-col gap-5">

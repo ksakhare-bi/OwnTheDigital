@@ -9,7 +9,7 @@ import { homeServices } from "@/content/home";
 function PracticeAreaSection() {
   return (
     <section className="mx-auto max-w-[1392px] px-4 pt-12 sm:px-6 sm:pt-4">
-     <div className="mt-8 grid items-center gap-6 rounded-[20px] sm:border border-border bg-background p-5 sm:mt-14 sm:gap-8 sm:p-8 lg:grid-cols-[1.25fr_1fr] xl:grid-cols-[1fr_546px] xl:gap-10 xl:p-8 lg:py-12 xl:py-12">
+     <div className="mt-8 grid items-center gap-6 rounded-[20px] sm:border border-border bg-background p-5 sm:mt-4 sm:gap-8 sm:p-6 lg:grid-cols-[1.25fr_1fr] xl:grid-cols-[1fr_546px] xl:gap-10 xl:p-8 lg:py-6 xl:py-12">
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3 mb-6 sm:mb-10">
             {homeServices.map((service, idx) => (
