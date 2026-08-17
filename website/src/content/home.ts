@@ -1,8 +1,13 @@
+export type HomeServiceItem = {
+  title: string;
+  detail: string;
+};
+
 export type HomeService = {
   title: string;
   eyebrow: string;
   description: string;
-  items: string[];
+  items: HomeServiceItem[];
   image: string;
   href: string;
 };
@@ -73,14 +78,28 @@ export const clientLogos: ClientLogo[] = [
 
 export const homeServices: HomeService[] = [
   {
+    title: "AI Marketing",
+    eyebrow: "AI Content • AI Video • Automation • AI Workflows • Chatbots",
+    description:
+      "Leverage AI to automate marketing, create content faster, and scale customer engagement.",
+    items: [
+      { title: "AI Video Creation", detail: "Generate engaging videos at scale using advanced AI algorithms." },
+      { title: "AI Content Creation", detail: "Produce high-quality written content tailored to your brand voice." },
+      { title: "AI Marketing Automation", detail: "Streamline campaigns and lead nurturing with intelligent workflows." },
+      { title: "AI Chatbots", detail: "Enhance customer support and engagement with conversational AI." },
+    ],
+    image: "/images/home/service-ai.png",
+    href: "/services/ai-marketing",
+  },
+  {
     title: "Search Visibility",
     eyebrow: "SEO • AEO • GEO • Local SEO • Technical SEO",
     description:
       "Get discovered where your customers search from Google to AI-powered search engines.",
     items: [
-      "Search Engine Optimization (SEO)",
-      "Answer Engine Optimization (AEO)",
-      "Generative Engine Optimization (GEO)",
+      { title: "Search Engine Optimization (SEO)", detail: "Rank higher on Google and drive organic traffic to your website." },
+      { title: "Answer Engine Optimization (AEO)", detail: "Optimize your brand to be the definitive answer on smart assistants." },
+      { title: "Generative Engine Optimization (GEO)", detail: "Ensure visibility in AI-generated search results and summaries." },
     ],
     image: "/images/home/service-search.png",
     href: "/services/search-visibility",
@@ -91,11 +110,11 @@ export const homeServices: HomeService[] = [
     description:
       "Launch data-driven ad campaigns that maximize leads, sales, and return on investment.",
     items: [
-      "Google Ads",
-      "Meta Ads",
-      "LinkedIn Ads",
-      "X (Twitter) Ads",
-      "AI-Powered Advertising",
+      { title: "Google Ads", detail: "Capture high-intent search traffic with optimized PPC campaigns." },
+      { title: "Meta Ads", detail: "Build brand awareness and drive conversions across Facebook and Instagram." },
+      { title: "LinkedIn Ads", detail: "Target professional audiences and generate high-quality B2B leads." },
+      { title: "X (Twitter) Ads", detail: "Engage with trending conversations and expand your brand reach." },
+      { title: "AI-Powered Advertising", detail: "Maximize ROAS through algorithmic bidding and dynamic creatives." },
     ],
     image: "/images/home/service-performance.png",
     href: "/services/performance-marketing",
@@ -107,9 +126,9 @@ export const homeServices: HomeService[] = [
     description:
       "Build a strong online presence with content, social media, and brand reputation management.",
     items: [
-      "Social Media Marketing",
-      "Content Marketing",
-      "Online Reputation Management",
+      { title: "Social Media Marketing", detail: "Cultivate community and brand loyalty across social platforms." },
+      { title: "Content Marketing", detail: "Educate and inspire your audience with valuable, relevant content." },
+      { title: "Online Reputation Management", detail: "Monitor and enhance your brand's digital perception and reviews." },
     ],
     image: "/images/home/service-digital.png",
     href: "/services/digital-marketing",
@@ -121,29 +140,15 @@ export const homeServices: HomeService[] = [
     description:
       "Create fast, scalable websites designed to convert visitors into customers.",
     items: [
-      "Business Website Development",
-      "E-commerce Development",
-      "Landing Page Development",
-      "Website Maintenance",
-      "UI/UX Design",
+      { title: "Business Website Development", detail: "Build professional, responsive websites that represent your brand." },
+      { title: "E-commerce Development", detail: "Create high-converting online stores with seamless shopping experiences." },
+      { title: "Landing Page Development", detail: "Design optimized pages engineered specifically for lead generation." },
+      { title: "Website Maintenance", detail: "Ensure your digital storefront remains secure, fast, and up-to-date." },
+      { title: "UI/UX Design", detail: "Craft intuitive user interfaces that delight customers and drive action." },
     ],
     image: "/images/home/service-web.png",
     href: "/services/web-development",
-  },
-  {
-    title: "AI Marketing",
-    eyebrow: "AI Content • AI Video • Automation • AI Workflows • Chatbots",
-    description:
-      "Leverage AI to automate marketing, create content faster, and scale customer engagement.",
-    items: [
-      "AI Video Creation",
-      "AI Content Creation",
-      "AI Marketing Automation",
-      "AI Chatbots",
-    ],
-    image: "/images/home/service-ai.png",
-    href: "/services/ai-marketing",
-  },
+  }
 ];
 
 export const advantages = [

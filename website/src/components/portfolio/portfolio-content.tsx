@@ -232,18 +232,13 @@ export function PortfolioProjectCard({ project }: { project: PortfolioProject })
 export function PortfolioContent() {
   return (
     <main className="mx-auto flex w-full max-w-[1416px] flex-col gap-8 px-4 pt-6 pb-0 sm:gap-[98px] sm:px-6 sm:pt-[98px] sm:pb-12">
-      <h1 className="text-center text-3xl leading-none font-extrabold tracking-tight text-primary uppercase sm:text-5xl lg:text-[78px] sm:-mb-6">
-        Portfolio
-      </h1>
-
       <section className="rounded-[20px] border border-border bg-background p-5 text-center sm:p-10 xl:p-[50px]">
         <div className="mx-auto flex max-w-[1316px] flex-col items-center gap-4 sm:gap-10">
           <h2 className="text-2xl leading-[1.1] font-bold tracking-[0.03em] text-primary uppercase sm:text-5xl lg:text-[72px]">
             Results That Speak Louder Than Promises.
           </h2>
-          <p className="text-xs leading-relaxed tracking-[0.03em] text-black sm:text-xl">
-            Every project is built around one goal—helping businesses grow
-            through strategy, creativity, and performance-driven marketing.
+          <p className="text-xs max-w-[935px] leading-relaxed tracking-[0.03em] text-black sm:text-xl">
+            Every project is built around one goal helping businesses grow through strategy, creativity, and performance-driven marketing.
           </p>
           <Link
             href="/contact"
