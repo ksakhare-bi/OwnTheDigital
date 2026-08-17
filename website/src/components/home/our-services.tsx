@@ -60,28 +60,28 @@ const ServiceCardItem = ({ service, hideEyebrows }: any) => {
 
                 <div className="w-full">
                   <Link href={service.href} className="inline-block transition-opacity hover:opacity-80">
-                    <h3 className="text-xl leading-[1.35] font-bold text-navy uppercase sm:text-xl sm:leading-[1.4] md:text-lg lg:text-2xl xl:text-3xl">
+                    <h3 className="text-xl leading-[1.35] font-bold text-navy uppercase sm:text-xl sm:leading-[1.4] md:text-lg lg:text-xl xl:text-3xl">
                       {service.title}
                     </h3>
                   </Link>
-                  <Accordion className="mt-4 ml-2 flex w-full max-w-[507px] flex-col gap-1 sm:mt-5 md:mt-4">
+                  <Accordion className="mt-4 ml-2 flex w-full max-w-[507px] flex-col gap-1 sm:mt-5 md:mt-4 lg:mt-3 xl:mt-4">
                     {service.items.map((item: any, itemIndex: number) => (
                       <AccordionItem
                         key={item.title}
                         value={`item-${itemIndex}`}
                         className="group/item border-b border-border last:border-0"
                       >
-                        <AccordionTrigger className="flex items-center justify-between gap-3 py-3 hover:no-underline lg:gap-4 lg:py-4">
-                          <div className="flex items-center gap-3 lg:gap-4">
+                        <AccordionTrigger className="flex items-center justify-between gap-3 py-3 hover:no-underline lg:gap-3 lg:py-2.5 xl:gap-4 xl:py-4">
+                          <div className="flex items-center gap-3 lg:gap-3 xl:gap-4">
                             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-navy/80 sm:h-2 sm:w-2"></span>
-                            <span className="text-left text-sm font-medium leading-tight text-navy uppercase sm:text-base md:text-sm lg:text-lg xl:text-xl">
+                            <span className="text-left text-sm font-medium leading-tight text-navy uppercase sm:text-base md:text-sm lg:text-[17px] xl:text-xl">
                               {item.title}
                             </span>
                           </div>
                         </AccordionTrigger>
-                        <AccordionContent className="pb-4 pl-[22px] sm:pl-[28px] lg:pb-5 lg:pl-[32px]">
+                        <AccordionContent className="pb-4 pl-[22px] sm:pl-[28px] lg:pb-3 lg:pl-[28px] xl:pb-5 xl:pl-[32px]">
                           <div className="flex items-end justify-between gap-4">
-                            <span className="text-xs leading-relaxed text-body sm:text-sm lg:text-base">
+                            <span className="text-xs leading-relaxed text-body sm:text-sm lg:text-[14px] xl:text-base">
                               {item.detail}
                             </span>
                             <Link
@@ -89,7 +89,7 @@ const ServiceCardItem = ({ service, hideEyebrows }: any) => {
                               className="shrink-0 rounded-full border border-border bg-surface-tint p-2 text-navy transition-all duration-300 hover:bg-gray-200"
                               aria-label={`Learn more about ${item.title}`}
                             >
-                              <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                              <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5 lg:h-4 lg:w-4 xl:h-5 xl:w-5" />
                             </Link>
                           </div>
                         </AccordionContent>

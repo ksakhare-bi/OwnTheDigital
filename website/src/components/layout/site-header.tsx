@@ -41,7 +41,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className={cn(
-                "font-mono text-sm transition hover:text-primary lg:text-base xl:text-xl",
+                "font-mono text-sm transition  hover:text-primary lg:text-lg xl:text-xl",
                 isActive(item.href) ? "text-primary" : "text-navy",
               )}
             >

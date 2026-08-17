@@ -15,10 +15,10 @@ export function HeroSection() {
             We help businesses win on
           </span>
           <span className="mt-1 block text-[0.90em] tracking-tight font-extrabold text-primary">
-            Google, Ads, AI search &amp; social media
+            Google, Ads, AI search &amp; <br className="hidden sm:block lg:block xl:hidden" /> social media
           </span>
         </h1>
-        <p className="mt-3 max-w-[1185px] text-sm leading-6 font-semibold text-body sm:mt-5 sm:text-lg sm:leading-7 md:mt-4 md:text-base md:leading-7 lg:text-xl lg:leading-8 xl:text-2xl xl:leading-9">
+        <p className="mt-3 max-w-[1185px] lg:px-32 xl:px-10 text-sm leading-6 font-semibold text-body sm:mt-5 sm:text-lg sm:leading-7 md:mt-4 md:text-base md:leading-7 lg:text-xl lg:leading-8 xl:text-2xl xl:leading-9">
           We combine data, creativity, and AI to help brands rank higher, run
           smarter campaigns, and turn traffic into measurable growth.
         </p>
