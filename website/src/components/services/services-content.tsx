@@ -8,8 +8,8 @@ import { homeServices } from "@/content/home";
 
 function PracticeAreaSection() {
   return (
-    <section className="mx-auto max-w-[1392px] px-4 pt-12 sm:px-6 sm:pt-4">
-     <div className="mt-8 grid items-center gap-6 rounded-[20px] sm:border border-border bg-background p-5 sm:mt-4 sm:gap-8 sm:p-6 lg:grid-cols-[1.25fr_1fr] xl:grid-cols-[1fr_546px] xl:gap-10 xl:p-8 lg:py-6 xl:py-12">
+    <section className="mx-auto max-w-[1392px] px-2 pt-0 sm:px-6 sm:pt-4 ">
+     <div className="mt-4 grid items-center gap-6 rounded-[20px] sm:border border-border bg-background p-5 sm:mt-4 sm:gap-8 sm:p-6 lg:grid-cols-[1.25fr_1fr] xl:grid-cols-[1fr_546px] xl:gap-10 xl:p-8 lg:py-6 xl:py-12">
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3 mb-6 sm:mb-10">
             {homeServices.map((service, idx) => (
@@ -20,7 +20,7 @@ function PracticeAreaSection() {
                 <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary font-mono text-sm sm:text-base font-bold group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                   0{idx + 1}
                 </div>
-                <span className="text-sm sm:text-lg font-semibold uppercase tracking-tight text-foreground/90 group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                <span className="text-base sm:text-lg font-semibold uppercase tracking-tight text-foreground/90 group-hover:text-primary transition-colors duration-300 line-clamp-2">
                   {service.title}
                 </span>
               </div>
@@ -54,7 +54,7 @@ export function ServicesContent() {
   return (
     <main>
       <PracticeAreaSection />
-      <div className="mb-6 sm:mb-0 lg:-mb-4 xl:-mb-6 pt-4 sm:pt-8 md:mt-10 lg:mt-14 xl:mt-20">
+      <div className="-mb-4 sm:mb-0 lg:-mb-4 xl:-mb-6 pt-9 sm:pt-16 md:mt-10 lg:mt-14 xl:mt-20">
         <ServicesSection hideTitle={true} />
       </div>
       <WorkSection />
