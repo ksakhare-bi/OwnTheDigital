@@ -95,7 +95,7 @@ export const homeServices: HomeService[] = [
     title: "Search Visibility",
     eyebrow: "SEO • AEO • GEO • Local SEO • Technical SEO",
     description:
-      "Get discovered where your customers search from Google to AI-powered search engines.",
+      "Get discovered where your customers search from Google to AI-powered search engines and more across web everywhere to boost your brand reach and maximize your online growth.",
     items: [
       { title: "Search Engine Optimization (SEO)", detail: "Rank higher on Google and drive organic traffic to your website." },
       { title: "Answer Engine Optimization (AEO)", detail: "Optimize your brand to be the definitive answer on smart assistants." },
@@ -124,7 +124,7 @@ export const homeServices: HomeService[] = [
     eyebrow:
       "Social Media • Content Marketing • ORM • Brand Growth • Engagement",
     description:
-      "Build a strong online presence with content, social media, and brand reputation management.",
+      "Build a strong online presence with content, social media, and brand reputation management to engage target audiences and drive consistent, scalable business revenue growth across all digital channels.",
     items: [
       { title: "Social Media Marketing", detail: "Cultivate community and brand loyalty across social platforms." },
       { title: "Content Marketing", detail: "Educate and inspire your audience with valuable, relevant content." },
