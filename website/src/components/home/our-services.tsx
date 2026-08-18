@@ -4,10 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import ScrollStack, { ScrollStackItem } from "@/components/ui/ScrollStack";
-
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { ArrowUpRight } from "lucide-react";
-
 import { SectionTitle } from "@/components/home/section-title";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,7 +18,15 @@ type ServicesSectionProps = {
   showExploreLinks?: boolean;
 };
 
-const ServiceCardItem = ({ service, hideEyebrows }: any) => {
+type ServiceItem = (typeof homeServices)[number];
+
+const ServiceCardItem = ({
+  service,
+  hideEyebrows,
+}: {
+  service: ServiceItem;
+  hideEyebrows?: boolean;
+}) => {
   return (
     <ScrollStackItem>
       <div className="w-full transition-shadow duration-300">
@@ -65,7 +71,7 @@ const ServiceCardItem = ({ service, hideEyebrows }: any) => {
                     </h3>
                   </Link>
                   <Accordion className="mt-2 ml-1 flex w-full max-w-[507px] flex-col gap-0 sm:gap-1 sm:mt-5 md:mt-4 lg:mt-3 xl:mt-4">
-                    {service.items.map((item: any, itemIndex: number) => (
+                    {service.items.map((item: { title: string; detail: string }, itemIndex: number) => (
                       <AccordionItem
                         key={item.title}
                         value={`item-${itemIndex}`}
@@ -113,7 +119,6 @@ const ServiceCardItem = ({ service, hideEyebrows }: any) => {
 export function ServicesSection({
   hideTitle = false,
   hideEyebrows = false,
-  showExploreLinks = false,
 }: ServicesSectionProps = {}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -213,7 +218,7 @@ export function ServicesSection({
           itemScale={0}
           stackPosition={isMobile ? "140" : "15%"}
         >
-          {homeServices.map((service, index) => {
+          {homeServices.map((service) => {
             return (
               <ServiceCardItem
                 key={service.title}

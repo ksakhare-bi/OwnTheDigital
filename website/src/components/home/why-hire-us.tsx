@@ -1,7 +1,7 @@
 import { SectionTitle } from "@/components/home/section-title";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { advantages, processSteps } from "@/content/home";
+import { advantages } from "@/content/home";
 
 export function WhyHireUsSection() {
   return (

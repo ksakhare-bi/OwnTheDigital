@@ -48,7 +48,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   children,
   className = "",
   itemDistance = 100,
-  itemScale = 0.03,
   itemStackDistance = 30,
   stackPosition = "20%",
   scaleEndPosition = "10%",
@@ -121,8 +120,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     const intrinsicHeights = cards.map((card) => card.offsetHeight);
 
-    const N = cards.length;
-
     // Define stackPositionPx inside measureCards
     const containerHeight = getContainerHeight() || window.innerHeight;
     const stackPositionPx = parsePosition(stackPosition, containerHeight);
@@ -155,7 +152,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     cards.forEach((card) => {
       card.style.position = "sticky";
     });
-  }, [getScrollTop, useWindowScroll]);
+  }, [getContainerHeight, getScrollTop, itemDistance, itemStackDistance, parsePosition, stackPosition, useWindowScroll]);
 
   /**
    * Update all card transforms.
@@ -178,11 +175,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     const stackPositionPx = parsePosition(
       stackPosition,
-      containerHeight,
-    );
-
-    const scaleEndPositionPx = parsePosition(
-      scaleEndPosition,
       containerHeight,
     );
 
@@ -212,32 +204,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       : 0;
 
     const pinEnd = endTop - containerHeight / 2;
-
-    /**
-     * Determine the card currently sitting on top.
-     *
-     * We calculate this once rather than once per card.
-     */
-    let topCardIndex = 0;
-
-    if (blurAmount > 0) {
-      for (let i = 0; i < cards.length; i++) {
-        const cardTop = currentPositions[i];
-
-        if (cardTop == null) {
-          continue;
-        }
-
-        const triggerStart =
-          cardTop -
-          stackPositionPx -
-          itemStackDistance * i;
-
-        if (scrollTop >= triggerStart) {
-          topCardIndex = i;
-        }
-      }
-    }
 
     cards.forEach((card, index) => {
       // Apply native sticky pinning dynamically
@@ -339,10 +305,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     getContainerHeight,
     parsePosition,
     stackPosition,
-    scaleEndPosition,
     itemStackDistance,
-    baseScale,
-    itemScale,
     rotationAmount,
     blurAmount,
     measureCards,
@@ -392,7 +355,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     /**
      * Initial card setup.
      */
-    cards.forEach((card, index) => {
+    cards.forEach((card) => {
       // Dynamic padding/margin for simultaneous release is handled in measureCards!
       card.style.position = "sticky";
       card.style.willChange = "transform";
