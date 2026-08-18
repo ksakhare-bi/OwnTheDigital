@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 export function HeroSection() {
   return (
     <section className="mx-auto max-w-[1392px] px-4 pt-4 sm:px-6 sm:pt-10 md:pt-8 lg:pt-12 xl:pt-14">
-      <div className="flex min-h-0 flex-col items-center justify-center overflow-hidden rounded-[16px] border border-border bg-background px-4 py-8 text-center sm:min-h-[530px] sm:rounded-[20px] sm:px-8 sm:py-12 md:min-h-[420px] md:px-8 md:py-10 lg:min-h-[460px] lg:px-8 lg:py-12 xl:min-h-[530px] xl:px-10 xl:py-16">
+      <div className="flex min-h-0 flex-col items-center justify-center overflow-hidden rounded-[16px] border border-border bg-background px-4 py-8 text-center sm:min-h-[300px] sm:rounded-[20px] sm:px-8 sm:py-12 md:min-h-[420px] md:px-8 md:py-10 lg:min-h-[460px] lg:px-8 lg:py-12 xl:min-h-[530px] xl:px-10 xl:py-16">
         <h1 className="w-full max-w-[1390px] text-[clamp(1.6rem,6.2vw,70px)] leading-[1.2] font-normal text-black uppercase sm:text-[clamp(1.75rem,calc(5.6vw-8px),70px)] lg:text-[56px] lg:leading-[1.3] xl:text-[70px] xl:leading-[1.5]">
           <span className="block font-light tracking-tight">
             We help businesses win on
@@ -18,7 +18,7 @@ export function HeroSection() {
             Google, Ads, AI search &amp; <br className="hidden sm:block lg:block xl:hidden" /> social media
           </span>
         </h1>
-        <p className="mt-3 max-w-[1185px] lg:px-32 xl:px-10 text-sm leading-6 font-semibold text-body sm:mt-5 sm:text-lg sm:leading-7 md:mt-4 md:text-base md:leading-7 lg:text-xl lg:leading-8 xl:text-2xl xl:leading-9">
+        <p className="mt-3 max-w-[1185px] md:px-28 lg:px-32 xl:px-10 text-sm leading-6 font-semibold text-body sm:mt-5 sm:text-lg sm:leading-7 md:mt-4 md:text-base md:leading-7 lg:text-xl lg:leading-8 xl:text-2xl xl:leading-9">
           We combine data, creativity, and AI to help brands rank higher, run
           smarter campaigns, and turn traffic into measurable growth.
         </p>
@@ -27,7 +27,7 @@ export function HeroSection() {
             href="/contact"
             className={cn(
               buttonVariants(),
-              "h-11 rounded-full px-6 font-mono text-sm font-semibold sm:h-14 sm:px-7 sm:text-base md:h-11 md:px-5 md:text-sm lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
+              "h-11 rounded-full px-6 font-mono text-sm font-semibold sm:h-11 sm:px-7 sm:text-base md:h-11 md:px-5 md:text-sm lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
             )}
           >
             Get a free Audit
@@ -36,7 +36,7 @@ export function HeroSection() {
             href="/services"
             className={cn(
               buttonVariants({ variant: "outline" }),
-              "hidden h-14 rounded-full border-primary bg-transparent px-7 font-mono text-base font-semibold text-primary hover:bg-surface-tint hover:text-primary sm:inline-flex md:h-11 md:px-5 md:text-sm lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
+              "hidden h-11 rounded-full border-primary bg-transparent px-7 font-mono text-base font-semibold text-primary hover:bg-surface-tint hover:text-primary sm:inline-flex md:h-11 md:px-5 md:text-sm lg:h-12 lg:px-5 lg:text-sm xl:h-16 xl:px-8 xl:text-lg",
             )}
           >
             Explore services

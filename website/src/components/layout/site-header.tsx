@@ -33,15 +33,15 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1392px] items-center justify-between px-4 sm:h-24 sm:px-6">
         <Link href="/" className="shrink-0">
-          <SiteLogo priority className="w-36 lg:w-40 xl:w-48" />
+          <SiteLogo priority className="w-36 md:w-40 lg:w-48 xl:w-48" />
         </Link>
-        <nav className="hidden items-center md:flex md:gap-4 lg:gap-5 xl:gap-14">
+        <nav className="hidden items-center md:flex md:gap-4 lg:gap-8 xl:gap-14">
           {mainNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "font-mono text-sm transition  hover:text-primary lg:text-lg xl:text-xl",
+                "font-mono text-sm transition hover:text-primary md:text-base lg:text-lg xl:text-xl",
                 isActive(item.href) ? "text-primary" : "text-navy",
               )}
             >
