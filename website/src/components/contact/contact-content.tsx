@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
@@ -7,7 +10,84 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
+interface FieldErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+}
+
 export function ContactContent() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{
+    type: "success" | "error" | null;
+    text: string;
+  }>({ type: null, text: "" });
+
+  const validate = () => {
+    const errs: FieldErrors = {};
+    if (!formData.name.trim()) errs.name = "Name is required";
+    if (!formData.email.trim()) {
+      errs.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      errs.email = "Please enter a valid email address";
+    }
+    if (!formData.message.trim()) errs.message = "Question is required";
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FieldErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatusMessage({ type: null, text: "" });
+
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to send message.");
+      }
+
+      setStatusMessage({
+        type: "success",
+        text: "Thank you! Your message has been sent.",
+      });
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setErrors({});
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Something went wrong.";
+      setStatusMessage({ type: "error", text: msg });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="mx-auto w-full max-w-[1392px] px-4 pt-10 sm:px-6 sm:pt-10 sm:pb-16">
       <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
@@ -26,46 +106,85 @@ export function ContactContent() {
             <h2 className="text-xl font-bold tracking-tight text-navy uppercase sm:text-2xl">
               Ask Your Question
             </h2>
-            <form className="flex flex-col gap-5">
+            {statusMessage.type === "success" && (
+              <p className="text-sm font-medium text-emerald-600">{statusMessage.text}</p>
+            )}
+            {statusMessage.type === "error" && (
+              <p className="text-sm font-medium text-red-600">{statusMessage.text}</p>
+            )}
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="space-y-2">
-                <label className="text-xs font-bold tracking-wide uppercase text-navy font-mono">
-                  Name
+                <label className="text-xs font-bold tracking-wide uppercase text-navy">
+                  Name <span className="text-red-500">*</span>
                 </label>
                 <Input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Enter your name"
                   className="h-12 rounded-[10px] bg-surface-tint border-0 px-4 text-base focus-visible:ring-2 focus-visible:ring-primary/20 text-navy placeholder:text-muted-foreground/60"
                 />
+                {errors.name && (
+                  <p className="text-xs text-red-500 font-medium mt-1">{errors.name}</p>
+                )}
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold tracking-wide uppercase text-navy font-mono">
-                  Email
+                <label className="text-xs font-bold tracking-wide uppercase text-navy">
+                  Email <span className="text-red-500">*</span>
                 </label>
                 <Input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Enter your email"
+                  className="h-12 rounded-[10px] bg-surface-tint border-0 px-4 text-base focus-visible:ring-2 focus-visible:ring-primary/20 text-navy placeholder:text-muted-foreground/60"
+                />
+                {errors.email && (
+                  <p className="text-xs text-red-500 font-medium mt-1">{errors.email}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold tracking-wide uppercase text-navy">
+                  Phone Number (Optional)
+                </label>
+                <Input
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Enter your phone number"
                   className="h-12 rounded-[10px] bg-surface-tint border-0 px-4 text-base focus-visible:ring-2 focus-visible:ring-primary/20 text-navy placeholder:text-muted-foreground/60"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold tracking-wide uppercase text-navy font-mono">
-                  Your Question
+                <label className="text-xs font-bold tracking-wide uppercase text-navy">
+                  Your Question <span className="text-red-500">*</span>
                 </label>
                 <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Enter Your Question Here ...."
                   className="min-h-32 rounded-[10px] bg-surface-tint border-0 px-4 py-3 text-base focus-visible:ring-2 focus-visible:ring-primary/20 text-navy placeholder:text-muted-foreground/60"
                 />
+                {errors.message && (
+                  <p className="text-xs text-red-500 font-medium mt-1">{errors.message}</p>
+                )}
               </div>
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className={cn(
                   buttonVariants(),
-                  "h-12 sm:h-14 w-full rounded-full bg-primary font-mono text-base font-semibold hover:bg-primary/95 text-white mt-2",
+                  "h-12 sm:h-14 w-full rounded-full bg-primary text-base font-semibold hover:bg-primary/95 text-white mt-2 cursor-pointer disabled:opacity-60",
                 )}
               >
-                Send Your Message
+                {isSubmitting ? "Sending..." : "Send Your Message"}
               </button>
             </form>
           </CardContent>
@@ -85,7 +204,7 @@ export function ContactContent() {
 
             {/* India Contact Section */}
             <div className="space-y-4 pt-2">
-              <h3 className="text-base sm:text-lg font-bold tracking-wider text-primary uppercase font-mono">
+              <h3 className="text-base sm:text-lg font-bold tracking-wider text-primary uppercase">
                 India
               </h3>
               <div className="flex items-center gap-4 bg-surface-tint p-4 rounded-[10px]">
@@ -113,7 +232,7 @@ export function ContactContent() {
 
             {/* USA Contact Section */}
             <div className="space-y-4 pt-4">
-              <h3 className="text-base sm:text-lg font-bold tracking-wider text-primary uppercase font-mono">
+              <h3 className="text-base sm:text-lg font-bold tracking-wider text-primary uppercase">
                 USA
               </h3>
               <div className="flex items-center gap-4 bg-surface-tint p-4 rounded-[10px]">

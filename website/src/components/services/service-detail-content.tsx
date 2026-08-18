@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -17,6 +18,154 @@ import { getServiceDetailBySlug } from "@/content/sub-services";
 import { projects } from "@/content/home";
 import { PortfolioProjectCard } from "@/components/portfolio/portfolio-content";
 import { cn } from "@/lib/utils";
+
+function ServiceQuestionForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    question: "",
+  });
+  const [errors, setErrors] = useState<{ name?: string; email?: string; question?: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusText, setStatusText] = useState<{ type: "success" | "error" | null; text: string }>({
+    type: null,
+    text: "",
+  });
+
+  function validate() {
+    const errs: { name?: string; email?: string; question?: string } = {};
+    if (!formData.name.trim()) errs.name = "Name is required";
+    if (!formData.email.trim()) {
+      errs.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      errs.email = "Please enter a valid email address";
+    }
+    if (!formData.question.trim()) errs.question = "Question is required";
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatusText({ type: null, text: "" });
+
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.question,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to submit message.");
+      }
+
+      setStatusText({ type: "success", text: "Thank you! Your message has been sent." });
+      setFormData({ name: "", email: "", question: "" });
+      setErrors({});
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Something went wrong.";
+      setStatusText({ type: "error", text: msg });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  return (
+    <Card className="rounded-[20px] border-border bg-background p-5 sm:p-6 shadow-none">
+      <CardContent className="p-0 flex flex-col gap-4">
+        <h3 className="text-base font-bold text-navy uppercase font-mono border-b border-border pb-3">
+          ASK YOUR QUESTION
+        </h3>
+
+        {statusText.type === "success" && (
+          <p className="text-xs font-medium text-emerald-600 sm:text-sm">{statusText.text}</p>
+        )}
+        {statusText.type === "error" && (
+          <p className="text-xs font-medium text-red-600 sm:text-sm">{statusText.text}</p>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-[10px] sm:text-xs font-semibold text-navy uppercase mb-1">
+              NAME <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={(e) => {
+                setFormData((prev) => ({ ...prev, name: e.target.value }));
+                if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
+              }}
+              placeholder="Enter your name"
+              className="w-full h-11 px-4 rounded-[10px] border border-border bg-surface-soft text-xs sm:text-sm outline-none"
+            />
+            {errors.name && (
+              <p className="text-xs text-red-500 font-medium mt-1">{errors.name}</p>
+            )}
+          </div>
+          <div>
+            <label className="block text-[10px] sm:text-xs font-semibold text-navy uppercase mb-1">
+              EMAIL <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={(e) => {
+                setFormData((prev) => ({ ...prev, email: e.target.value }));
+                if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }));
+              }}
+              placeholder="Enter your email"
+              className="w-full h-11 px-4 rounded-[10px] border border-border bg-surface-soft text-xs sm:text-sm outline-none"
+            />
+            {errors.email && (
+              <p className="text-xs text-red-500 font-medium mt-1">{errors.email}</p>
+            )}
+          </div>
+          <div>
+            <label className="block text-[10px] sm:text-xs font-semibold text-navy uppercase mb-1">
+              YOUR QUESTION <span className="text-red-500">*</span>
+            </label>
+            <textarea
+              name="question"
+              value={formData.question}
+              onChange={(e) => {
+                setFormData((prev) => ({ ...prev, question: e.target.value }));
+                if (errors.question) setErrors((prev) => ({ ...prev, question: undefined }));
+              }}
+              placeholder="Enter your question here..."
+              rows={4}
+              className="w-full p-4 rounded-[10px] border border-border bg-surface-soft text-xs sm:text-sm outline-none resize-none"
+            />
+            {errors.question && (
+              <p className="text-xs text-red-500 font-medium mt-1">{errors.question}</p>
+            )}
+          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={cn(
+              buttonVariants(),
+              "h-11 w-full rounded-full bg-primary font-mono text-xs sm:text-sm font-semibold text-white disabled:opacity-60 cursor-pointer",
+            )}
+          >
+            {isSubmitting ? "Sending..." : "Send Your Message"}
+          </button>
+        </form>
+      </CardContent>
+    </Card>
+  );
+}
 
 export function ServiceDetailContent({ slug }: { slug: string }) {
   const service = getServiceBySlug(slug);
@@ -283,48 +432,7 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
             ))}
           </Accordion>
 
-          <Card className="rounded-[20px] border-border bg-background p-5 sm:p-6 shadow-none">
-            <CardContent className="p-0 flex flex-col gap-4">
-              <h3 className="text-base font-bold text-navy uppercase font-mono border-b border-border pb-3">
-                ASK YOUR QUESTION
-              </h3>
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-                <div>
-                  <label className="block text-[10px] sm:text-xs font-semibold text-navy uppercase mb-1">NAME</label>
-                  <input
-                    type="text"
-                    placeholder="Enter your name"
-                    className="w-full h-11 px-4 rounded-[10px] border border-border bg-surface-soft text-xs sm:text-sm outline-none"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] sm:text-xs font-semibold text-navy uppercase mb-1">EMAIL</label>
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full h-11 px-4 rounded-[10px] border border-border bg-surface-soft text-xs sm:text-sm outline-none"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] sm:text-xs font-semibold text-navy uppercase mb-1">YOUR QUESTION</label>
-                  <textarea
-                    placeholder="Enter your question here..."
-                    rows={4}
-                    className="w-full p-4 rounded-[10px] border border-border bg-surface-soft text-xs sm:text-sm outline-none resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className={cn(
-                    buttonVariants(),
-                    "h-11 w-full rounded-full bg-primary font-mono text-xs sm:text-sm font-semibold text-white",
-                  )}
-                >
-                  Send Your Message
-                </button>
-              </form>
-            </CardContent>
-          </Card>
+          <ServiceQuestionForm />
         </div>
       </section>
 

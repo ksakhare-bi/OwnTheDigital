@@ -1,6 +1,6 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 
 import { SectionTitle } from "@/components/home/section-title";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -11,8 +11,63 @@ import { Textarea } from "@/components/ui/textarea";
 import { faqs } from "@/content/home";
 
 function QuestionForm() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    question: "",
+  });
+  const [errors, setErrors] = useState<{ name?: string; email?: string; question?: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusText, setStatusText] = useState<{ type: "success" | "error" | null; text: string }>({
+    type: null,
+    text: "",
+  });
+
+  function validate() {
+    const errs: { name?: string; email?: string; question?: string } = {};
+    if (!formData.name.trim()) errs.name = "Name is required";
+    if (!formData.email.trim()) {
+      errs.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      errs.email = "Please enter a valid email address";
+    }
+    if (!formData.question.trim()) errs.question = "Question is required";
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setStatusText({ type: null, text: "" });
+
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.question,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to submit question.");
+      }
+
+      setStatusText({ type: "success", text: "Thank you! Your question has been submitted." });
+      setFormData({ name: "", email: "", question: "" });
+      setErrors({});
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Something went wrong.";
+      setStatusText({ type: "error", text: msg });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -21,43 +76,76 @@ function QuestionForm() {
         <h3 className="border-b border-border pb-4 text-lg font-medium text-navy uppercase md:text-xl lg:pb-5 lg:text-xl xl:pb-7 xl:text-2xl">
           Ask your question
         </h3>
+
+        {statusText.type === "success" && (
+          <p className="mt-3 text-xs font-medium text-emerald-600 sm:text-sm">{statusText.text}</p>
+        )}
+        {statusText.type === "error" && (
+          <p className="mt-3 text-xs font-medium text-red-600 sm:text-sm">{statusText.text}</p>
+        )}
+
         <form onSubmit={handleSubmit} className="mt-4 space-y-3 md:space-y-4">
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-navy uppercase md:text-base">
-              Name
+              Name <span className="text-red-500">*</span>
             </span>
             <Input
               name="name"
+              value={formData.name}
+              onChange={(e) => {
+                setFormData((prev) => ({ ...prev, name: e.target.value }));
+                if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
+              }}
               placeholder="Enter your name"
               className="h-10 rounded-[10px] border-border bg-surface-soft px-3 text-sm md:h-12 md:px-4 md:text-base lg:h-14 lg:px-4 xl:h-[72px] xl:px-6 xl:text-lg"
             />
+            {errors.name && (
+              <span className="mt-1 block text-xs font-medium text-red-500">{errors.name}</span>
+            )}
           </label>
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-navy uppercase md:text-base">
-              Email
+              Email <span className="text-red-500">*</span>
             </span>
             <Input
               type="email"
               name="email"
+              value={formData.email}
+              onChange={(e) => {
+                setFormData((prev) => ({ ...prev, email: e.target.value }));
+                if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }));
+              }}
               placeholder="Enter your email"
               className="h-10 rounded-[10px] border-border bg-surface-soft px-3 text-sm md:h-12 md:px-4 md:text-base lg:h-14 lg:px-4 xl:h-[72px] xl:px-6 xl:text-lg"
             />
+            {errors.email && (
+              <span className="mt-1 block text-xs font-medium text-red-500">{errors.email}</span>
+            )}
           </label>
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-navy uppercase md:text-base">
-              Your Question
+              Your Question <span className="text-red-500">*</span>
             </span>
             <Textarea
               name="question"
+              value={formData.question}
+              onChange={(e) => {
+                setFormData((prev) => ({ ...prev, question: e.target.value }));
+                if (errors.question) setErrors((prev) => ({ ...prev, question: undefined }));
+              }}
               placeholder="Enter your question here..."
               className="min-h-24 resize-none rounded-[10px] border-border bg-surface-soft p-3 text-sm md:min-h-28 md:p-4 md:text-base lg:min-h-32 xl:min-h-40 xl:p-6 xl:text-lg"
             />
+            {errors.question && (
+              <span className="mt-1 block text-xs font-medium text-red-500">{errors.question}</span>
+            )}
           </label>
           <Button
             type="submit"
-            className="h-10 w-full rounded-full font-mono text-sm font-normal md:h-12 lg:h-12 xl:h-16 xl:text-lg"
+            disabled={isSubmitting}
+            className="h-10 w-full rounded-full font-mono text-sm font-normal md:h-12 lg:h-12 xl:h-16 xl:text-lg disabled:opacity-60"
           >
-            Send Your Message
+            {isSubmitting ? "Sending..." : "Send Your Message"}
           </Button>
         </form>
       </CardContent>
