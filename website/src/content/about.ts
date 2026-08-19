@@ -95,15 +95,15 @@ export const expertiseItems = [
       "Our data-driven approach ensures that we deliver tangible results.",
   },
   {
-    number: "04",
-    title: "Continual Improvement",
-    description:
-      "We develop personalized strategies that align with your specific goals.",
-  },
-  {
     number: "03",
     title: "Dedicated Support",
     description:
       "Our team is always available to provide support and guidance.",
+  },
+  {
+    number: "04",
+    title: "Continual Improvement",
+    description:
+      "We continuously analyze performance data and optimize strategies to drive sustained growth.",
   },
 ];

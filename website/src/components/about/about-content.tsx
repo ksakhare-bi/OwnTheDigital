@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 
+import { SectionTitle } from "@/components/home/section-title";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -19,57 +20,41 @@ const teamSocials = [
   { label: "Instagram", icon: "/images/home/social-instagram.svg" },
 ];
 
-function AboutSectionTitle({
-  lead,
-  accent,
-  className
-}: {
-  lead: string;
-  accent: string;
-  className?: string;
-}) {
-  return (
-    <h2 className={cn("text-center text-3xl leading-none font-bold tracking-tight text-black uppercase sm:text-4xl md:text-5xl lg:text-[60px] xl:text-[78px] ", className)}>
-      {lead} <span className="text-primary">{accent}</span>
-    </h2>
-  );
-}
-
 function CompanySection() {
   return (
-    <section>
-      <AboutSectionTitle lead="About the" accent="Company" />
-      <div className="mt-6 sm:mt-10 lg:mt-12 grid items-center gap-10 lg:grid-cols-[0.9fr_1fr] xl:grid-cols-[0.9fr_1fr]">
-        <div className="hidden sm:block relative min-h-[420px] overflow-hidden rounded-3xl lg:h-[585px]">
+    <section className="pt-4 sm:pt-7">
+      <SectionTitle lead="About the" accent="Company" className="xl:text-[70px]" />
+      <div className="mt-6 sm:mt-10 lg:mt-12 grid items-center gap-8 lg:grid-cols-2 xl:gap-12">
+        <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto lg:h-[480px] xl:h-[450px] overflow-hidden rounded-[20px] sm:rounded-3xl border border-border/50">
           <Image
             src="/images/home/about-company.png"
             alt="Own the Digital team collaborating around a table"
             fill
             priority
-            sizes="(max-width: 1024px) 100vw, 639px"
+            sizes="(max-width: 1024px) 100vw, 640px"
             className="object-cover"
           />
         </div>
-        <div className="flex flex-col justify-center gap-6 sm:gap-10 lg:h-[585px]">
+        <div className="flex flex-col justify-center gap-6 sm:gap-8">
           <div className="text-center lg:text-left">
-            <p className="text-sm font-semibold text-primary sm:text-base">
+            <p className="text-xs sm:text-sm font-bold text-primary uppercase tracking-wider">
               We&apos;ve helped hundreds of companies
             </p>
-            <h3 className="mt-2 text-xl leading-[1.35] font-medium tracking-[-0.02em] text-navy sm:mt-3 sm:text-3xl">
+            <h3 className="mt-2 text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-navy leading-snug">
               Transforming Visions into Digital Reality
             </h3>
           </div>
-          <div className="grid grid-cols-2 gap-3 sm:gap-5">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {companyStats.map((stat) => (
               <Card
                 key={stat.label}
-                className="rounded-[14px] border border-border bg-surface-soft py-0 shadow-none"
+                className="rounded-[16px] border border-border bg-surface-soft py-0 shadow-none"
               >
-                <CardContent className="px-3 py-4 text-center uppercase sm:px-4 sm:py-[20px] md:px-5 md:py-[30px]">
-                  <p className="font-mono text-xs font-medium text-body sm:text-sm md:text-base xl:text-lg">
+                <CardContent className="p-4 text-center sm:p-5">
+                  <p className="font-mono text-xs sm:text-sm font-semibold text-body uppercase tracking-wider">
                     {stat.label}
                   </p>
-                  <p className="mt-2 text-3xl leading-none font-semibold text-primary sm:mt-3 sm:text-4xl md:mt-4 md:text-[50px] xl:text-[60px]">
+                  <p className="mt-1.5 text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary leading-tight">
                     {stat.value}
                   </p>
                 </CardContent>
@@ -80,7 +65,7 @@ function CompanySection() {
             href="/contact"
             className={cn(
               buttonVariants(),
-              "h-12 w-full rounded-full px-6 font-mono text-base font-bold sm:h-13 sm:px-7 sm:text-sm md:h-14 md:text-base xl:h-16 xl:px-8 xl:text-lg",
+              "h-11 sm:h-12 md:h-13 w-full rounded-full px-6 font-mono text-xs sm:text-sm md:text-base font-semibold uppercase tracking-wide",
             )}
           >
             Contact Us
@@ -93,23 +78,23 @@ function CompanySection() {
 
 function ProblemsSection() {
   return (
-    <section className="pt-5 xl:pt-10">
-      <AboutSectionTitle lead="The Problem" accent="We Solve" className="px-16" />
-      <div className="mt-6 sm:mt-10 grid gap-4 sm:gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:gap-x-7 xl:gap-y-20">
+    <section className="pt-4 sm:pt-7">
+      <SectionTitle lead="The Problem" accent="We Solve" />
+      <div className="mt-6 sm:mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {businessProblems.map((problem, index) => (
           <Card
             key={problem.title}
-            className="min-h-[220px] rounded-[20px] border border-border bg-background py-0 shadow-none sm:min-h-[180px] md:min-h-[200px] xl:min-h-[348px]"
+            className="rounded-[20px] border border-border bg-background py-0 shadow-none flex flex-col justify-between"
           >
-            <CardContent className="flex h-full flex-col px-5 py-6 sm:px-6 sm:py-7 md:px-7 md:py-9 xl:px-[31px] xl:py-[45px]">
-              <p className="font-mono text-xl tracking-[0.03em] text-body sm:text-xl md:text-2xl xl:text-[32px]">
+            <CardContent className="flex h-full flex-col justify-between p-5 sm:p-6 lg:p-7">
+              <p className="font-mono text-base sm:text-lg md:text-xl font-bold tracking-wider text-primary">
                 {String(index + 1).padStart(2, "0")}
               </p>
-              <div className="mt-auto pt-6 sm:pt-10 md:pt-14">
-                <h3 className="text-2xl leading-none font-bold tracking-[0.03em] text-navy sm:text-xl md:text-2xl lg:text-3xl xl:text-[50px]">
+              <div className="mt-6 sm:mt-8">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-navy leading-snug">
                   {problem.title}
                 </h3>
-                <p className="mt-3 text-sm leading-[1.5] tracking-[0.03em] text-body sm:mt-4 sm:text-sm md:mt-5 md:text-base">
+                <p className="mt-2.5 text-xs sm:text-sm md:text-base text-body leading-relaxed">
                   {problem.description}
                 </p>
               </div>
@@ -123,8 +108,8 @@ function ProblemsSection() {
 
 function TeamSection() {
   return (
-    <section className="pt-5 xl:pt-10">
-      <AboutSectionTitle lead="Meet the" accent="Team" />
+    <section className="pt-4 sm:pt-7">
+      <SectionTitle lead="Meet the" accent="Team" />
       <div className="mt-6 sm:mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4 xl:gap-x-[31px] xl:gap-y-[50px]">
         {teamMembers.map((member) => (
           <Card
@@ -204,35 +189,37 @@ function TeamSection() {
 
 function ExpertiseSection() {
   return (
-    <section className="pt-8 xl:pt-10">
-      <AboutSectionTitle lead="Our" accent="Expertise" />
-      <div className="mt-6 sm:mt-10 grid items-stretch gap-6 sm:gap-[30px] lg:grid-cols-[1.45fr_1fr] xl:grid-cols-[1.45fr_1fr]">
+    <section className="pt-6 sm:pt-7">
+      <SectionTitle lead="Our" accent="Expertise" />
+      <div className="mt-6 sm:mt-10 grid items-stretch gap-6 lg:grid-cols-[1.3fr_1fr] xl:gap-8">
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
           {expertiseItems.map((item) => (
             <Card
               key={item.number}
-              className="rounded-[20px] border border-border bg-background py-0 shadow-none"
+              className="rounded-[20px] border border-border bg-background py-0 shadow-none flex flex-col justify-between"
             >
-              <CardContent className="flex h-full min-h-[240px] flex-col items-center px-5 py-6 text-center sm:min-h-[260px] sm:px-5 sm:py-8 md:min-h-[300px] md:px-6 md:py-10 xl:min-h-[344px]">
-                <div className="flex size-14 items-center justify-center rounded-full border border-border bg-surface-pale font-mono text-xl tracking-[0.03em] text-primary sm:size-16 sm:text-xl md:size-20 md:text-2xl xl:size-[100px] xl:text-[40px]">
+              <CardContent className="flex h-full flex-col items-center p-5 text-center sm:p-6 lg:p-7 justify-between">
+                <div className="flex size-12 sm:size-14 md:size-16 items-center justify-center rounded-full border border-border bg-surface-pale font-mono text-base sm:text-lg md:text-xl font-bold tracking-wider text-primary shrink-0">
                   {item.number}
                 </div>
-                <h3 className="mt-4 max-w-[310px] text-2xl leading-none font-bold tracking-[0.03em] text-navy sm:mt-4 sm:text-xl md:mt-5 md:text-2xl lg:text-3xl xl:text-[40px]">
-                  {item.title}
-                </h3>
-                <p className="mt-3 max-w-[292px] text-sm leading-[1.4] tracking-[0.03em] text-body sm:mt-4 sm:text-sm md:mt-5 md:text-base">
-                  {item.description}
-                </p>
+                <div className="mt-4 flex flex-col items-center">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold tracking-tight text-navy leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-xs sm:text-sm text-body leading-relaxed max-w-xs">
+                    {item.description}
+                  </p>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
-        <div className="hidden lg:block relative min-h-[500px] overflow-hidden rounded-[20px] lg:min-h-0">
+        <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto lg:h-full min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] overflow-hidden rounded-[20px] border border-border/50">
           <Image
             src="/images/home/about-expertise.png"
-            alt="A digital strategy map show}ing connected ideas"
+            alt="A digital strategy map showing connected ideas"
             fill
-            sizes="(max-width: 1024px) 100vw, 552px"
+            sizes="(max-width: 1024px) 100vw, 550px"
             className="object-cover"
           />
         </div>
@@ -244,7 +231,7 @@ function ExpertiseSection() {
 export function AboutContent() {
   return (
     <main className="bg-background">
-      <div className="mx-auto flex w-full max-w-[1392px] flex-col gap-16 sm:gap-28 lg:gap-36 px-4 pt-20 sm:pt-16 lg:pt-32 pb-10 sm:px-6 sm:pb-10">
+      <div className="mx-auto flex w-full max-w-[1392px] flex-col gap-14 sm:gap-20 md:gap-24 lg:gap-28 px-4 pt-10 sm:pt-12 md:pt-16 pb-12 sm:px-6 sm:pb-16 lg:pb-20">
         <CompanySection />
         <ProblemsSection />
         <TeamSection />
