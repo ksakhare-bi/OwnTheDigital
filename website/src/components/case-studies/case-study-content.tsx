@@ -57,9 +57,9 @@ export function CaseStudyContent({ slug }: { slug: string }) {
                 <span className="font-mono text-2xl sm:text-3xl font-semibold text-navy/60">
                   {(idx + 1).toString().padStart(2, "0")}
                 </span>
-                <h4 className="text-xl font-bold text-navy sm:text-2xl mt-4">
+                <h3 className="text-xl font-bold text-navy sm:text-2xl mt-4">
                   {challenge.title}
-                </h4>
+                </h3>
                 <p className="text-sm sm:text-base text-body leading-relaxed">
                   {challenge.description}
                 </p>
@@ -86,9 +86,9 @@ export function CaseStudyContent({ slug }: { slug: string }) {
                 <span className="font-mono text-2xl sm:text-3xl font-semibold text-navy/60">
                   {(idx + 1).toString().padStart(2, "0")}
                 </span>
-                <h4 className="text-xl font-bold text-navy sm:text-2xl mt-4">
+                <h3 className="text-xl font-bold text-navy sm:text-2xl mt-4">
                   {sol.title}
-                </h4>
+                </h3>
                 <ul className="flex flex-col gap-3">
                   {sol.items.map((item, itemIdx) => (
                     <li key={itemIdx} className="text-sm sm:text-base leading-relaxed text-body flex items-start gap-2">
@@ -159,7 +159,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
           </p>
         </div>
         <div className="rounded-[20px] bg-primary p-6 sm:p-12 xl:p-[60px] text-white flex flex-col gap-4 shadow-none">
-          <span className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-white/80 uppercase">
+          <span className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-white uppercase">
             {study.testimonial.author}, {study.testimonial.role}
           </span>
           <p className="text-base sm:text-xl leading-relaxed font-medium">
