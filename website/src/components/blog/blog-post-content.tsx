@@ -88,7 +88,7 @@ function PostCtaCard({ post }: { post: BlogPostDetailView }) {
           <div className="relative aspect-[16/10] overflow-hidden rounded-[20px]">
             <Image
               src={post.image}
-              alt=""
+              alt={`${post.title} thumbnail`}
               fill
               sizes="(max-width: 1024px) 100vw, 480px"
               className="object-contain"

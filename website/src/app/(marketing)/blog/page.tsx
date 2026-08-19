@@ -7,6 +7,16 @@ export const metadata: Metadata = {
   title: "Blogs",
   description:
     "Insights on SEO, digital marketing, and growth strategy from Own the Digital.",
+  openGraph: {
+    title: "Blogs | Own the Digital",
+    description: "Insights on SEO, digital marketing, and growth strategy from Own the Digital.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blogs | Own the Digital",
+    description: "Insights on SEO, digital marketing, and growth strategy from Own the Digital.",
+  },
 };
 
 export const dynamic = "force-dynamic";

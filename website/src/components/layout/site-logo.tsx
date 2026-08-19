@@ -19,9 +19,8 @@ export function SiteLogo({ className, priority = false }: SiteLogoProps) {
     >
       <span className="absolute top-0 left-0 h-full w-[13.542%]">
         <Image
-          src="/images/home/brand-mark.png"
-          alt=""
-          aria-hidden
+          src="/images/logo/brand-mark.png"
+          alt="Own the Digital"
           fill
           priority={priority}
           sizes="26px"
@@ -30,7 +29,7 @@ export function SiteLogo({ className, priority = false }: SiteLogoProps) {
       </span>
       <span className="absolute top-[1.458%] left-[14.063%] h-[92.788%] w-[85.939%]">
         <Image
-          src="/images/home/brand-wordmark.svg"
+          src="/images/logo/brand-wordmark.svg"
           alt="Own the Digital"
           fill
           priority={priority}

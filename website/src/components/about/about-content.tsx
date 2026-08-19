@@ -27,7 +27,7 @@ function CompanySection() {
       <div className="mt-6 sm:mt-10 lg:mt-12 grid items-center gap-8 lg:grid-cols-2 xl:gap-12">
         <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto lg:h-[480px] xl:h-[450px] overflow-hidden rounded-[20px] sm:rounded-3xl border border-border/50">
           <Image
-            src="/images/home/about-company.png"
+            src="/images/about/about-company.png"
             alt="Own the Digital team collaborating around a table"
             fill
             priority
@@ -168,7 +168,7 @@ function TeamSection() {
                         ) : (
                           <Image
                             src={social.icon}
-                            alt=""
+                            alt={social.label}
                             width={21}
                             height={21}
                             className="size-10 object-contain sm:size-20"
@@ -216,7 +216,7 @@ function ExpertiseSection() {
         </div>
         <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto lg:h-full min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] overflow-hidden rounded-[20px] border border-border/50">
           <Image
-            src="/images/home/about-expertise.png"
+            src="/images/about/about-expertise.png"
             alt="A digital strategy map showing connected ideas"
             fill
             sizes="(max-width: 1024px) 100vw, 550px"

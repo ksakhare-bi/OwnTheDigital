@@ -11,22 +11,22 @@ const socialLinks = [
   {
     label: "Phone",
     href: "#",
-    icon: "/images/home/social-phone.svg",
+    icon: "/images/social/social-phone.svg",
   },
   {
     label: "Instagram",
     href: "#",
-    icon: "/images/home/social-instagram.svg",
+    icon: "/images/social/social-instagram.svg",
   },
   {
     label: "Facebook",
     href: "#",
-    icon: "/images/home/social-facebook.svg",
+    icon: "/images/social/social-facebook.svg",
   },
   {
     label: "LinkedIn",
     href: "#",
-    icon: "/images/home/social-linkedin.svg",
+    icon: "/images/social/social-linkedin.svg",
   },
 ] as const;
 
@@ -66,7 +66,7 @@ function SocialRow({ className }: { className?: string }) {
             ) : (
               <Image
                 src={social.icon}
-                alt=""
+                alt={social.label}
                 width={28}
                 height={28}
                 className="size-6 object-contain lg:size-8"

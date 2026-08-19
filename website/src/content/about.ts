@@ -42,42 +42,42 @@ export const teamMembers = [
   {
     name: "Ayushi Agrawal",
     role: "SEO & SMO Specialist",
-    image: "/images/home/team-ayushi.svg",
+    image: "/images/team/team-ayushi.webp",
   },
   {
     name: "Nikhil Banka",
     role: "SEO Specialist",
-    image: "/images/home/team-nikhil.svg",
+    image: "/images/team/team-nikhil.webp",
   },
   {
     name: "Bhumika Solanki",
     role: "SEO Specialist",
-    image: "/images/home/team-bhumika.svg",
+    image: "/images/team/team-bhumika.webp",
   },
   {
     name: "Sumit Barapatra",
     role: "Sr. UI/UX Designer & Developer",
-    image: "/images/home/team-sumit.svg",
+    image: "/images/team/team-sumit.webp",
   },
   {
     name: "Shruti Gupta",
     role: "SEO Specialist",
-    image: "/images/home/team-shruti.svg",
+    image: "/images/team/team-shruti.webp",
   },
   {
     name: "Nandini Sharma",
     role: "Content Specialist",
-    image: "/images/home/team-nandini.svg",
+    image: "/images/team/team-nandini.webp",
   },
   {
     name: "Dhruv",
     role: "PPC Specialist",
-    image: "/images/home/team-dhruv.svg",
+    image: "/images/team/team-dhruv.webp",
   },
   {
     name: "Kashif Pathan",
     role: "Sr. Web Developer",
-    image: "/images/home/team-kashif.svg",
+    image: "/images/team/team-kashif.webp",
   },
 ];
 

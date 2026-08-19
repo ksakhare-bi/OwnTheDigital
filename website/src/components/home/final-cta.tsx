@@ -11,6 +11,7 @@ export function FinalCtaSection() {
         <Image
           src="/images/home/cta-decoration.svg"
           alt=""
+          aria-hidden="true"
           width={1284}
           height={40}
           className="absolute top-8 left-1/2 w-[92%] -translate-x-1/2 opacity-90 sm:top-12 md:top-10 lg:top-16 xl:top-24"
