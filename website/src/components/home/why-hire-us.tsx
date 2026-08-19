@@ -25,7 +25,7 @@ export function WhyHireUsSection() {
                   {advantage.description}
                 </p>
               </div>
-              <Badge className="mt-4 h-auto w-fit max-w-full rounded-full border border-border bg-surface-tint px-3 py-1.5 text-left text-xs leading-4 font-bold whitespace-normal text-success uppercase hover:bg-surface-tint md:mt-auto lg:text-xs xl:px-4 xl:py-3 xl:text-sm xl:leading-5">
+              <Badge className="mt-4 h-auto w-fit max-w-full rounded-full border border-border bg-surface-tint px-3 py-1.5 text-left text-xs leading-4 font-bold whitespace-normal text-navy uppercase hover:bg-surface-tint md:mt-auto lg:text-xs xl:px-4 xl:py-3 xl:text-sm xl:leading-5">
                 {advantage.result}
               </Badge>
             </CardContent>

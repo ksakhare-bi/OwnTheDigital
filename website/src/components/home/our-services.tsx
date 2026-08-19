@@ -37,11 +37,11 @@ const ServiceCardItem = ({
               style={{ opacity: "var(--stack-content-opacity, 1)" }}
             >
               {!hideEyebrows ? (
-                <Badge className="h-auto max-w-full rounded-full border border-border bg-surface-tint px-2 py-2 text-left text-[11px] leading-4 font-bold whitespace-normal text-success uppercase hover:bg-surface-tint sm:px-3 sm:py-1.5 sm:text-xs lg:px-3 lg:py-2 lg:text-sm lg:leading-4 xl:px-4 xl:py-3 xl:text-base xl:leading-5">
+                <Badge className="h-auto max-w-full rounded-full border border-border bg-surface-tint px-2 py-2 text-left text-[11px] leading-4 font-bold whitespace-normal text-navy uppercase hover:bg-surface-tint sm:px-3 sm:py-1.5 sm:text-xs lg:px-3 lg:py-2 lg:text-sm lg:leading-4 xl:px-4 xl:py-3 xl:text-base xl:leading-5">
                   {service.eyebrow}
                 </Badge>
               ) : (
-                <Badge className="hidden h-auto max-w-full rounded-full border border-border bg-surface-tint px-2 py-2 text-left text-[11px] leading-4 font-bold whitespace-normal text-success uppercase hover:bg-surface-tint sm:px-3 sm:py-1.5 sm:inline-flex sm:text-xs lg:px-3 lg:py-2 lg:text-sm lg:leading-4 xl:px-4 xl:py-3 xl:text-base xl:leading-5">
+                <Badge className="hidden h-auto max-w-full rounded-full border border-border bg-surface-tint px-2 py-2 text-left text-[11px] leading-4 font-bold whitespace-normal text-navy uppercase hover:bg-surface-tint sm:px-3 sm:py-1.5 sm:inline-flex sm:text-xs lg:px-3 lg:py-2 lg:text-sm lg:leading-4 xl:px-4 xl:py-3 xl:text-base xl:leading-5">
                   {service.eyebrow}
                 </Badge>
               )}
