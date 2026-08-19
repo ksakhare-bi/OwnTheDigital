@@ -99,7 +99,7 @@ export function SiteHeader() {
                     href="/contact"
                     className={cn(
                       buttonVariants(),
-                      "h-14 w-full rounded-full font-mono text-base",
+                      "h-12 w-full rounded-full font-mono text-base",
                     )}
                   />
                 }
