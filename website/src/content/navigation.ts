@@ -18,7 +18,6 @@ export const mainNav: NavItem[] = [
       },
       { label: "Digital Marketing", href: "/services/digital-marketing" },
       { label: "Web Development", href: "/services/web-development" },
-      { label: "AI Video Production", href: "/services/ai-video-production" },
     ],
   },
   { label: "About", href: "/about" },

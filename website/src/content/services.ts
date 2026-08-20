@@ -43,13 +43,6 @@ export const services: ServiceDefinition[] = [
     description: "Modern websites and product experiences that convert.",
     figmaNodeId: "521:5240",
   },
-  {
-    slug: "ai-video-production",
-    title: "AI Video Production",
-    shortTitle: "AI Video",
-    description: "Faster, scalable brand video production with AI.",
-    figmaNodeId: "521:3940",
-  },
 ];
 
 export function getServiceBySlug(slug: string): ServiceDefinition | undefined {
