@@ -134,7 +134,7 @@ function TeamSection() {
                     fill
                     quality={98}
                     sizes="(max-width: 640px) 100vw, 284px"
-                    className="object-contain"
+                    className="object-cover"
                   />
                 </div>
                 <div className="relative z-10 mt-4 flex justify-center gap-4 sm:mt-6 sm:gap-6">
