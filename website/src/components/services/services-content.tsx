@@ -37,7 +37,7 @@ function PracticeAreaSection() {
 
         <div className="hidden aspect-[16/10] overflow-hidden rounded-[14px] sm:relative sm:block sm:aspect-[370/310]">
           <Image
-            src="/images/home/about-company.png"
+            src="/images/services/service-company.png"
             alt="A marketing team collaborating around a table"
             fill
             priority

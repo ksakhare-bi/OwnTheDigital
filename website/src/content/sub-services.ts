@@ -37,7 +37,7 @@ export const serviceDetailsList: ServiceDetail[] = [
     heroSubheadline: "Harness the power of AI to create content faster, automate workflows, optimize campaigns, and deliver personalized customer experiences that drive measurable growth",
     whatIsTitle: "WHAT IS AI MARKETING?",
     whatIsDescription: "AI Marketing uses artificial intelligence to streamline marketing processes, improve decision-making, and enhance customer engagement. From AI-generated content and videos to intelligent automation and workflow optimization, we help businesses work more efficiently while delivering better marketing results.",
-    whatIsImage: "/images/home/about-expertise.png",
+    whatIsImage: "/images/services/service-expertise.png",
     whoIsItFor: [
       "STARTUPS & SCALE-UPS",
       "MARKETING TEAMS",
@@ -155,7 +155,7 @@ export const serviceDetailsList: ServiceDetail[] = [
     heroSubheadline: "Help your business rank higher on search engines and become discoverable in AI-powered platforms like ChatGPT, Gemini, and Perplexity.",
     whatIsTitle: "WHAT IS SEARCH VISIBILITY?",
     whatIsDescription: "Search visibility is the process of ensuring your business appears where customers search, whether on Google, Bing, or AI-powered search engines. We combine Search Engine Optimization (SEO), Answer Engine Optimization (AEO), and Generative Engine Optimization (GEO) to help your brand stay visible across traditional and AI-driven search experiences.",
-    whatIsImage: "/images/home/about-expertise.png", // fallback placeholder image
+    whatIsImage: "/images/services/service-company.png",
     whoIsItFor: [
       "B2B & B2C BUSINESSES",
       "SAAS COMPANIES",
@@ -284,7 +284,7 @@ export const serviceDetailsList: ServiceDetail[] = [
     heroSubheadline: "Reach the right audience, maximize your ad spend, and generate measurable business growth with data-driven advertising campaigns.",
     whatIsTitle: "WHAT IS PERFORMANCE MARKETING?",
     whatIsDescription: "Performance Marketing is a results-driven approach to digital advertising where every campaign is optimized to achieve measurable outcomes whether that's generating leads, increasing sales, or maximizing return on ad spend (ROAS). Using real-time data and continuous optimization, we ensure every marketing dollar works harder for your business.",
-    whatIsImage: "/images/home/about-expertise.png", // fallback placeholder image
+    whatIsImage: "/images/services/service-expertise.png", // fallback placeholder image
     whoIsItFor: [
       "STARTUPS & SCALE-UPS",
       "E-COMMERCE BRANDS",
@@ -402,7 +402,7 @@ export const serviceDetailsList: ServiceDetail[] = [
     heroSubheadline: "Connect with your audience through strategic content, social media, and reputation management that builds trust, increases engagement, and drives measurable business growth.",
     whatIsTitle: "WHAT IS DIGITAL MARKETING?",
     whatIsDescription: "Digital Marketing is a comprehensive approach to promoting your business across online channels. By combining social media marketing, content marketing, and online reputation management, we help you attract, engage, and retain customers while building a strong digital presence.",
-    whatIsImage: "/images/home/about-expertise.png", // fallback placeholder image
+    whatIsImage: "/images/services/service-company.png",
     whoIsItFor: [
       "STARTUPS & SCALE-UPS",
       "E-COMMERCE BRANDS",
@@ -517,7 +517,7 @@ export const serviceDetailsList: ServiceDetail[] = [
     heroSubheadline: "We design and develop fast, responsive, and conversion-focused websites that deliver exceptional user experiences and help turn visitors into customers.",
     whatIsTitle: "WHAT IS WEB DESIGN & DEVELOPMENT?",
     whatIsDescription: "Your website is often the first impression of your business. We create modern, user-centric websites that combine beautiful design, seamless functionality, and high performance to support your business goals. From business websites and e-commerce stores to landing pages and UI/UX design, we build digital experiences that convert.",
-    whatIsImage: "/images/home/about-expertise.png", 
+    whatIsImage: "/images/services/service-expertise.png",
     whoIsItFor: [
       "STARTUPS & SCALE-UPS",
       "E-COMMERCE BRANDS",
