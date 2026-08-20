@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
+
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 
 import { usePathname } from "next/navigation";
 
@@ -20,6 +22,7 @@ import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [expandedNav, setExpandedNav] = useState<string | null>(null);
 
   const isActive = (href: string, exact: boolean = false) => {
     if (!pathname) return false;
@@ -44,29 +47,35 @@ export function SiteHeader() {
               <Link
                 href={item.href}
                 className={cn(
-                  "font-mono text-sm transition hover:text-primary md:text-base lg:text-lg xl:text-xl",
+                  "inline-flex items-center gap-1 font-mono text-sm transition hover:text-primary md:text-base lg:text-lg xl:text-xl",
                   isActive(item.href, !!item.children) ? "text-primary" : "text-navy",
                 )}
               >
                 {item.label}
+                {item.children && (
+                  <ChevronDown className="mt-1 h-4 w-4 transition-transform group-hover:rotate-180" />
+                )}
               </Link>
               {item.children && (
-                <div className="absolute left-1/2 top-full hidden w-64 -translate-x-1/2 pt-2 group-hover:block">
-                  <div className="flex flex-col overflow-hidden rounded-xl bg-background p-2 shadow-xl ring-1 ring-border">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className={cn(
-                          "block rounded-lg px-4 py-3 font-mono text-sm transition-colors hover:bg-gray-200",
-                          isActive(child.href)
-                            ? "bg-gray-100 text-primary"
-                            : "text-navy",
-                        )}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                <div className="absolute left-1/2 top-full hidden w-64 -translate-x-1/2 pt-3 group-hover:block">
+                  <div className="relative">
+                    <div className="absolute -top-2 left-1/2 z-20 h-4 w-4 -translate-x-1/2 rotate-45 rounded-tl-[2px] border-l border-t border-border bg-background" />
+                    <div className="relative z-10 flex flex-col overflow-hidden rounded-xl bg-background p-2 shadow-xl ring-1 ring-border">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className={cn(
+                            "block rounded-lg px-4 py-3 font-mono text-sm transition-colors hover:bg-gray-200",
+                            isActive(child.href)
+                              ? "bg-gray-100 text-primary"
+                              : "text-navy",
+                          )}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -97,24 +106,45 @@ export function SiteHeader() {
             <nav className="flex flex-col gap-4 p-6">
               {mainNav.map((item) => (
                 <div key={item.href} className="flex flex-col gap-2">
-                  <SheetClose
-                    nativeButton={false}
-                    render={
-                      <Link
-                        href={item.href}
-                        className={cn(
-                          "group border-b pb-2 pt-1 font-mono text-lg transition-colors hover:border-primary hover:text-primary",
-                          isActive(item.href, !!item.children)
-                            ? "border-primary text-primary"
-                            : "border-border text-navy",
-                        )}
-                      />
-                    }
+                  <div
+                    className={cn(
+                      "flex items-center justify-between border-b pb-2 pt-1 font-mono text-base transition-colors hover:border-primary",
+                      isActive(item.href, !!item.children)
+                        ? "border-primary text-primary"
+                        : "border-border text-navy",
+                    )}
                   >
-                    {item.label}
-                  </SheetClose>
-                  {item.children && (
-                    <div className="flex flex-col pl-4">
+                    {item.children ? (
+                      <>
+                        <SheetClose
+                          nativeButton={false}
+                          render={<Link href={item.href} className="flex-1 hover:text-primary" />}
+                        >
+                          {item.label}
+                        </SheetClose>
+                        <button
+                          onClick={() => setExpandedNav(expandedNav === item.href ? null : item.href)}
+                          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-gray-100"
+                        >
+                          <ChevronDown
+                            className={cn(
+                              "h-5 w-5 transition-transform",
+                              expandedNav === item.href ? "rotate-180" : ""
+                            )}
+                          />
+                        </button>
+                      </>
+                    ) : (
+                      <SheetClose
+                        nativeButton={false}
+                        render={<Link href={item.href} className="flex-1 hover:text-primary" />}
+                      >
+                        {item.label}
+                      </SheetClose>
+                    )}
+                  </div>
+                  {item.children && expandedNav === item.href && (
+                    <div className="flex flex-col pl-3">
                       {item.children.map((child) => (
                         <SheetClose
                           key={child.href}
