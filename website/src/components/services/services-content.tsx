@@ -15,7 +15,7 @@ function PracticeAreaSection() {
             {homeServices.map((service, idx) => (
               <div 
                 key={service.title} 
-                className="group flex items-center gap-3 sm:gap-3 p-3 sm:p-4 rounded-2xl bg-background border border-border shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-primary/40 transition-all duration-300 cursor-pointer"
+                className="group flex items-center gap-3 sm:gap-3 p-3 sm:p-4 rounded-2xl bg-background border border-border shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-primary/40 transition-all duration-300"
               >
                 <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary font-mono text-sm sm:text-base font-bold group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                   0{idx + 1}
