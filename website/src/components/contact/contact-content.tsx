@@ -212,10 +212,10 @@ export function ContactContent() {
                   <Phone className="size-5" />
                 </div>
                 <Link
-                  href="tel:+911234567890"
+                  href="tel:+919993067849"
                   className="text-sm sm:text-base font-semibold text-navy hover:underline"
                 >
-                  +91 1234567890
+                  +91 9993067849
                 </Link>
               </div>
 
