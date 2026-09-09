@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createContactSubmission } from "@/services/contact.service";
+import { sendContactEmails } from "@/services/email.service";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters long"),
@@ -24,6 +25,13 @@ export async function POST(request: Request) {
     }
 
     const contact = await createContactSubmission(validation.data);
+
+    // Send both client acknowledgment and owner notification emails
+    try {
+      await sendContactEmails(validation.data);
+    } catch (emailErr) {
+      console.error("Error sending contact notification emails:", emailErr);
+    }
 
     return NextResponse.json(
       {
