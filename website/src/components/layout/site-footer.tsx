@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaInstagram, FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { MdLocalPhone } from "react-icons/md";
 
@@ -10,22 +10,17 @@ import { footerNav } from "@/content/navigation";
 const socialLinks = [
   {
     label: "Phone",
-    href: "#",
+    href: "tel:+919993067849",
     icon: "/images/social/social-phone.svg",
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/ownthedigital/",
     icon: "/images/social/social-instagram.svg",
   },
   {
-    label: "Facebook",
-    href: "#",
-    icon: "/images/social/social-facebook.svg",
-  },
-  {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/own-the-digital",
     icon: "/images/social/social-linkedin.svg",
   },
 ] as const;
@@ -43,9 +38,6 @@ function SocialRow({ className }: { className?: string }) {
         } else if (social.label === "Instagram") {
           IconComponent = FaInstagram;
           iconColorClass = "text-primary";
-        } else if (social.label === "Facebook") {
-          IconComponent = FaFacebookF;
-          iconColorClass = "text-primary";
         } else if (social.label === "Phone") {
           IconComponent = MdLocalPhone;
           iconColorClass = "text-primary";
@@ -56,6 +48,8 @@ function SocialRow({ className }: { className?: string }) {
             key={social.label}
             href={social.href}
             aria-label={social.label}
+            target={social.label === "Phone" ? "_self" : "_blank"}
+            rel="noopener noreferrer"
             className={cn(
               "flex size-12 items-center justify-center rounded-[10px] border border-border bg-surface-tint transition hover:border-primary lg:size-16 sm:bg-background",
               iconColorClass,

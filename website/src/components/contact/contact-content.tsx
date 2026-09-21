@@ -243,7 +243,7 @@ export function ContactContent() {
                   href="tel:+12065533419"
                   className="text-sm sm:text-base font-semibold text-navy hover:underline"
                 >
-                  1(206)5533419
+                  +1 206 553 3419
                 </Link>
               </div>
 

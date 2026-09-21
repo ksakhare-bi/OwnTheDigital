@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaInstagram, FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 
 import { SectionTitle } from "@/components/home/section-title";
@@ -16,7 +16,6 @@ import { cn } from "@/lib/utils";
 
 const teamSocials = [
   { label: "LinkedIn", icon: "/images/home/social-linkedin.svg" },
-  { label: "Facebook", icon: "/images/home/social-facebook.svg" },
   { label: "Instagram", icon: "/images/home/social-instagram.svg" },
 ];
 
@@ -145,9 +144,7 @@ function TeamSection() {
                     if (social.label === "LinkedIn") {
                       IconComponent = FaLinkedin;
                       iconColorClass = "text-primary";
-                    } else if (social.label === "Facebook") {
-                      IconComponent = FaFacebookF;
-                      iconColorClass = "text-primary";
+
                     } else if (social.label === "Instagram") {
                       IconComponent = FaInstagram;
                       iconColorClass = "text-primary";

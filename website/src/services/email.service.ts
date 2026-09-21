@@ -131,7 +131,7 @@ export async function sendContactEmails(
                   🇮🇳 <strong>India:</strong> <a href="tel:+919993067849" style="color: #2563eb; text-decoration: none;">+91 9993067849</a>
                 </p>
                 <p style="margin: 0 0 4px 0; font-size: 13px; color: #475569;">
-                  🇺🇸 <strong>USA:</strong> <a href="tel:+12065533419" style="color: #2563eb; text-decoration: none;">+1 (206) 553-3419</a>
+                  🇺🇸 <strong>USA:</strong> <a href="tel:+12065533419" style="color: #2563eb; text-decoration: none;">+1 206 553 3419</a>
                 </p>
                 <p style="margin: 0; font-size: 13px; color: #475569;">
                   ✉️ <strong>Email:</strong> <a href="mailto:dev.ownthedigital@gmail.com" style="color: #2563eb; text-decoration: none;">dev.ownthedigital@gmail.com</a>
@@ -174,7 +174,7 @@ ${contact.phone ? `- Phone: ${contact.phone}` : ""}
 
 Need immediate assistance?
 - India: +91 9993067849
-- USA: +1 (206) 553-3419
+- USA: +1 206 553 3419
 - Email: dev.ownthedigital@gmail.com
 
 Warm regards,
