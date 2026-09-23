@@ -130,9 +130,10 @@ type BlogContentProps = {
 };
 
 export function BlogContent({ blogs = [], currentPage = 1 }: BlogContentProps) {
-  const hasDbBlogs = blogs.length > 0;
+  const hasBlogs = blogs.length > 0;
   
-  const displayPosts: BlogPostCard[] = hasDbBlogs
+  const displayPosts: BlogPostCard[] = hasBlogs
+
     ? blogs.map((blog) => {
         let wordCount = blog.intro ? blog.intro.split(/\s+/).length : 0;
         if (blog.sections) {

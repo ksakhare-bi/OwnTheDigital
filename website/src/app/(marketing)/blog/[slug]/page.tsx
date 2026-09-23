@@ -16,23 +16,23 @@ export async function generateMetadata({
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
   
-  // Try DB first
-  const dbBlog = await getPublishedBlogBySlug(slug);
-  if (dbBlog) {
+  // Fetch from Admin API
+  const blog = await getPublishedBlogBySlug(slug);
+  if (blog) {
     return {
-      title: dbBlog.title,
-      description: dbBlog.excerpt,
+      title: blog.title,
+      description: blog.excerpt,
       openGraph: {
-        title: dbBlog.title,
-        description: dbBlog.excerpt,
+        title: blog.title,
+        description: blog.excerpt,
         type: "article",
-        images: dbBlog.image ? [{ url: dbBlog.image, width: 1200, height: 630, alt: dbBlog.title }] : [],
+        images: blog.image ? [{ url: blog.image, width: 1200, height: 630, alt: blog.title }] : [],
       },
       twitter: {
         card: "summary_large_image",
-        title: dbBlog.title,
-        description: dbBlog.excerpt,
-        images: dbBlog.image ? [dbBlog.image] : [],
+        title: blog.title,
+        description: blog.excerpt,
+        images: blog.image ? [blog.image] : [],
       },
     };
   }
@@ -65,11 +65,11 @@ export async function generateMetadata({
 export default async function BlogPostPage({ params } : BlogPostPageProps) {
   const { slug } = await params;
   
-  // Try DB first
-  const dbBlog = await getPublishedBlogBySlug(slug);
-  if (dbBlog) {
-    const formattedDate = dbBlog.publishedAt
-      ? new Date(dbBlog.publishedAt).toLocaleDateString("en-US", {
+  // Fetch from Admin API
+  const blog = await getPublishedBlogBySlug(slug);
+  if (blog) {
+    const formattedDate = blog.publishedAt
+      ? new Date(blog.publishedAt).toLocaleDateString("en-US", {
           day: "numeric",
           month: "long",
           year: "numeric",
@@ -77,22 +77,23 @@ export default async function BlogPostPage({ params } : BlogPostPageProps) {
       : "";
 
     const mappedPost = {
-      slug: dbBlog.slug,
-      title: dbBlog.title,
-      image: dbBlog.image || "/images/home/about-company.png",
-      excerpt: dbBlog.excerpt,
+      slug: blog.slug,
+      title: blog.title,
+      image: blog.image || "/images/home/about-company.png",
+      excerpt: blog.excerpt,
       publishedAt: formattedDate.toUpperCase(),
-      tags: dbBlog.tags || ["Digital Marketing", "Strategy"],
-      intro: dbBlog.intro,
-      sections: dbBlog.sections || [],
+      tags: blog.tags || ["Digital Marketing", "Strategy"],
+      intro: blog.intro,
+      sections: blog.sections || [],
     };
 
     // Resolve next suggested blog
     const allBlogs = await listPublishedBlogs();
     const index = allBlogs.findIndex((b) => b.slug === slug);
-    const nextBlog = (allBlogs.length > 1 && index !== -1)
-      ? allBlogs[(index + 1) % allBlogs.length]
-      : (blogPostDetails[0] || dbBlog);
+    const nextBlog =
+      allBlogs.length > 1 && index !== -1
+        ? allBlogs[(index + 1) % allBlogs.length]
+        : blogPostDetails[0] || blog;
 
     const formattedNextDate = nextBlog.publishedAt
       ? new Date(nextBlog.publishedAt).toLocaleDateString("en-US", {
@@ -113,7 +114,9 @@ export default async function BlogPostPage({ params } : BlogPostPageProps) {
       sections: nextBlog.sections || [],
     };
 
-    return <BlogPostContent post={mappedPost} suggestedPost={mappedSuggestedPost} />;
+    return (
+      <BlogPostContent post={mappedPost} suggestedPost={mappedSuggestedPost} />
+    );
   }
 
   // Fallback to static
