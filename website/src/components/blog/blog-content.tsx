@@ -135,17 +135,22 @@ export function BlogContent({ blogs = [], currentPage = 1 }: BlogContentProps) {
   const displayPosts: BlogPostCard[] = hasBlogs
 
     ? blogs.map((blog) => {
-        let wordCount = blog.intro ? blog.intro.split(/\s+/).length : 0;
-        if (blog.sections) {
-          blog.sections.forEach((sec) => {
-            wordCount += sec.heading ? sec.heading.split(/\s+/).length : 0;
-            wordCount += sec.description ? sec.description.split(/\s+/).length : 0;
-            if (sec.bullets) {
-              sec.bullets.forEach((b) => {
-                wordCount += b ? b.split(/\s+/).length : 0;
-              });
-            }
-          });
+        let wordCount = 0;
+        if (blog.content) {
+          wordCount = blog.content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
+        } else if (blog.intro) {
+          wordCount = blog.intro.split(/\s+/).length;
+          if (blog.sections) {
+            blog.sections.forEach((sec) => {
+              wordCount += sec.heading ? sec.heading.split(/\s+/).length : 0;
+              wordCount += sec.description ? sec.description.split(/\s+/).length : 0;
+              if (sec.bullets) {
+                sec.bullets.forEach((b) => {
+                  wordCount += b ? b.split(/\s+/).length : 0;
+                });
+              }
+            });
+          }
         }
         const readTimeMin = Math.max(1, Math.ceil(wordCount / 200));
         const formattedDate = blog.publishedAt
@@ -159,14 +164,15 @@ export function BlogContent({ blogs = [], currentPage = 1 }: BlogContentProps) {
         return {
           slug: blog.slug,
           title: blog.title,
-          category: blog.category || "Digital Marketing",
+          category: blog.category || "Artificial Intelligence",
           readTime: blog.readTime || `${readTimeMin} Mins`,
           excerpt: blog.excerpt,
-          image: blog.image || "/images/home/about-company.png",
+          image: blog.featuredImage?.url || blog.image || "/images/home/about-company.png",
           publishedAt: formattedDate.toUpperCase(),
         };
       })
     : blogPosts;
+
 
   const itemsPerPage = 6;
   const totalPages = Math.ceil(displayPosts.length / itemsPerPage);
