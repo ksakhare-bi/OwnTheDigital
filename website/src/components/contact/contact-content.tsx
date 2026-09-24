@@ -122,6 +122,7 @@ export function ContactContent() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  disabled={isSubmitting}
                   placeholder="Enter your name"
                   className="h-12 rounded-[10px] bg-surface-tint border-0 px-4 text-base focus-visible:ring-2 focus-visible:ring-primary/20 text-navy placeholder:text-muted-foreground/60"
                 />
@@ -139,6 +140,7 @@ export function ContactContent() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  disabled={isSubmitting}
                   placeholder="Enter your email"
                   className="h-12 rounded-[10px] bg-surface-tint border-0 px-4 text-base focus-visible:ring-2 focus-visible:ring-primary/20 text-navy placeholder:text-muted-foreground/60"
                 />
@@ -155,6 +157,7 @@ export function ContactContent() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  disabled={isSubmitting}
                   placeholder="Enter your phone number"
                   className="h-12 rounded-[10px] bg-surface-tint border-0 px-4 text-base focus-visible:ring-2 focus-visible:ring-primary/20 text-navy placeholder:text-muted-foreground/60"
                 />
@@ -168,6 +171,7 @@ export function ContactContent() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  disabled={isSubmitting}
                   placeholder="Enter Your Question Here ...."
                   className="min-h-32 rounded-[10px] bg-surface-tint border-0 px-4 py-3 text-base focus-visible:ring-2 focus-visible:ring-primary/20 text-navy placeholder:text-muted-foreground/60"
                 />
