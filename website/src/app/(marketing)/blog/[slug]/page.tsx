@@ -260,7 +260,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           "author" in nextBlog && typeof nextBlog.author === "string"
             ? nextBlog.author
             : "author" in nextBlog && typeof nextBlog.author === "object" && nextBlog.author && "name" in nextBlog.author
-              ? { name: String((nextBlog.author as any).name) }
+              ? { name: String((nextBlog.author as { name?: unknown }).name) }
               : undefined,
         tags: Array.isArray(nextBlog.tags) ? nextBlog.tags.map(String) : ["Digital Marketing", "Strategy"],
         intro: nextBlog.intro ? String(nextBlog.intro) : undefined,
