@@ -1,12 +1,6 @@
 import type { Blog } from "@/types/blog";
+import { getAdminApiUrl } from "@/utils/api";
 
-function getAdminApiUrl(): string {
-  return (
-    process.env.ADMIN_API_URL ||
-    process.env.NEXT_PUBLIC_ADMIN_URL ||
-    "http://localhost:3001"
-  ).replace(/\/$/, "");
-}
 
 /** Public site: fetch published blogs from Admin API */
 export async function listPublishedBlogs(): Promise<Blog[]> {

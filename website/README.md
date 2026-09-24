@@ -1,12 +1,12 @@
 # Own the Digital — Website
 
-Public marketing site. Reads published blogs from the shared MongoDB database. Never writes CMS data.
+Public marketing site. Fetches published blogs and submits contacts via the Admin API. Completely decoupled from direct database access.
 
 ## Stack
 
 - Next.js 15 (App Router) + TypeScript
 - Tailwind CSS
-- MongoDB + Mongoose (read-only blog queries)
+- REST API Client (fetches from Admin API)
 - SEO-first, responsive
 
 ## Routes (from Figma Final)

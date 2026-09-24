@@ -1,43 +1,29 @@
-import { connectToDatabase } from "@/lib/db";
-import { ContactModel } from "@/models/contact.model";
 import type { Contact, CreateContactInput } from "@/types/contact";
+import { getAdminApiUrl } from "@/utils/api";
 
-type DbContactDoc = {
-  _id: { toString(): string };
-  name: string;
-  email: string;
-  phone?: string;
-  message: string;
-  status: "new" | "read" | "replied" | "archived";
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-function mapContact(doc: DbContactDoc): Contact {
-  return {
-    id: doc._id.toString(),
-    name: doc.name,
-    email: doc.email,
-    phone: doc.phone || "",
-    message: doc.message,
-    status: doc.status || "new",
-    createdAt: doc.createdAt,
-    updatedAt: doc.updatedAt,
-  };
-}
 
 export async function createContactSubmission(
-  input: CreateContactInput,
+  input: CreateContactInput
 ): Promise<Contact> {
-  await connectToDatabase();
+  const apiUrl = getAdminApiUrl();
 
-  const contact = await ContactModel.create({
-    name: input.name,
-    email: input.email.toLowerCase(),
-    phone: input.phone || "",
-    message: input.message,
-    status: "new",
+  const res = await fetch(`${apiUrl}/api/contacts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(input),
   });
 
-  return mapContact(contact as unknown as DbContactDoc);
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => null);
+    const errorMessage =
+      errorData?.error ||
+      `Failed to submit contact to admin API (status: ${res.status})`;
+    throw new Error(errorMessage);
+  }
+
+  const json = await res.json();
+  return json.data;
 }
