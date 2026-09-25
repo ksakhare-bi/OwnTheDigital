@@ -5,7 +5,7 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { BlogAuthor, FeaturedImage, RelatedBlogItem } from "@/types/blog";
+import type { BlogAuthor, FeaturedImage, RelatedBlogItem, EmbeddedLink } from "@/types/blog";
 
 export type BlogPostDetailView = {
   slug: string;
@@ -22,6 +22,7 @@ export type BlogPostDetailView = {
   intro?: string;
   sections?: { heading: string; description: string; bullets?: string[] }[];
   relatedBlogs?: RelatedBlogItem[];
+  embeddedLinks?: EmbeddedLink[];
 };
 
 function ArticleSection({
@@ -233,9 +234,12 @@ export function BlogPostContent({
               className="w-full h-auto object-cover"
             />
           </div>
-          {imageCaption && (
-            <figcaption className="text-center text-xs text-muted italic px-4">
-              {imageCaption}
+          {(imageCaption || post.featuredImage?.description) && (
+            <figcaption className="text-center text-xs text-muted italic px-4 space-y-0.5">
+              {imageCaption && <p>{imageCaption}</p>}
+              {post.featuredImage?.description && (
+                <p className="text-[11px] text-muted/80 not-italic">{post.featuredImage.description}</p>
+              )}
             </figcaption>
           )}
         </figure>
@@ -276,7 +280,7 @@ export function BlogPostContent({
               [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_table]:border [&_table]:border-border [&_table]:text-sm sm:[&_table]:text-base
               [&_th]:border [&_th]:border-border [&_th]:p-3 [&_th]:bg-surface-tint [&_th]:font-bold [&_th]:text-primary [&_th]:text-left
               [&_td]:border [&_td]:border-border [&_td]:p-3
-              [&_a]:text-primary [&_a]:underline [&_a]:font-semibold hover:[&_a]:opacity-80
+              [&_a:not([class*='no-underline'])]:text-blue-600 [&_a:not([class*='no-underline'])]:underline [&_a:not([class*='no-underline'])]:font-medium hover:[&_a:not([class*='no-underline'])]:text-blue-700 [&_a]:cursor-pointer [&_a]:transition-colors
               [&_img]:rounded-xl [&_img]:border [&_img]:border-border [&_img]:my-6 [&_img]:w-full [&_img]:h-auto
               [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-xl [&_iframe]:my-6"
             dangerouslySetInnerHTML={{ __html: post.content }}
@@ -295,6 +299,53 @@ export function BlogPostContent({
               />
             ))}
           </div>
+        )}
+
+        {/* Embedded Links & References (from Model) */}
+        {post.embeddedLinks && post.embeddedLinks.length > 0 && (
+          <section className="my-8 rounded-2xl border border-blue-100 bg-blue-50/40 p-6 sm:p-7">
+            <div className="mb-4">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-700">
+                Key Resources & Links
+              </span>
+              <h3 className="mt-1 text-lg sm:text-xl font-bold text-primary">
+                Embedded References
+              </h3>
+            </div>
+            <div className="grid gap-3.5 sm:grid-cols-2">
+              {post.embeddedLinks.map((link, idx) => (
+                <a
+                  key={idx}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col justify-between rounded-xl border border-blue-200/80 bg-white p-4 shadow-2xs hover:border-blue-400 hover:shadow-md transition-all cursor-pointer no-underline"
+                >
+                  <div>
+                    <span className="inline-block rounded bg-blue-100 px-2 py-0.5 text-[10px] font-mono font-semibold uppercase text-blue-700 mb-1.5">
+                      {link.category || "Resource"}
+                    </span>
+                    <h4 className="text-sm font-bold text-zinc-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {link.title}
+                    </h4>
+                    {link.description && (
+                      <p className="mt-1 text-xs text-zinc-600 line-clamp-2">
+                        {link.description}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mt-3 pt-2.5 border-t border-zinc-100 flex items-center justify-between text-xs font-semibold text-blue-600">
+                    <span className="truncate max-w-[180px] font-mono text-[10px] text-zinc-400">
+                      {link.url.replace(/^https?:\/\//i, "")}
+                    </span>
+                    <span className="inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                      Visit &rarr;
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
         )}
       </article>
 

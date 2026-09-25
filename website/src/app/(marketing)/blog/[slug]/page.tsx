@@ -127,7 +127,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       "@type": schemaType,
       headline: blog.schemaSettings?.headline || blog.title,
       description: blog.schemaSettings?.description || blog.seo?.description || blog.excerpt,
-      image: featuredImgUrl ? [featuredImgUrl] : [],
+      image: featuredImgUrl
+        ? [
+            {
+              "@type": "ImageObject",
+              url: featuredImgUrl,
+              caption: blog.featuredImage?.caption || blog.title,
+              description:
+                blog.featuredImage?.description ||
+                blog.featuredImage?.altText ||
+                blog.excerpt,
+            },
+          ]
+        : [],
       datePublished: blog.publishedAt ? new Date(blog.publishedAt).toISOString() : new Date().toISOString(),
       dateModified: blog.updatedAt ? new Date(blog.updatedAt).toISOString() : new Date().toISOString(),
       author: [
@@ -218,6 +230,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             }))
           : [],
         relatedBlogs: resolvedRelated,
+        embeddedLinks: Array.isArray(blog.embeddedLinks)
+          ? blog.embeddedLinks.map((el) => ({
+              url: String(el.url || ""),
+              title: String(el.title || ""),
+              description: el.description ? String(el.description) : "",
+              category: el.category ? String(el.category) : "Resource",
+            }))
+          : [],
       })
     );
 
